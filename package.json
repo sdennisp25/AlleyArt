@@ -21,15 +21,21 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-	"devDependencies": {
+  "devDependencies": {
     "concurrently": "^3.5.0",
     "nodemon": "^1.11.0"
   },
   "dependencies": {
     "axios": "^0.16.2",
+    "bcrypt": "^3.0.2",
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.2.0",
     "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "if-env": "^1.0.4",
     "mongoose": "^5.0.17",
-    "if-env": "^1.0.4"
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
   },
   "bugs": {
     "url": "https://github.com/sdennisp25/AlleyArt/issues"
