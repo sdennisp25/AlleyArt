@@ -2,7 +2,7 @@
   "name": "AlleyArt",
   "version": "1.0.0",
   "description": "AlleyArt",
-  "main": "server.js",
+  "main": "server/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
@@ -21,15 +21,17 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-	"devDependencies": {
+  "devDependencies": {
     "concurrently": "^3.5.0",
     "nodemon": "^1.11.0"
   },
   "dependencies": {
     "axios": "^0.16.2",
     "express": "^4.16.3",
+    "if-env": "^1.0.4",
     "mongoose": "^5.0.17",
-    "if-env": "^1.0.4"
+    "react-redux": "^6.0.0",
+    "redux": "^4.0.1"
   },
   "bugs": {
     "url": "https://github.com/sdennisp25/AlleyArt/issues"

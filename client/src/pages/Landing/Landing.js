@@ -7,6 +7,17 @@ class Landing extends Component {
 
 		render() {
 		return (
+<<<<<<< HEAD
+			<React.Fragment>
+				<input/>
+				<p>TEST</p>
+				<Container>
+					<Jumbotron>
+					<h1>THIS IS THE LANDING PAGE {this.props.user.test}</h1>
+									</Jumbotron>
+				</Container>
+			</React.Fragment>
+=======
 			<Container>
 				<Row>
 				<div className="landing-background">
@@ -36,8 +47,15 @@ class Landing extends Component {
 				</div>
 				</Row>
 			</Container>
+>>>>>>> master
 		)
 	} 
 }
 
-export default Landing;
+function mapStateToProps(state){
+	return {
+		user: state
+	}
+}
+
+export default connect(mapStateToProps)(Landing);

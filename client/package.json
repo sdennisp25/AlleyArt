@@ -3,19 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:3001/",
-	"dependencies": {
-		"react": "^16.6.3",
+  "dependencies": {
+    "axios": "^0.16.2",
+    "react": "^16.6.3",
     "react-dom": "^16.6.3",
+    "react-redux": "^6.0.0",
+    "react-router-dom": "^4.1.2",
     "react-scripts": "2.1.1",
-		"react-router-dom": "^4.1.2",
-		"axios": "^0.16.2"
-	},
-	"scripts": {
-		"start": "react-scripts start",
-		"build": "react-scripts build",
-		"test": "react-scripts test --env=jsdom",
-		"eject": "react-scripts eject"
-	},
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
   "eslintConfig": {
     "extends": "react-app"
   },
