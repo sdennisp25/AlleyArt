@@ -1,0 +1,11 @@
+.profile {
+    background-color: #B4B5A1;
+    font-family: 'Cuprum', sans-serif;
+    padding: 10px;
+    font-size: 25px;
+}
+
+.name {
+    font-size: 35px;
+    text-align: center;
+}
