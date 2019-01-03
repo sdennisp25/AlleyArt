@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {Col, Row, Container} from "../../components/Grid";
+import Search from "../../components/Search";
 import Card from "../../components/Card";
 import "./home.css";
 import Nav from "../../components/Nav";
@@ -13,9 +14,7 @@ class Home extends Component {
                 <Row>
                     <div className="row-container">
                     <h1>Search</h1>
-                    <Col size="md-4">
-                    <Card></Card>
-                    </Col>
+                    <Search></Search>
                     </div>
                 </Row>
                 <Row>
