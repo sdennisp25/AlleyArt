@@ -1,0 +1,18 @@
+.landing-background {
+    background-image: url(img/landingpic2.jpg);
+    height: 100%;
+    width: 100%;
+}
+
+h1 {
+    font-family: 'Major Mono Display', monospace;
+}
+
+.landing {
+    align-self: center;
+    color: black;
+    height: 500px;
+    width: 400px;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+}
