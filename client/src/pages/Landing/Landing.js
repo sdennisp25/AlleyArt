@@ -102,10 +102,6 @@ class Landing extends Component {
 	}
 }
 
-// const container = document.createElement("div");
-// document.body.appendChild(container);
-// ReactDOM.render(<Landing />, container);
-
 function mapStateToProps(state) {
 	return {
 		user: state
