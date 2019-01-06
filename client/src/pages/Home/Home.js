@@ -3,7 +3,7 @@ import {Col, Row, Container} from "../../components/Grid";
 import Search from "../../components/Search";
 import Card from "../../components/Card";
 import "./home.css";
-import Nav from "../../components/Nav";
+// import Nav from "../../components/Nav";
 
 class Home extends Component {
 

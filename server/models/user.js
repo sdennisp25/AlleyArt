@@ -1,15 +1,18 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 const userSchema = new Schema({
 
-	name: {
-		type: String
+	username: {
+		type: String,
 	},
 	email: {
 		type: String,
-		required: true
+		required: true,
+		index: {
+			unique: true
+		}
 	},
 	password: {
 		type: String,
@@ -21,25 +24,26 @@ const userSchema = new Schema({
 });
 
 ////COMPARE and HASH Passwords///
-userSchema.methods.comparePassword = function comparePassword(password, callback) {
-	bcrypt.compare(password, this.password, callback);
-};
-userSchema.pre('save', function saveHook(next) {
-	const user = this;
-	if (!user.isModified('password')) return next();
-	return bcrypt.genSalt((saltError, salt) => {
-		if (saltError) {
-			return next(saltError);
-		}
-		return bcrypt.hash(user.password, salt, (hashError, hash) => {
-			if (hashError) {
-				return next(hashError);
-			}
-			user.password = hash;
-			return next();
-		});
-	});
-});
+userSchema.methods = {
+	checkPassword: function (inputPassword) {
+		return bcrypt.compareSync(inputPassword, this.password)
+	},
+	hashPassword: plainTextPassword => {
+		return bcrypt.hashSync(plainTextPassword, 10)
+	}
+}
+
+userSchema.pre('save', function (next) {
+	if (!this.password) {
+		console.log('models/user.js =======NO PASSWORD PROVIDED=======')
+		next()
+	} else {
+		console.log('models/user.js hashPassword in pre save');
+		this.password = this.hashPassword(this.password)
+		next()
+	}
+})
+
 const User = mongoose.model("User", userSchema);
 
 module.exports = User;

@@ -2,9 +2,10 @@ require('dotenv').config();
 const express = require("express");
 const session = require('express-session');
 const bodyParser = require('body-parser');
+const keys = require('./config/keys');
 const mongoose = require("mongoose");
 const routes = require("./routes");
-const keys = require('./config/keys');
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -29,9 +30,7 @@ app.use(session(expSession));
 if (process.env.NODE_ENV === "production") {
 	app.use(express.static("client/build"));
 }
-// Add routes, both API and view
-require('./services/passport.js')(app);
-app.use(routes);
+
 
 // Connect to the Mongo DB
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/alleyart";
@@ -39,6 +38,10 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/alleyart";
 mongoose.connect(MONGODB_URI, {
 	useNewUrlParser: true
 });
+
+// Add routes, both API and view
+require('./passport/passport.js')(app);
+app.use(routes);
 
 // Start the API server
 app.listen(PORT, function () {

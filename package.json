@@ -1,5 +1,5 @@
 {
-	"name": "AlleyArt",
+	"name": "alley-art",
 	"version": "1.0.0",
 	"description": "AlleyArt",
 	"main": "server/server.js",
@@ -27,7 +27,7 @@
 	},
 	"dependencies": {
 		"axios": "^0.16.2",
-		"bcrypt": "^3.0.2",
+		"bcryptjs": "^2.4.3",
 		"body-parser": "^1.18.3",
 		"dotenv": "^6.2.0",
 		"express": "^4.16.3",
