@@ -22,16 +22,23 @@ class Profile extends Component {
                 fames ac ante ipsum primis in faucibus.</p>
                 </div>
                 </Row>
-                <Col size="md-6">
+                <Row>
+                <Col size="s4">
                 <div>
                     <Card></Card>
                 </div>
                 </Col>
-                <Col size="md-6">
+                <Col size="s4">
                 <div>
                     <Card></Card>
                 </div>
                 </Col>
+                <Col size="s4">
+                <div>
+                    <Card></Card>
+                </div>
+                </Col>
+                </Row>
             </Container>
 		)
 	} 

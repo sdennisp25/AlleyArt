@@ -29,8 +29,8 @@ class Landing extends Component {
 								</div>
 							</div>
 							</form>
-							<a href="/" className="waves-effect grey darken-3 btn">Login</a>
-							<a href="/" className="waves-effect grey darken-3 btn">Sign-up</a>
+							<a href="/home" className="waves-effect grey darken-3 btn">Login</a>
+							<a href="/" className="waves-effect grey darken-3 btn modal-trigger">Sign-up</a>
 						</div>
 					</div>
 				</div>

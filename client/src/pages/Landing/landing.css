@@ -1,7 +1,6 @@
 .landing-background {
     background-image: url(img/landingpic2.jpg);
-    height: 100%;
-    width: 100%;
+    width: 70%;
 }
 
 h1 {

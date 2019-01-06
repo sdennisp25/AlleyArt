@@ -25,6 +25,7 @@ class Home extends Component {
                     </Col>
                     </div>
                 </Row>
+                
                 <Row>
                     <div className="row-container">
                     <h1>Discover</h1>
@@ -33,6 +34,7 @@ class Home extends Component {
                     </Col>
                     </div>
                 </Row>
+            
                 </div>
             </Container>
 		)
