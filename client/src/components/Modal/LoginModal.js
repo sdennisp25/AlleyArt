@@ -1,7 +1,7 @@
 import React from "react";
 import "./Modal.css";
 
-const LoginModal = ({show, handleClose, handleLogin, children }) => {
+export const LoginModal = ({show, handleClose, handleLogin, children }) => {
   return (
     <div className={`${show ? "modal display-block" : "modal display-none"} modal`}>
 		<form>
@@ -17,5 +17,4 @@ const LoginModal = ({show, handleClose, handleLogin, children }) => {
   );
 };
 
-export default LoginModal;
 
