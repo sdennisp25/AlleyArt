@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import {Col, Row, Container} from "../../components/Grid";
 import Card from "../../components/Card";
 import "./profile.css";
-import Nav from "../../components/Nav";
+// import Nav from "../../components/Nav";
 
 class Profile extends Component {
 
