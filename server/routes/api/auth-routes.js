@@ -20,8 +20,8 @@ router
 ////////////log user out and close cookie/session////////////
 router
 .get('/logout', function (req, res) {
-	console.log("USER LOGGED OUT");
 	req.logout();
+	console.log("USER LOGGED OUT");
 	res.redirect('/');
 });
 
