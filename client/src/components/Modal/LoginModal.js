@@ -1,20 +1,28 @@
 import React from "react";
 import "./Modal.css";
 
-export const LoginModal = ({show, handleClose, handleLogin, children }) => {
-  return (
-    <div className={`${show ? "modal display-block" : "modal display-none"} modal`}>
-		<form>
-      <div className="modal-content">
-			        <button onClick={handleClose} className='modal-close right green-text'><i className='material-icons small'>X</i></button>
-				{children}
-			<div className="modal-footer">
-				<button className="waves-effect grey darken-3 btn" onClick={handleLogin}>Submit</button>
-			</div>
-      </div>
+export const LoginModal = ({ show, handleClose, handleLogin, handleInputChange }) => {
+	return (
+		<div className={`${show ? "modal display-block" : "modal display-none"} modal`}>
+			<form>
+				<div className="modal-content">
+					<button onClick={handleClose} className='modal-close right green-text'><i className='material-icons small'>X</i></button>
+					<h4 className="center">Please Sign In</h4>
+					<div className="modal-content">
+						<input id="input-text" data-length="120" name="username" onChange={handleInputChange}></input>
+						<label htmlFor="input_text">Email/Username</label>
+					</div>
+					<div className="modal-content">
+						<input id="input-text" data-length="120" name="password" onChange={handleInputChange}></input>
+						<label htmlFor="input_text">Password</label>
+					</div>
+					<div className="modal-footer">
+						<button className="waves-effect grey darken-3 btn" onClick={handleLogin}>Submit</button>
+					</div>
+				</div>
 			</form>
-    </div>
-  );
+		</div>
+	);
 };
 
 

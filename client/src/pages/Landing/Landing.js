@@ -30,7 +30,7 @@ class Landing extends Component {
 	};
 
 	handleInputChange = event => {
-		const { name, value } = event.target;
+		let { name, value } = event.target;
 		this.setState({
 			[name]: value
 		});
@@ -110,26 +110,15 @@ class Landing extends Component {
 					show={this.state.showLogin}
 					handleClose={this.hideLogin}
 					handleLogin={this.handleLogin}
-				>
-					<div className="modal-content">
-						<h4 className="center">Please Sign In</h4>
-						<label htmlFor="input_text">Username</label>
-						<input id="input_text" type="text" data-length="10" name="username" onChange={this.handleInputChange}>
-						</input>
-					</div>
-					<div className="modal-content">
-						<input id="input-text" data-length="120" name="password" onChange={this.handleInputChange}></input>
-						<label htmlFor="input_text">Password</label>
-					</div>
-				</LoginModal>
+					handleInputChange={this.handleInputChange}
+				></LoginModal>
 
 				<UserTypeModal
 				show={this.state.showRegister}
 				handleClose={this.hideRegister}
 				handleUser={this.handleUser}
 				handleArtist={this.handleArtist}
-				>
-				</UserTypeModal>
+				></UserTypeModal>
 			</Container>
 		)
 	}

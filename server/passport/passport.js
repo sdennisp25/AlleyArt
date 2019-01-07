@@ -37,7 +37,8 @@ module.exports = function (app) {
 			var email = req.body.email;
 			db.User.findOne({
 					email: email
-				}, (error, currentUser) => {
+				}
+				, (error, currentUser) => {
 					if (error) {
 						return done(error);
 					}
@@ -51,7 +52,8 @@ module.exports = function (app) {
 							message: "Incorrect password"
 						})
 					}
-				})
+				}
+				)
 				.then(function (currentUser) {
 					if (currentUser) {
 						//user already exists

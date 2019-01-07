@@ -8,7 +8,7 @@ class RegisterArtist extends Component {
 		return (
 			<React.Fragment>
 				<Container>
-					<Jumbotron >
+					<Jumbotron className="register">
 						<h2>THIS IS THE ARTIST REGISTERATION PAGE</h2>
 					</Jumbotron>
 				</Container>
