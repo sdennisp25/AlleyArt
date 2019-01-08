@@ -6,13 +6,23 @@ import Gps from "../../components/Geo";
 // import Nav from "../../components/Nav";
 
 class Profile extends Component {
+	state = {userGps: null};
+  gpsInit = () => {
+		console.log("INSIDE GPS INIT");
+    navigator.geolocation.getCurrentPosition(
+			// response => this.setState({ userGps: response }),
+			() => console.log("success"),
+      error => console.log(error)
+    );
+  };
+
   render() {
     return (
       <Container>
         <Row>
           <div className="profile">
             <p className="name">Name</p>
-            <p className="midSection">
+            <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque
               velit, lobortis ut magna varius, blandit rhoncus sem. Morbi
               lacinia nisi ac dui fermentum, sed luctus urna tincidunt. Etiam ut
@@ -25,20 +35,34 @@ class Profile extends Component {
               tortor. In elementum ultricies tempus. Interdum et malesuada fames
               ac ante ipsum primis in faucibus.
             </p>
+
             <form id="form">
               <div className="upload-btn-wrapper">
                 <button className="btn">
-                  Upload Image <i className="large material-icons">file_upload</i>
+                  Upload Image{" "}
+                  <i className="large material-icons">file_upload</i>
                 </button>
+
                 <input id="save" type="file" />
+
+                <button
+                  id="location"
+                  className="waves-effect waves-light btn"
+									onClick={this.gpsInit}
+									type="button"
+                >
+                  Location <i className="large material-icons">location_on</i>
+                </button>
+
                 <button id="submit" className="waves-effect waves-light btn">
                   Save Image <i className="large material-icons">save</i>
                 </button>
               </div>
             </form>
-            <Gps />
           </div>
         </Row>
+
+        <Gps />
         <Col size="md-6">
           <div>
             <Card />

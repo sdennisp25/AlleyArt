@@ -2,13 +2,13 @@ import React, { Component } from "react";
 
 class Gps extends Component {
 	
-	componentDidMount = () => {
-		this.gpsInit()
-	};
-	
-  gpsInit = () => {
+	//will ask user to use current location
+	// componentDidMount = () => {
+	// 	this.gpsInit()
+	// };
 
-
+	//will locate your current position
+  gpsInit = () => { 
     this.userGps = navigator.geolocation.getCurrentPosition(
       this.geoSuccess,
       this.geoError,
@@ -17,6 +17,8 @@ class Gps extends Component {
 
   geoSuccess = position => {
     console.log(position);
+		console.log("Lat: ", position.coords.latitude);
+    console.log("Long: ", position.coords.longitude);
   };
 
   geoError = () => {
@@ -29,8 +31,8 @@ class Gps extends Component {
       <div className="home">
         {this.position && (
           <div>
-            <p>Lat: {this.position.latitude}</p>
-            <p>Long: {this.position.longitude}</p>
+            <p>Lat: {this.position.coords.latitude}</p>
+            <p>Long: {this.position.coords.longitude}</p>
           </div>
         )}
       </div>

@@ -1,18 +1,13 @@
 .profile {
 	background-color: #B4B5A1;
 	font-family: 'Cuprum', sans-serif;
-	padding: 10px;
-	font-size: 25px;
+	padding: 15px;
+	font-size: 20px;
 }
 	
 .name {
 	font-size: 35px;
 	text-align: center;
-}
-
-	.midSection {
-	padding: 25px;
-	font-size: 20px;
 }
 
 .upload-btn-wrapper {
@@ -31,6 +26,13 @@
 	opacity: 0;
 }
 
+.btn {
+	width: 300px;
+}
+
 #form {
-	float: right;
+	margin-left: 30%;
+	float: center;
+	width: 200px;
+	height: 120px;
 }
