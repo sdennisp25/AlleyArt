@@ -3,3 +3,18 @@ body {
 	background-repeat: no-repeat;
 	background-size: cover;
 }
+
+.title {
+	font-size: 40px;
+	font-family: 'Cuprum', sans-serif;
+	text-align: center;
+}
+
+.userform {
+	background-color: #B4B5A1;
+	font-family: 'Cuprum', sans-serif;
+	padding: 10px;
+	font-size: 25px;
+	opacity: .8;
+	filter: alpha(opacity=50);
+}
