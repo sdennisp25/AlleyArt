@@ -7,12 +7,10 @@ import API from "../../utils/api";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { logInUser, updateUser } from "../../redux/reducers/myReducer"
-// import Nav from "../../components/Nav";
 
 class Home extends Component {
 
-
-	//REMOVE THIS and USE REDUX FOR LOGGOUT INSTEAD//
+	//REMOVE LOGGEDIN and USE REDUX FOR LOGGOUT INSTEAD//
 	state = {
 		loggedIn: true,
 		artistSearch: "",
@@ -40,19 +38,14 @@ class Home extends Component {
 	handleSearch = (event) => {
 		event.preventDefault();
 		console.log("You Clicked Me!");
-		console.log(this.state);
-		// API.loginUser({
-		// 	email: this.state.username,
-		// 	password: this.state.password
-		// }).then(response => {
-		// 	if (response.status === 200) {
-		// 		this.props.logInUser();
-		// 		this.setState({ toHome: true });
-		// 	}
-		// }).catch(error => {
-		// 	console.log("LOGIN ERROR: ");
-		// 	console.log(error);
-		// })
+		console.log(this.state.artistSearch);
+		API.searchArt(this.state.artistSearch
+		).then(art => {
+			console.log(art.data);
+		}).catch(error => {
+			console.log("SEARCH ERROR: ");
+			console.log(error);
+		})
 	}
 
 
@@ -69,8 +62,8 @@ class Home extends Component {
 						<div className="row-container">
 							<h1>Search</h1>
 							<Search
-							handleInputChange={this.handleInputChange}
-							handleSearch={this.handleSearch}></Search>
+								handleInputChange={this.handleInputChange}
+								handleSearch={this.handleSearch}></Search>
 						</div>
 					</Row>
 					<Row>

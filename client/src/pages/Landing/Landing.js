@@ -86,7 +86,7 @@ class Landing extends Component {
 				<Row>
 					<div className="landing-background">
 			{/* <h2>TESTING!!! THIS IS THE CURRENT STATE:  {this.props.user.loggedIn}</h2> */}
-						{/* <div className="landing center-align card-panel"> */}
+						<div className="landing center-align card-panel">
 							<h1>ALLEY ART</h1>
 							<p>Beyond this is a street art community. Create a profile and contribute to the international art collections. If your looking for a discovery find the location and go see for yourself.</p>
 							<div className="row">
@@ -95,7 +95,7 @@ class Landing extends Component {
 								<button className="waves-effect grey darken-3 btn" type="button" onClick={this.showRegister}>REGISTER </button>
 							</div>
 						</div>
-					{/* </div> */}
+					</div>
 				</Row>
 
 

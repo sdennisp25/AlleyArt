@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Container } from "../../../components/Grid";
-import Jumbotron from "../../../components/Jumbotron";
 import "./register.css";
 
 class RegisterArtist extends Component {

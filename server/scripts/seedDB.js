@@ -1,10 +1,9 @@
-const mongoose = require("mongoose");
-const db = require("../models");
-
-mongoose.connect(
-	process.env.MONGODB_URI ||
-	"mongodb://localhost/alleyart"
-);
+// RUN MONGOD IN THE TERMINAL
+//OPEN ROBO and go to the alleyArt DB
+//Right click to add a collection
+//Title collection "artworks"
+//Once added. Right click on the collection and update document
+//copy each objects and save
 
 const artworkSeed = [
 	{
@@ -31,14 +30,3 @@ const artworkSeed = [
 
 ];
 
-db.Artwork
-	.remove({})
-	.then(() => db.Artwork.collection.insertMany(artworkSeed))
-	.then(data => {
-		console.log(data.result.n + " records inserted!");
-		process.exit(0);
-	})
-	.catch(err => {
-		console.error("ARTWORK COLLECTION ERROR ", err);
-		process.exit(1);
-	});

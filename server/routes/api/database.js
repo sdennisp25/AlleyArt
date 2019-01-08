@@ -1,8 +1,8 @@
 const router = require("express").Router();
 const artController = require("../../controllers/artController");
 
-router.route("/home")
-	.get(artController.findAll)
+router
+	.get("/search/:artist", artController.searchArtist)
 	// .post(dbController.create);
 
 router

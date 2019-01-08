@@ -1,9 +1,11 @@
 const db = require("../models");
 
 module.exports = {
-	findAll: function (req, res) {
-		db.Artwork
-			.find(req.query)
+	searchArtist: function (req, res) {
+
+		console.log("FIND ALL WHERE: ", req.params);
+			db.Artwork
+			.find(req.params)
 			.then(art => res.json(art))
 			.catch(err => res.status(422).json(err));
 	},
