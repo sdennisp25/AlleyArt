@@ -6,6 +6,9 @@ export default {
 	},
 	logoutUser: function () {
 		return axios.get("/api/auth/logout");
+	},
+	searchArt: function (search){
+		return axios.get("/api/search", search)
 	}
 
 };

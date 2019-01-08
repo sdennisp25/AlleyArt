@@ -1,4 +1,5 @@
 module.exports = {
 	Example: require("./example"),
-	User: require("./user")
+	User: require("./user"),
+	Artwork: require("./artwork"),
 };

@@ -5,12 +5,18 @@ import Card from "../../components/Card";
 import "./home.css";
 import API from "../../utils/api";
 import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import { logInUser, updateUser } from "../../redux/reducers/myReducer"
 // import Nav from "../../components/Nav";
 
 class Home extends Component {
 
+
+	//REMOVE THIS and USE REDUX FOR LOGGOUT INSTEAD//
 	state = {
-		loggedIn: true
+		loggedIn: true,
+		artistSearch: "",
+		locationSearch: "",
 	}
 
 	handleLogout = () => {
@@ -22,6 +28,33 @@ class Home extends Component {
 			console.log(error);
 		})
 	}
+
+	handleInputChange = event => {
+		let { name, value } = event.target;
+		this.setState({
+			[name]: value
+		});
+	};
+
+
+	handleSearch = (event) => {
+		event.preventDefault();
+		console.log("You Clicked Me!");
+		console.log(this.state);
+		// API.loginUser({
+		// 	email: this.state.username,
+		// 	password: this.state.password
+		// }).then(response => {
+		// 	if (response.status === 200) {
+		// 		this.props.logInUser();
+		// 		this.setState({ toHome: true });
+		// 	}
+		// }).catch(error => {
+		// 	console.log("LOGIN ERROR: ");
+		// 	console.log(error);
+		// })
+	}
+
 
 	render() {
 		if (this.state.loggedIn === false) {
@@ -35,7 +68,9 @@ class Home extends Component {
 					<Row>
 						<div className="row-container">
 							<h1>Search</h1>
-							<Search></Search>
+							<Search
+							handleInputChange={this.handleInputChange}
+							handleSearch={this.handleSearch}></Search>
 						</div>
 					</Row>
 					<Row>
@@ -59,5 +94,16 @@ class Home extends Component {
 		)
 	}
 }
+function mapStateToProps(state) {
+	return {
+		user: state,
+	}
+}
+function mapDispatchToProps(dispatch) {
+	return {
+		logInUser: () => { dispatch(logInUser()) },
+		updateUser: () => { dispatch(updateUser()) }
+	}
+}
 
-export default Home;
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

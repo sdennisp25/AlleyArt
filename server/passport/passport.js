@@ -38,21 +38,21 @@ module.exports = function (app) {
 			db.User.findOne({
 					email: email
 				}
-				, (error, currentUser) => {
-					if (error) {
-						return done(error);
-					}
-					if (!currentUser) {
-						return done(null, false, {
-							message: "Incorrect username"
-						})
-					}
-					if (!currentUser.checkPassword(password)) {
-						return done(null, false, {
-							message: "Incorrect password"
-						})
-					}
-				}
+				// , (error, currentUser) => {
+				// 	if (error) {
+				// 		return done(error);
+				// 	}
+				// 	if (!currentUser) {
+				// 		return done(null, false, {
+				// 			message: "Incorrect username"
+				// 		})
+				// 	}
+				// 	if (!currentUser.checkPassword(password)) {
+				// 		return done(null, false, {
+				// 			message: "Incorrect password"
+				// 		})
+				// 	}
+				// }
 				)
 				.then(function (currentUser) {
 					if (currentUser) {
