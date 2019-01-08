@@ -11,7 +11,7 @@ class Profile extends Component {
 			<Container>
                 <Row>
                 <div className="profile">
-                <p class="name">Name</p>
+                <p className="name">Name</p>
                 <p>      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque velit, lobortis ut magna
                 varius, blandit rhoncus sem. Morbi lacinia nisi ac dui fermentum, sed luctus urna tincidunt.
                 Etiam ut feugiat ex. Cras non risus mi. Curabitur mattis rutrum ipsum, ut aliquet urna
