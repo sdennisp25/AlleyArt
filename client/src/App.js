@@ -15,8 +15,8 @@ class App extends Component {
 		return (
 			<Router>
 				<div>
-					<Nav />
-					<div><br></br><br></br><br></br>
+					
+					<div>
 						<Switch>
 							<Route exact path="/" component={Landing} />
 							<Route exact path="/home" component={Home} />
