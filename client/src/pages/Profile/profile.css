@@ -1,11 +1,36 @@
 .profile {
-    background-color: #B4B5A1;
-    font-family: 'Cuprum', sans-serif;
-    padding: 10px;
-    font-size: 25px;
+	background-color: #B4B5A1;
+	font-family: 'Cuprum', sans-serif;
+	padding: 10px;
+	font-size: 25px;
+}
+	
+.name {
+	font-size: 35px;
+	text-align: center;
 }
 
-.name {
-    font-size: 35px;
-    text-align: center;
+	.midSection {
+	padding: 25px;
+	font-size: 20px;
+}
+
+.upload-btn-wrapper {
+	position: relative;
+	overflow: hidden;
+	display: inline-block;
+	text-align: center;
+}
+
+
+.upload-btn-wrapper input[type=file] {
+	font-size: 100px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	opacity: 0;
+}
+
+#form {
+	float: right;
 }
