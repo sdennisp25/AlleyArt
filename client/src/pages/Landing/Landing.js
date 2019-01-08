@@ -74,12 +74,6 @@ class Landing extends Component {
 								<br /><br />
 								<button className="waves-effect grey darken-3 btn" type="button" onClick={this.showRegister}>REGISTER </button>
 							</div>
-<<<<<<< HEAD
-							</form>
-							<a href="/home" className="waves-effect grey darken-3 btn">Login</a>
-							<a href="/" className="waves-effect grey darken-3 btn modal-trigger">Sign-up</a>
-=======
->>>>>>> master
 						</div>
 					</div>
 				</Row>

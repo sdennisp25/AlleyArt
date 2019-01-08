@@ -30,35 +30,6 @@ class Home extends Component {
 
 		return (
 			<Container fluid>
-<<<<<<< HEAD
-                <div className="home-background">
-                <Row>
-                    <div className="row-container">
-                    <h1>Search</h1>
-                    <Search></Search>
-                    </div>
-                </Row>
-                <Row>
-                    <div className="row-container">
-                    <h1>Trending</h1>
-                    <Col size="md-4">
-                    <Card></Card>
-                    </Col>
-                    </div>
-                </Row>
-                
-                <Row>
-                    <div className="row-container">
-                    <h1>Discover</h1>
-                    <Col size="md-4">
-                    <Card></Card>
-                    </Col>
-                    </div>
-                </Row>
-            
-                </div>
-            </Container>
-=======
 				<div className="home-background">
 					<button className="waves-effect grey darken-3 btn right" onClick={this.handleLogout}>Logout</button>
 					<Row>
@@ -85,7 +56,6 @@ class Home extends Component {
 					</Row>
 				</div>
 			</Container>
->>>>>>> master
 		)
 	}
 }
