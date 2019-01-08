@@ -5,7 +5,9 @@ import "./landing.css";
 import API from "../../utils/api";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-import LoginModal from "../../components/Modal";
+import {LoginModal, UserTypeModal} from "../../components/Modal";
+
+
 
 class Landing extends Component {
 
@@ -13,7 +15,10 @@ class Landing extends Component {
 		username: " ",
 		password: " ",
 		toHome: false,
-		showLogin: false
+		showLogin: false,
+		showRegister: false,
+		toArtistReg: false,
+		toUserReg: false,
 	}
 
 	showLogin = () => {
@@ -25,7 +30,7 @@ class Landing extends Component {
 	};
 
 	handleInputChange = event => {
-		const { name, value } = event.target;
+		let { name, value } = event.target;
 		this.setState({
 			[name]: value
 		});
@@ -48,9 +53,31 @@ class Landing extends Component {
 		})
 	}
 
+	handleArtist =()=> {
+		this.setState({toArtistReg: true});
+	}
+
+	handleUser = ()=>{
+		this.setState({toUserReg: true});
+	}
+
+	showRegister = ()=>{
+		this.setState({showRegister: true});
+	}
+
+	hideRegister = ()=>{
+		this.setState({showRegister: false})
+	}
+
 	render() {
 		if (this.state.toHome === true) {
 			return <Redirect to='/home' />
+		}
+		if (this.state.toUserReg===true){
+			return <Redirect to='/register-user'/>
+		}
+		if (this.state.toArtistReg===true){
+			return <Redirect to='/register-artist'/>
 		}
 
 		return (
@@ -83,20 +110,15 @@ class Landing extends Component {
 					show={this.state.showLogin}
 					handleClose={this.hideLogin}
 					handleLogin={this.handleLogin}
-				>
-					<div className="modal-content">
-						<h4 className="center">Please Sign In</h4>
-						<label htmlFor="input_text">Username</label>
-						<input id="input_text" type="text" data-length="10" name="username" onChange={this.handleInputChange}>
-						</input>
-					</div>
-					<div className="modal-content">
-						<input id="input-text" data-length="120" name="password" onChange={this.handleInputChange}></input>
-						<label htmlFor="input_text">Password</label>
-					</div>
-				</LoginModal>
+					handleInputChange={this.handleInputChange}
+				></LoginModal>
 
-
+				<UserTypeModal
+				show={this.state.showRegister}
+				handleClose={this.hideRegister}
+				handleUser={this.handleUser}
+				handleArtist={this.handleArtist}
+				></UserTypeModal>
 			</Container>
 		)
 	}
