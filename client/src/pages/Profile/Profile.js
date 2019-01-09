@@ -6,16 +6,6 @@ import Gps from "../../components/Geo";
 // import Nav from "../../components/Nav";
 
 class Profile extends Component {
-	state = {userGps: null};
-  gpsInit = () => {
-		console.log("INSIDE GPS INIT");
-    navigator.geolocation.getCurrentPosition(
-			// response => this.setState({ userGps: response }),
-			() => console.log("success"),
-      error => console.log(error)
-    );
-  };
-
   render() {
     return (
       <Container>
@@ -38,31 +28,29 @@ class Profile extends Component {
 
             <form id="form">
               <div className="upload-btn-wrapper">
-                <button className="btn">
+                <button className="btn" type="button">
                   Upload Image{" "}
                   <i className="large material-icons">file_upload</i>
                 </button>
 
                 <input id="save" type="file" />
 
-                <button
-                  id="location"
-                  className="waves-effect waves-light btn"
-									onClick={this.gpsInit}
-									type="button"
-                >
-                  Location <i className="large material-icons">location_on</i>
-                </button>
+                <Gps />
 
                 <button id="submit" className="waves-effect waves-light btn">
                   Save Image <i className="large material-icons">save</i>
                 </button>
               </div>
+
+              <div className="commentBox">
+                <label>Enter a comment</label>
+                <textarea />
+              </div>
+
             </form>
           </div>
         </Row>
 
-        <Gps />
         <Col size="md-6">
           <div>
             <Card />

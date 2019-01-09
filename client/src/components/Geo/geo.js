@@ -2,22 +2,22 @@ import React, { Component } from "react";
 
 class Gps extends Component {
 	
-	//will ask user to use current location
-	// componentDidMount = () => {
-	// 	this.gpsInit()
-	// };
+  // will ask user to use current location
+  componentDidMount = () => {
+    this.gpsInit();
+  };
 
-	//will locate your current position
-  gpsInit = () => { 
+  //will locate your current position
+  gpsInit = () => {
     this.userGps = navigator.geolocation.getCurrentPosition(
       this.geoSuccess,
-      this.geoError,
+      this.geoError
     );
   };
 
   geoSuccess = position => {
     console.log(position);
-		console.log("Lat: ", position.coords.latitude);
+    console.log("Lat: ", position.coords.latitude);
     console.log("Long: ", position.coords.longitude);
   };
 
@@ -25,20 +25,17 @@ class Gps extends Component {
     alert("No GPS available");
   };
 
-
   render() {
     return (
-      <div className="home">
-        {this.position && (
-          <div>
-            <p>Lat: {this.position.coords.latitude}</p>
-            <p>Long: {this.position.coords.longitude}</p>
-          </div>
-        )}
-      </div>
+      <button
+        type="button"
+        className="waves-effect waves-light btn"
+        onClick={this.gpsInit}
+      >
+        Location <i className="large material-icons">location_on</i>
+      </button>
     );
-	}
-	
+  }
 }
 
 export default Gps;
