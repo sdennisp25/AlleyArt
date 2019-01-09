@@ -2,19 +2,22 @@ import React, { Component } from "react";
 import { Col, Row, Container } from "../../components/Grid";
 import Search from "../../components/Search";
 import Card from "../../components/Card";
+import ArtCard from "../../components/artCard";
+import Wrapper from "../../components/Wrapper";
 import "./home.css";
 import API from "../../utils/api";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import { logInUser, updateUser } from "../../redux/reducers/myReducer"
+import { logInUser, updateUser } from "../../redux/reducers/myReducer";
 
 class Home extends Component {
 
-	//REMOVE LOGGEDIN and USE REDUX FOR LOGGOUT INSTEAD//
+	//REMOVE LOGGEDIN and USE REDUX FOR LOGGOUT INSTEAD???//
 	state = {
 		loggedIn: true,
 		artistSearch: "",
 		locationSearch: "",
+		results: []
 	}
 
 	handleLogout = () => {
@@ -41,8 +44,12 @@ class Home extends Component {
 		console.log(this.state.artistSearch);
 		API.searchArt(this.state.artistSearch
 		).then(art => {
-			console.log(art.data);
-		}).catch(error => {
+			return (
+				console.log("RESULTS", art.data),
+				this.setState({ results: art.data, artistSearch: "", locationSearch: "" })
+			)
+		}
+		).catch(error => {
 			console.log("SEARCH ERROR: ");
 			console.log(error);
 		})
@@ -55,7 +62,7 @@ class Home extends Component {
 		}
 
 		return (
-			<Container fluid>
+			<Container>
 				<div className="home-background">
 					<button className="waves-effect grey darken-3 btn right" onClick={this.handleLogout}>Logout</button>
 					<Row>
@@ -67,11 +74,17 @@ class Home extends Component {
 						</div>
 					</Row>
 					<Row>
-						<div className="row-container">
-							<h1>Trending</h1>
-							<Col size="md-4">
-								<Card></Card>
-							</Col>
+						<div className="row-results">
+							<h1>Results</h1>
+							<Wrapper>
+								{this.state.results.map(art => (
+									<ArtCard
+										key={"card-" + art._id}
+										url={art.url}
+										id={art.id} />
+								))}
+							</Wrapper>
+
 						</div>
 					</Row>
 					<Row>

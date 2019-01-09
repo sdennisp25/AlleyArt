@@ -1,6 +1,9 @@
 import axios from 'axios';
 
 export default {
+	registerUser: function (userInfo){
+		return axios.post("/api/database/register/", userInfo);
+	},
 	loginUser: function (loginInfo) {
 		return axios.post("/api/auth/login", loginInfo);
 	},

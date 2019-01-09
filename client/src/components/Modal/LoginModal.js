@@ -10,7 +10,7 @@ export const LoginModal = ({ show, handleClose, handleLogin, handleInputChange }
 					<h4 className="center">Please Sign In</h4>
 					<div className="modal-content">
 						<input id="input-text" data-length="120" name="username" onChange={handleInputChange}></input>
-						<label htmlFor="input_text">Email/Username</label>
+						<label htmlFor="input_text">Email</label>
 					</div>
 					<div className="modal-content">
 						<input id="input-text" data-length="120" name="password" onChange={handleInputChange}></input>

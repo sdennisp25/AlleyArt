@@ -18,10 +18,22 @@ const userSchema = new Schema({
 		type: String,
 		required: true
 	},
+	isArtist: {
+		type: Boolean,
+		required: true,
+		default: false,
+	},
+	aboutArtist: {
+		type: String,
+	},
+	okToContact: {
+		type: Boolean,
+		default: false,
+	},
 	googleId: {
 		type: String
 	},
-});
+	});
 
 ////COMPARE and HASH Passwords///
 userSchema.methods = {

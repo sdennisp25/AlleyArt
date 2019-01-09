@@ -63,14 +63,14 @@ module.exports = function (app) {
 					} else {
 						console.log("EXISTING USER NOT FOUND");
 						// create user in db
-						db.User.create({
-							password: password,
-							email: email
-						}).then(function (newUser) {
-							console.log(newUser, ' created NEW USER');
-							//user passed into cookie/serializer
-							done(null, newUser);
-						});
+						// db.User.create({
+						// 	password: password,
+						// 	email: email
+						// }).then(function (newUser) {
+						// 	console.log(newUser, ' created NEW USER');
+						// 	//user passed into cookie/serializer
+						// 	done(null, newUser);
+						// });
 					}
 				});
 		}));

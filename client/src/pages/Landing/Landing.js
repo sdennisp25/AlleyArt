@@ -70,15 +70,15 @@ class Landing extends Component {
 	}
 	
 	render() {
-		console.log(this.props);
+		// console.log(this.props);
 		if (this.state.toHome === true) {
 			return <Redirect to='/home' />
 		}
 		if (this.state.toUserReg===true){
-			return <Redirect to='/register-user'/>
+			return <Redirect to='/register/user'/>
 		}
 		if (this.state.toArtistReg===true){
-			return <Redirect to='/register-artist'/>
+			return <Redirect to='/register/artist'/>
 		}
 
 		return (

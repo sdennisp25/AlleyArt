@@ -1,14 +1,17 @@
 const router = require("express").Router();
-const artController = require("../../controllers/artController");
+const dbController = require("../../controllers/dbController");
 
 router
-	.get("/search/:artist", artController.searchArtist)
-	// .post(dbController.create);
+	.get("/search/:artist", dbController.searchArtist)
 
 router
-	.route("/:id")
-	.get(artController.findById)
-	.put(artController.update)
-	.delete(artController.remove);
+	.post("/register/", dbController.registerUser)
+	
+
+// router
+// 	.route("/:id")
+// 	.get(dbController.findById)
+// 	.put(dbController.update)
+// 	.delete(db.remove);
 
 module.exports = router;
