@@ -1,11 +1,79 @@
 import React, { Component } from "react";
 import { Container } from "../../../components/Grid";
-import Jumbotron from "../../../components/Jumbotron";
 import "./register.css";
+import API from "../../../utils/api";
+import {LoginModal} from "../../../components/Modal";
+import { Redirect } from "react-router-dom";
 
 class RegisterUser extends Component {
 
+	state = {
+		userName: "",
+		userEmail: "",
+		userPassword: "",
+		showLogin: false,
+		toHome: false,
+	}
+
+	showLogin = () => {
+		this.setState({ showLogin: true });
+	};
+	
+	hideLogin = () => {
+		this.setState({ showLogin: false });
+	};
+	
+	handleInputChange = event => {
+		let { name, value } = event.target;
+		this.setState({
+			[name]: value
+		});
+	};
+	
+	handleLogin = (event) => {
+		event.preventDefault();
+		console.log("You Clicked Me!");
+		console.log(this.state);
+		API.loginUser({
+			email: this.state.username,
+			password: this.state.password
+		}).then(response => {
+			if (response.status === 200) {
+				this.setState({ toHome: true });
+			}
+		}).catch(error => {
+			console.log("LOGIN ERROR: ");
+			console.log(error);
+		})
+	}
+
+	handleRegUser = (event) => {
+		event.preventDefault();
+		console.log("You Clicked Me!");
+		console.log(this.state);
+		API.registerUser({
+			username: this.state.userName,
+			email: this.state.userEmail,
+			password: this.state.userPassword
+		}).then(response => {
+			console.log(response);
+			this.setState({
+				userName: "",
+				userEmail: "",
+				userPassword: "",
+				showLogin: true
+			})
+
+		}).catch(error => {
+			console.log("USER REGISTRATION ERROR: ");
+			console.log(error);
+		})
+	}
+
 	render() {
+	if (this.state.toHome === true) {
+			return <Redirect to='/home' />
+		}
 
 		return (
 			<React.Fragment>
@@ -16,28 +84,37 @@ class RegisterUser extends Component {
 							<form className="col s12">
 								<div className="row">
 									<div className="input-field col s6">
-										<input id="first_name" type="text" className="validate"></input>
-										<label for="first_name">User Name</label>
+										<input id="name" type="text" className="validate" name="userName" onChange={this.handleInputChange}></input>
+										<label htmlFor="name">Name</label>
 									</div>
 									<div className="input-field col s6">
-										<input id="last_name" type="text" className="validate"></input>
-										<label for="last_name">Email</label>
+										<input id="email" type="text" className="validate" name="userEmail" onChange={this.handleInputChange}></input>
+										<label htmlFor="email">Email</label>
 									</div>
 									<div className="input-field col s6">
-										<input id="input_text" type="text" data-length="10"></input>
-										<label for="input_text">Password</label>
+										<input id="input_text" type="text" data-length="10" name="userPassword" onChange={this.handleInputChange}></input>
+										<label htmlFor="input_text">Password</label>
 									</div>
 									<div className="col s6">
-									<button className="btn waves-effect waves-light center" type="submit" name="action">Submit
+										<button className="btn waves-effect waves-light center" type="submit" name="action" onClick={this.handleRegUser}>Submit
   									</button>
 									</div>
 								</div>
-							</form>	
+							</form>
 						</div>
 					</div>
 				</Container>
+
+				<LoginModal
+					show={this.state.showLogin}
+					handleClose={this.hideLogin}
+					handleLogin={this.handleLogin}
+					handleInputChange={this.handleInputChange}
+				></LoginModal>
+
 			</React.Fragment>
 		)
-	}
+
+			}
 }
 export default RegisterUser;

@@ -1,16 +1,25 @@
 body {
-    background-image: url(img/homepic.jpg);
+	background-image: url(img/homepic.jpg);
 }
 
 h1 {
-    font-family: 'Major Mono Display', monospace;
+	font-family: 'Major Mono Display', monospace;
 }
 
 .row-container {
-    background-color: #AFAFAC;
-    color: black;
-    height: 400px;
-    width: 100%;
-    opacity: .8;
-    filter: alpha(opacity=50);
+	background-color: #AFAFAC;
+	color: black;
+	height: 400px;
+	width: 100%;
+	opacity: .8;
+	filter: alpha(opacity=50);
+}
+
+.row-results {
+	background-color: #AFAFAC;
+	color: black;
+	height: auto;
+	width: 100%;
+	opacity: .8;
+	filter: alpha(opacity=50);
 }
