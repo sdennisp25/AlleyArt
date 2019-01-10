@@ -5,10 +5,8 @@ import Landing from "./pages/Landing/Landing";
 import Home from "./pages/Home/Home";
 import Profile from "./pages/Profile/Profile";
 import NoMatch from "./pages/NoMatch/NoMatch";
-import Nav from "./components/Nav";
 import RegisterUser from "./pages/Profile/RegisterUser";
 import RegisterArtist from "./pages/Profile/RegisterArtist";
-// import Card from "./components/Card";
 
 class App extends Component {
 	render() {
