@@ -5,10 +5,12 @@ import Landing from "./pages/Landing/Landing";
 import Home from "./pages/Home/Home";
 import Profile from "./pages/Profile/Profile";
 import NoMatch from "./pages/NoMatch/NoMatch";
-import Nav from "./components/Nav";
 import RegisterUser from "./pages/Profile/RegisterUser";
 import RegisterArtist from "./pages/Profile/RegisterArtist";
+<<<<<<< HEAD
+=======
 
+>>>>>>> master
 
 class App extends Component {
 	render() {
@@ -16,8 +18,8 @@ class App extends Component {
 		return (
 			<Router>
 				<div>
-					<Nav />
-					<div><br></br><br></br><br></br>
+					
+					<div>
 						<Switch>
 							<Route exact path="/" component={Landing} />
 							<Route exact path="/home" component={Home} />

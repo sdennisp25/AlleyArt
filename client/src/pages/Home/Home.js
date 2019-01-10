@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Nav from "../../components/Nav";
 import { Col, Row, Container } from "../../components/Grid";
 import Search from "../../components/Search";
 import Card from "../../components/Card";
@@ -7,8 +8,11 @@ import Wrapper from "../../components/Wrapper";
 import "./home.css";
 import API from "../../utils/api";
 import { Redirect } from "react-router-dom";
+<<<<<<< HEAD
+=======
 import { connect } from "react-redux";
 import { logInUser, updateUser } from "../../redux/reducers/myReducer";
+>>>>>>> master
 
 class Home extends Component {
 
@@ -62,7 +66,14 @@ class Home extends Component {
 		}
 
 		return (
+<<<<<<< HEAD
+			<React.Fragment>
+			<Nav></Nav>
+			
+			<Container fluid>
+=======
 			<Container>
+>>>>>>> master
 				<div className="home-background">
 					<button className="waves-effect grey darken-3 btn right" onClick={this.handleLogout}>Logout</button>
 					<Row>
@@ -97,6 +108,7 @@ class Home extends Component {
 					</Row>
 				</div>
 			</Container>
+			</React.Fragment>
 		)
 	}
 }
