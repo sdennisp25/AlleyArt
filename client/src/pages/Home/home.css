@@ -23,3 +23,7 @@ h1 {
 	opacity: .8;
 	filter: alpha(opacity=50);
 }
+
+.noResults{
+	padding-bottom: 15px;
+}

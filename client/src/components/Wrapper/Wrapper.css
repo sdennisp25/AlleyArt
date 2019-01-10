@@ -1,6 +1,6 @@
 .wrapper {
 	display: flex;
-	min-height: 80%;
+	min-height: 100%;
 	flex-wrap: wrap;
 	justify-content: center;
 	padding-top: 5px;

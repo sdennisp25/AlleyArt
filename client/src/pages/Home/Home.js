@@ -76,14 +76,21 @@ class Home extends Component {
 					<Row>
 						<div className="row-results">
 							<h1>Results</h1>
-							<Wrapper>
-								{this.state.results.map(art => (
-									<ArtCard
-										key={"card-" + art._id}
-										url={art.url}
-										id={art.id} />
-								))}
-							</Wrapper>
+							{this.state.results.length ? (
+								<Wrapper>
+									{this.state.results.map(art => (
+										<ArtCard
+											key={"card-" + art._id}
+											url={art.url}
+											id={art.id}
+											title={art.title}
+										/>
+									))}
+								</Wrapper>
+
+							) : (
+									<h3 className="center noResults">No Results to Display</h3>
+								)}
 
 						</div>
 					</Row>
