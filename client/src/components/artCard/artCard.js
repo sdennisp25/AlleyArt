@@ -3,20 +3,23 @@ import "./artCard.css";
 
 const ArtCard = props => (
 	<div className="row">
-		<div className="col s12 m6">
+		<div className="col s12 m7">
 			<div className="card">
-			<div className="card-image">
-				<img src={props.url} alt="" />
-				<span className="card-title">Title</span>
-				<a className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">Save</i></a>
+				<div className="card-image">
+					<img src={props.url} alt=""/>
+					<span className="card-title">{props.title}</span>
+				</div>
 				<div className="card-content">
-					<p>{props.title}</p>
+					<p>I am an image of street art</p>
+				</div>
+				<div className="card-action">
+					<button>Favorites</button>
 				</div>
 			</div>
 		</div>
-
-			</div>
 	</div>
+
+
 );
 
 export default ArtCard;

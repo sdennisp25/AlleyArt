@@ -9,7 +9,7 @@ h1 {
 .row-container {
 	background-color: #AFAFAC;
 	color: black;
-	height: 400px;
+	height: 500px;
 	width: 100%;
 	opacity: .8;
 	filter: alpha(opacity=50);
@@ -18,7 +18,7 @@ h1 {
 .row-results {
 	background-color: #AFAFAC;
 	color: black;
-	height: auto;
+	height: 500px;
 	width: 100%;
 	opacity: .8;
 	filter: alpha(opacity=50);
