@@ -6,11 +6,10 @@ import API from "../../utils/api";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import {LoginModal, UserTypeModal} from "../../components/Modal";
-
-
+import {logInUser, updateUser} from "../../redux/reducers/myReducer"
 
 class Landing extends Component {
-
+	
 	state = {
 		username: " ",
 		password: " ",
@@ -20,22 +19,22 @@ class Landing extends Component {
 		toArtistReg: false,
 		toUserReg: false,
 	}
-
+	
 	showLogin = () => {
 		this.setState({ showLogin: true });
 	};
-
+	
 	hideLogin = () => {
 		this.setState({ showLogin: false });
 	};
-
+	
 	handleInputChange = event => {
 		let { name, value } = event.target;
 		this.setState({
 			[name]: value
 		});
 	};
-
+	
 	handleLogin = (event) => {
 		event.preventDefault();
 		console.log("You Clicked Me!");
@@ -45,6 +44,7 @@ class Landing extends Component {
 			password: this.state.password
 		}).then(response => {
 			if (response.status === 200) {
+				this.props.logInUser();
 				this.setState({ toHome: true });
 			}
 		}).catch(error => {
@@ -52,47 +52,40 @@ class Landing extends Component {
 			console.log(error);
 		})
 	}
-
+	
 	handleArtist =()=> {
 		this.setState({toArtistReg: true});
 	}
-
+	
 	handleUser = ()=>{
 		this.setState({toUserReg: true});
 	}
-
+	
 	showRegister = ()=>{
 		this.setState({showRegister: true});
 	}
-
+	
 	hideRegister = ()=>{
 		this.setState({showRegister: false})
 	}
-
+	
 	render() {
+		// console.log(this.props);
 		if (this.state.toHome === true) {
 			return <Redirect to='/home' />
 		}
 		if (this.state.toUserReg===true){
-			return <Redirect to='/register-user'/>
+			return <Redirect to='/register/user'/>
 		}
 		if (this.state.toArtistReg===true){
-			return <Redirect to='/register-artist'/>
+			return <Redirect to='/register/artist'/>
 		}
 
 		return (
-			// <React.Fragment>
-			// 	<input/>
-			// 	<p>TEST</p>
-			// 	<Container>
-			// 		<Jumbotron>
-			// 		<h1>THIS IS THE LANDING PAGE {this.props.user.test}</h1>
-			// 						</Jumbotron>
-			// 	</Container>
-			// </React.Fragment>
-			<Container>
+					<Container>
 				<Row>
 					<div className="landing-background">
+			{/* <h2>TESTING!!! THIS IS THE CURRENT STATE:  {this.props.user.loggedIn}</h2> */}
 						<div className="landing center-align card-panel">
 							<h1>ALLEY ART</h1>
 							<p>Beyond this is a street art community. Create a profile and contribute to the international art collections. If your looking for a discovery find the location and go see for yourself.</p>
@@ -126,8 +119,15 @@ class Landing extends Component {
 
 function mapStateToProps(state) {
 	return {
-		user: state
-	}
+		user: state,
+			}
 }
 
-export default connect(mapStateToProps)(Landing);
+function mapDispatchToProps(dispatch){
+	return{
+		logInUser: ()=>{dispatch(logInUser())},
+		updateUser: ()=>{dispatch(updateUser())}
+	}
+	}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Landing);

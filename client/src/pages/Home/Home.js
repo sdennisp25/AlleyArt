@@ -3,14 +3,25 @@ import Nav from "../../components/Nav";
 import { Col, Row, Container } from "../../components/Grid";
 import Search from "../../components/Search";
 import Card from "../../components/Card";
+import ArtCard from "../../components/artCard";
+import Wrapper from "../../components/Wrapper";
 import "./home.css";
 import API from "../../utils/api";
 import { Redirect } from "react-router-dom";
+<<<<<<< HEAD
+=======
+import { connect } from "react-redux";
+import { logInUser, updateUser } from "../../redux/reducers/myReducer";
+>>>>>>> master
 
 class Home extends Component {
 
+	//REMOVE LOGGEDIN and USE REDUX FOR LOGGOUT INSTEAD???//
 	state = {
-		loggedIn: true
+		loggedIn: true,
+		artistSearch: "",
+		locationSearch: "",
+		results: []
 	}
 
 	handleLogout = () => {
@@ -23,30 +34,68 @@ class Home extends Component {
 		})
 	}
 
+	handleInputChange = event => {
+		let { name, value } = event.target;
+		this.setState({
+			[name]: value
+		});
+	};
+
+
+	handleSearch = (event) => {
+		event.preventDefault();
+		console.log("You Clicked Me!");
+		console.log(this.state.artistSearch);
+		API.searchArt(this.state.artistSearch
+		).then(art => {
+			return (
+				console.log("RESULTS", art.data),
+				this.setState({ results: art.data, artistSearch: "", locationSearch: "" })
+			)
+		}
+		).catch(error => {
+			console.log("SEARCH ERROR: ");
+			console.log(error);
+		})
+	}
+
+
 	render() {
 		if (this.state.loggedIn === false) {
 			return <Redirect to='/' />
 		}
 
 		return (
+<<<<<<< HEAD
 			<React.Fragment>
 			<Nav></Nav>
 			
 			<Container fluid>
+=======
+			<Container>
+>>>>>>> master
 				<div className="home-background">
 					<button className="waves-effect grey darken-3 btn right" onClick={this.handleLogout}>Logout</button>
 					<Row>
 						<div className="row-container">
 							<h1>Search</h1>
-							<Search></Search>
+							<Search
+								handleInputChange={this.handleInputChange}
+								handleSearch={this.handleSearch}></Search>
 						</div>
 					</Row>
 					<Row>
-						<div className="row-container">
-							<h1>Trending</h1>
-							<Col size="md-4">
-								<Card></Card>
-							</Col>
+						<div className="row-results">
+							<h1>Results</h1>
+							<Wrapper>
+								{this.state.results.map(art => (
+									<ArtCard
+										key={"card-" + art._id}
+										url={art.url}
+										id={art.id} />
+								))}
+							</Wrapper>
+
 						</div>
 					</Row>
 					<Row>
@@ -63,5 +112,16 @@ class Home extends Component {
 		)
 	}
 }
+function mapStateToProps(state) {
+	return {
+		user: state,
+	}
+}
+function mapDispatchToProps(dispatch) {
+	return {
+		logInUser: () => { dispatch(logInUser()) },
+		updateUser: () => { dispatch(updateUser()) }
+	}
+}
 
-export default Home;
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

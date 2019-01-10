@@ -7,9 +7,14 @@ import Profile from "./pages/Profile/Profile";
 import NoMatch from "./pages/NoMatch/NoMatch";
 import RegisterUser from "./pages/Profile/RegisterUser";
 import RegisterArtist from "./pages/Profile/RegisterArtist";
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 
 class App extends Component {
 	render() {
+
 		return (
 			<Router>
 				<div>
@@ -19,8 +24,8 @@ class App extends Component {
 							<Route exact path="/" component={Landing} />
 							<Route exact path="/home" component={Home} />
 							<Route exact path="/profile" component={Profile} />
-							<Route exact path="/register-user" component={RegisterUser} />
-							<Route exact path="/register-artist" component={RegisterArtist} />
+							<Route exact path="/register/user" component={RegisterUser} />
+							<Route exact path="/register/artist" component={RegisterArtist} />
 							<Route component={NoMatch} />
 						</Switch>
 					</div>
