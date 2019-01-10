@@ -38,21 +38,21 @@ module.exports = function (app) {
 			db.User.findOne({
 					email: email
 				}
-				, (error, currentUser) => {
-					if (error) {
-						return done(error);
-					}
-					if (!currentUser) {
-						return done(null, false, {
-							message: "Incorrect username"
-						})
-					}
-					if (!currentUser.checkPassword(password)) {
-						return done(null, false, {
-							message: "Incorrect password"
-						})
-					}
-				}
+				// , (error, currentUser) => {
+				// 	if (error) {
+				// 		return done(error);
+				// 	}
+				// 	if (!currentUser) {
+				// 		return done(null, false, {
+				// 			message: "Incorrect username"
+				// 		})
+				// 	}
+				// 	if (!currentUser.checkPassword(password)) {
+				// 		return done(null, false, {
+				// 			message: "Incorrect password"
+				// 		})
+				// 	}
+				// }
 				)
 				.then(function (currentUser) {
 					if (currentUser) {
@@ -63,14 +63,14 @@ module.exports = function (app) {
 					} else {
 						console.log("EXISTING USER NOT FOUND");
 						// create user in db
-						db.User.create({
-							password: password,
-							email: email
-						}).then(function (newUser) {
-							console.log(newUser, ' created NEW USER');
-							//user passed into cookie/serializer
-							done(null, newUser);
-						});
+						// db.User.create({
+						// 	password: password,
+						// 	email: email
+						// }).then(function (newUser) {
+						// 	console.log(newUser, ' created NEW USER');
+						// 	//user passed into cookie/serializer
+						// 	done(null, newUser);
+						// });
 					}
 				});
 		}));

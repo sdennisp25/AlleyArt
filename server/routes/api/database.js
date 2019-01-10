@@ -1,14 +1,17 @@
 const router = require("express").Router();
 const dbController = require("../../controllers/dbController");
 
-router.route("/")
-	.get(dbController.findAll)
-	.post(dbController.create);
+router
+	.get("/search/:artist", dbController.searchArtist)
 
 router
-	.route("/:id")
-	.get(dbController.findById)
-	.put(dbController.update)
-	.delete(dbController.remove);
+	.post("/register/", dbController.registerUser)
+	
+
+// router
+// 	.route("/:id")
+// 	.get(dbController.findById)
+// 	.put(dbController.update)
+// 	.delete(db.remove);
 
 module.exports = router;
