@@ -1,32 +1,52 @@
 import React, { Component } from "react";
 
-class Address extends Component {
-  render() {
-    return (
+const AddressForm = ({
+  show,
+  userAdressInput,
+  userAddressClose,
+  userAddressSubmit
+}) => {
+  return (
+    <div
+      className={`${show ? "modal display-block" : "modal display-none"} modal`}
+    >
       <form className="col s12">
+        <div className="modal-content">
+          <button
+            onClick={userAddressClose}
+            className="modal-close right green-text"
+          >
+            <i className="material-icons small">X</i>
+          </button>
+        </div>
         <div className="row">
-          <div className="input-field col s12">
-            <input id="address" type="address" className="validate" />
-            <label for="address">Address</label>
+          <div className="modal-content">
+            <input
+              placeholder="Enter The Address"
+              id="address"
+              type="address"
+              name="address"
+              onChange={userAdressInput}
+            />
+            <label htmlFor="address">Address</label>
           </div>
         </div>
 
         <div className="row">
-          <div className="input-field col s6">
+          <div className="modal-content">
             <input
-              placeholder="Placeholder"
+              placeholder="Enter City Name"
               id="city"
               type="text"
-              className="validate"
+              name="cityName"
+              onChange={userAdressInput}
             />
-            <label for="city">City</label>
+            <label htmlFor="city">City</label>
           </div>
 
-          <div className="input-field col s2">
-            <select>
-              <option value="" disabled selected>
-                Choose your option
-              </option>
+          <div className="modal-content">
+            <select onChange={userAdressInput}>
+              <option value="">Choose your option</option>
               <option value="1">AL</option>
               <option value="2">AK</option>
               <option value="3">AZ</option>
@@ -76,22 +96,33 @@ class Address extends Component {
               <option value="47">WA</option>
               <option value="48">WV</option>
               <option value="49">WI</option>
-              <option value="450">WY</option>
+              <option value="50">WY</option>
             </select>
             <label>State</label>
-
-            <div className="row">
-              <div className="input-field col s4">
-                <input id="zip" type="zip" className="validate" />
-                <label for="zip">Zip</label>
-              </div>
-            </div>
           </div>
 
+          <div className="modal-content">
+            <input
+              id="zip"
+              type="zip"
+              name="zipCode"
+              onChange={userAdressInput}
+            />
+            <label htmlFor="zip">Zip</label>
+          </div>
+        </div>
+
+        <div className="modal-footer">
+          <button
+            className="waves-effect grey darken-3 btn"
+            onClick={userAddressSubmit}
+          >
+            Submit
+          </button>
         </div>
       </form>
-    );
-  }
-}
+    </div>
+  );
+};
 
-export default Address;
+export default AddressForm;

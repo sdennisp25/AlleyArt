@@ -3,9 +3,39 @@ import { Col, Row, Container } from "../../components/Grid";
 import Card from "../../components/Card";
 import "./profile.css";
 import Gps from "../../components/Geo";
+import AddressForm from "../../components/Address";
 // import Nav from "../../components/Nav";
 
 class Profile extends Component {
+  state = {
+		address: " ",
+		cityName: " ",
+		state: " ",
+		zipCode: " ",
+    showAddress: false
+  };
+
+  showAddress = () => {
+    this.setState({ showAddress: true });
+	};
+	
+	hideAddress = () => {
+		this.setState({ showAddress: false });
+	}
+
+	userAddressInput = (event) => {
+		let { name, value } = event.target;
+		this.setState({
+			[name]: value
+		})
+	};
+
+	userAddressSubmit = (event) => {
+		event.preventDefault();
+		console.log("EVENT: ", event);
+		console.log("STATE: ", this.state);
+	}
+
   render() {
     return (
       <Container>
@@ -40,13 +70,14 @@ class Profile extends Component {
                 <button id="submit" className="waves-effect waves-light btn">
                   Save Image <i className="large material-icons">save</i>
                 </button>
+                <button id="addAddress" type="button" onClick={this.showAddress}>Address
+                </button>
               </div>
 
               <div className="commentBox">
                 <label>Enter a comment</label>
                 <textarea />
               </div>
-
             </form>
           </div>
         </Row>
@@ -56,6 +87,13 @@ class Profile extends Component {
             <Card />
           </div>
         </Col>
+
+				<AddressForm 
+					show={this.state.showAddress}
+					userAddressClose={this.state.hideAddress}
+					userAddressSubmit={this.state.userAddressSubmit}
+					userAddressInput={this.state.userAddressInput}
+					/>
       </Container>
     );
   }
