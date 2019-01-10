@@ -1,51 +1,59 @@
-import React, { Component } from "react";
+import React from "react";
+import "./address.css";
 
 const AddressForm = ({
   show,
-  userAdressInput,
+  userAddressInput,
   userAddressClose,
-  userAddressSubmit
+  userAddressSubmitForm
 }) => {
   return (
     <div
-      className={`${show ? "modal display-block" : "modal display-none"} modal`}
+      className={`${show ? "modal display-block address" : "modal display-none"} modal`}
     >
       <form className="col s12">
         <div className="modal-content">
           <button
             onClick={userAddressClose}
-            className="modal-close right green-text"
-          >
-            <i className="material-icons small">X</i>
+            className="modal-close right">X
           </button>
         </div>
+
         <div className="row">
           <div className="modal-content">
             <input
               placeholder="Enter The Address"
               id="address"
-              type="address"
+              type="text"
               name="address"
-              onChange={userAdressInput}
+              onChange={userAddressInput}
             />
             <label htmlFor="address">Address</label>
           </div>
         </div>
 
         <div className="row">
-          <div className="modal-content">
+          <div className="modal-content col s6">
             <input
               placeholder="Enter City Name"
               id="city"
               type="text"
               name="cityName"
-              onChange={userAdressInput}
+              onChange={userAddressInput}
             />
             <label htmlFor="city">City</label>
           </div>
 
-          <div className="modal-content">
-            <select onChange={userAdressInput}>
+          <div className="modal-content col s2">
+            <input
+              placeholder="State"
+              id="city"
+              type="text"
+              name="state"
+              onChange={userAddressInput}
+            />
+
+            {/* <select onChange={userAdressInput}>
               <option value="">Choose your option</option>
               <option value="1">AL</option>
               <option value="2">AK</option>
@@ -97,16 +105,17 @@ const AddressForm = ({
               <option value="48">WV</option>
               <option value="49">WI</option>
               <option value="50">WY</option>
-            </select>
+            </select> */}
             <label>State</label>
           </div>
 
-          <div className="modal-content">
+          <div className="modal-content col s4">
             <input
+              placeholder="Zip"
               id="zip"
-              type="zip"
+              type="text"
               name="zipCode"
-              onChange={userAdressInput}
+              onChange={userAddressInput}
             />
             <label htmlFor="zip">Zip</label>
           </div>
@@ -114,8 +123,9 @@ const AddressForm = ({
 
         <div className="modal-footer">
           <button
-            className="waves-effect grey darken-3 btn"
-            onClick={userAddressSubmit}
+            className="btn w3-button w3-block w3-green w3-section w3-padding"
+            type="submit"
+            onClick={userAddressSubmitForm}
           >
             Submit
           </button>

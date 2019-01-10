@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 class Gps extends Component {
-	
+
   // will ask user to use current location
   componentDidMount = () => {
     this.gpsInit();
@@ -16,7 +16,6 @@ class Gps extends Component {
   };
 
   geoSuccess = position => {
-    console.log(position);
     console.log("Lat: ", position.coords.latitude);
     console.log("Long: ", position.coords.longitude);
   };
