@@ -1,0 +1,10 @@
+.card {
+	box-sizing: border-box;
+	margin: 15px 5px 5px 5px;
+}
+
+.card-image {
+	height: 100%;
+	width: 100%;
+
+}

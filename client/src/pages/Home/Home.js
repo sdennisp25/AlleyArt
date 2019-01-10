@@ -78,7 +78,7 @@ class Home extends Component {
 						</div>
 					</Row>
 					<Row>
-						<div className="row-results">
+						<div className="text-center row-results">
 							<h1>Results</h1>
 							{this.state.results.length ? (
 								<Wrapper>
