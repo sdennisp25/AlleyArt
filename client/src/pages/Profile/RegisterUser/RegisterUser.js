@@ -78,26 +78,28 @@ class RegisterUser extends Component {
 		return (
 			<React.Fragment>
 				<Container>
-					<h1 className="title">Register to set up Profile</h1>
-					<div className="userform">
+					<h1 className="title">Register USER Profile</h1>
+					<div className="userform cyan darken-2">
 						<div className="row">
 							<form className="col s12">
 								<div className="row">
-									<div className="input-field col s6">
+									<div className="input-field col s12">
 										<input id="name" type="text" className="validate" name="userName" onChange={this.handleInputChange}></input>
-										<label htmlFor="name">Name</label>
+										<label htmlFor="name" className="black-text">Name</label>
 									</div>
-									<div className="input-field col s6">
+									<div className="input-field col s12">
 										<input id="email" type="text" className="validate" name="userEmail" onChange={this.handleInputChange}></input>
-										<label htmlFor="email">Email</label>
+										<label htmlFor="email" className="black-text">Email</label>
 									</div>
-									<div className="input-field col s6">
+									<div className="input-field col s12">
 										<input id="input_text" type="text" data-length="10" name="userPassword" onChange={this.handleInputChange}></input>
-										<label htmlFor="input_text">Password</label>
+										<label htmlFor="input_text" className="black-text">Password</label>
 									</div>
-									<div className="col s6">
-										<button className="btn waves-effect waves-light center" type="submit" name="action" onClick={this.handleRegUser}>Submit
+									<div className="col s12">
+										<div className="center-align">
+										<button className="btn waves-effect waves-light green darken-2" type="submit" name="action" onClick={this.handleRegUser}>Submit
   									</button>
+										</div>
 									</div>
 								</div>
 							</form>
