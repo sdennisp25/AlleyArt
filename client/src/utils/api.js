@@ -15,6 +15,10 @@ export default {
 	},
 	updateLikes: function (_id){
 		return axios.put("/api/database/" + _id);
+	},
+
+	uploadImage: function (){
+		return axios.post("/api/file/image-upload");
 	}
 
 };

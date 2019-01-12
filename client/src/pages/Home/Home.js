@@ -7,7 +7,7 @@ import ArtCard from "../../components/artCard";
 import Wrapper from "../../components/Wrapper";
 import "./home.css";
 import API from "../../utils/api";
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { logInUser, updateUser } from "../../redux/reducers/myReducer";
 
