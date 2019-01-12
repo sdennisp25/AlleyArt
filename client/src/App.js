@@ -12,7 +12,6 @@ import RegisterArtist from "./pages/Profile/RegisterArtist";
 
 class App extends Component {
 	render() {
-
 		return (
 			<Router>
 				<div>

@@ -80,8 +80,8 @@ class Profile extends Component {
                     className="waves-effect waves-light btn"
                     onClick={this.showAddress}
                   >
-                    Address
-                    <i className="large material-icons">location_on</i>
+                    Address 
+                    <i className="large material-icons">location_city</i>
                   </button>
 
                   <button id="submit" className="waves-effect waves-light btn">
