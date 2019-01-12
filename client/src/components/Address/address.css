@@ -1,12 +1,9 @@
-.form {
-	padding: 5%;	
-}
-
 .address {
-	width: 55%;
+	padding: 2%;
+	width: 50%;
 	background-color: #008080;
-	z-index: 1;
 	color: white;
+	z-index: 1;
 }
 
 .submit {
@@ -16,8 +13,4 @@
 
 .label {
 	color: white;
-}
-
-.close {
-	margin-top: 0;
 }

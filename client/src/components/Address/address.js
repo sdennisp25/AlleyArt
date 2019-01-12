@@ -13,14 +13,15 @@ const AddressForm = ({
         show ? "modal display-block address" : "modal display-none"
       } modal`}
     >
-      <form className="form col s12">
-        <a
+      <form className="col s12">
+        <div
+					href=""
           onClick={userAddressClose}
           className="modal-close btn-floating btn-small waves-effect waves-light red right"
         >
           {" "}
-          <i class="material-icons">close</i>
-        </a>
+          <i className="material-icons">close</i>
+        </div>
 
         <div className="row">
           <div className="modal-content">
