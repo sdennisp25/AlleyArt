@@ -1,0 +1,42 @@
+.upload-btn-wrapper {
+	position: relative;
+	overflow: hidden;
+	display: inline-block;
+	text-align: center;
+}
+
+.upload-btn-wrapper input[type=file] {
+	font-size: 100px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	opacity: 0;
+}
+
+.btn {
+	width: 100%;
+}
+
+.card-box {
+	width: 50%;
+	height: 100%;
+	margin: -3% 0 0 -10%;
+	padding: 20px;
+}
+
+.text {
+	height: 20%;
+}
+
+.commentBox {
+	width: 100%;
+}
+
+.commentLabel {
+	margin-top: 1%;
+	color: white;
+}
+
+#submit {
+	background-color: red;
+}

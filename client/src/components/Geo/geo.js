@@ -31,7 +31,7 @@ class Gps extends Component {
         className="waves-effect waves-light btn"
         onClick={this.gpsInit}
       >
-        Location <i className="large material-icons">location_on</i>
+        Location <i className="large material-icons right">location_on</i>
       </button>
     );
   }

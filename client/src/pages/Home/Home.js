@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Nav from "../../components/Nav";
-import { Col, Row, Container } from "../../components/Grid";
+import { Row, Container } from "../../components/Grid";
 import Search from "../../components/Search";
 import Card from "../../components/Card";
 import ArtCard from "../../components/artCard";
@@ -58,9 +58,9 @@ class Home extends Component {
 
 
 	render() {
-		// if (this.props.user.loggedIn === false) {
-		// 	return <Redirect to='/' />
-		// }
+		if (this.props.user.loggedIn === false) {
+			return <Redirect to='/' />
+		}
 
 		return (
 			<React.Fragment>
