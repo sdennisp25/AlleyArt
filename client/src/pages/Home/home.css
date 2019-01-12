@@ -9,17 +9,35 @@ h1 {
 .row-container {
 	background-color: #AFAFAC;
 	color: black;
-	height: 400px;
-	width: 100%;
+	height: auto;
+	width: 90%;
 	opacity: .8;
 	filter: alpha(opacity=50);
+	margin: 25px 50px;
+	padding: 10px;
 }
 
 .row-results {
+	/* box-sizing: content-box; */
+	/* position: relative; */
 	background-color: #AFAFAC;
 	color: black;
-	height: auto;
-	width: 100%;
+	height: 750px;
+	width: 90%;
 	opacity: .8;
 	filter: alpha(opacity=50);
+	margin: 25px 50px;
+	padding: 10px;
+
+
+}
+
+.noResults{
+	padding-bottom: 15px;
+}
+
+.search-container {
+	background-image: url(./img/homepic.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
 }
