@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const dbRoutes = require("./database");
 const authRoutes = require('./auth-routes');
-const fileUploadRoutes = require('./file-uploader');
+const fileUploadRoutes = require('./file');
 
 
 router.use("/database", dbRoutes);

@@ -1,35 +1,23 @@
 import React, { Component } from "react";
 import Nav from "../../components/Nav";
-import { Col, Row, Container } from "../../components/Grid";
+import {Row, Container } from "../../components/Grid";
 import Search from "../../components/Search";
 import Card from "../../components/Card";
 import ArtCard from "../../components/artCard";
 import Wrapper from "../../components/Wrapper";
 import "./home.css";
 import API from "../../utils/api";
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { logInUser, updateUser } from "../../redux/reducers/myReducer";
 
 class Home extends Component {
 
-	//REMOVE LOGGEDIN and USE REDUX FOR LOGGOUT INSTEAD???//
 	state = {
-		loggedIn: true,
 		artistSearch: "",
 		locationSearch: "",
 		results: []
 	}
-
-	// handleLogout = () => {
-	// 	API.logoutUser().then(response => {
-	// 		console.log("Logged Out");
-	// 		this.setState({ loggedIn: false });
-	// 	}).catch(error => {
-	// 		console.log("Logout Error: ");
-	// 		console.log(error);
-	// 	})
-	// }
 
 	handleInputChange = event => {
 		let { name, value } = event.target;
@@ -37,7 +25,6 @@ class Home extends Component {
 			[name]: value
 		});
 	};
-
 
 	handleSearch = (event) => {
 		event.preventDefault();
@@ -56,7 +43,6 @@ class Home extends Component {
 		})
 	}
 
-
 	render() {
 		// if (this.props.user.loggedIn === false) {
 		// 	return <Redirect to='/' />
@@ -68,8 +54,7 @@ class Home extends Component {
 
 				<Container fluid>
 					<div className="home-background">
-						<button className="waves-effect grey darken-3 btn right" onClick={this.handleLogout}>Logout</button>
-						<Row>
+									<Row>
 							<div className="row-container search-container">
 								<h1>Search</h1>
 								<Search
@@ -86,8 +71,9 @@ class Home extends Component {
 											<ArtCard
 												key={"card-" + art._id}
 												url={art.url}
-												id={art.id}
+												id={art._id}
 												title={art.title}
+												likes={art.likes}
 											/>
 										))}
 									</Wrapper>

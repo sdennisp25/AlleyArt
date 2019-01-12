@@ -5,8 +5,11 @@ const artworkSchema = new Schema({
 	title: { type: String, required: true },
 	url: { type: String, required: true },
 	artist: { type: String, required: true },
+	artistID: {type: String, required: true},
 	city: {type: String, required: true },
-	state: {type: String, required: true}
+	state: {type: String, required: true},
+	likes: {type: Number, default: 0},
+	comments: [{ body: String, date: Date }],
 });
 
 const Artwork = mongoose.model("Artwork", artworkSchema);
