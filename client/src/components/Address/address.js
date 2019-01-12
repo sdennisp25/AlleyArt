@@ -9,14 +9,18 @@ const AddressForm = ({
 }) => {
   return (
     <div
-      className={`${show ? "modal display-block address" : "modal display-none"} modal`}
+      className={`${
+        show ? "modal display-block address" : "modal display-none"
+      } modal`}
     >
       <form className="col s12">
-        <div className="modal-content">
-          <button
-            onClick={userAddressClose}
-            className="modal-close right">X
-          </button>
+        <div
+					href=""
+          onClick={userAddressClose}
+          className="modal-close btn-floating btn-small waves-effect waves-light red right"
+        >
+          {" "}
+          <i className="material-icons">close</i>
         </div>
 
         <div className="row">
@@ -28,7 +32,7 @@ const AddressForm = ({
               name="address"
               onChange={userAddressInput}
             />
-            <label htmlFor="address">Address</label>
+            <label className="label">Address</label>
           </div>
         </div>
 
@@ -41,7 +45,7 @@ const AddressForm = ({
               name="cityName"
               onChange={userAddressInput}
             />
-            <label htmlFor="city">City</label>
+            <label className="label">City</label>
           </div>
 
           <div className="modal-content col s2">
@@ -106,7 +110,7 @@ const AddressForm = ({
               <option value="49">WI</option>
               <option value="50">WY</option>
             </select> */}
-            <label>State</label>
+            <label className="label">State</label>
           </div>
 
           <div className="modal-content col s4">
@@ -117,13 +121,10 @@ const AddressForm = ({
               name="zipCode"
               onChange={userAddressInput}
             />
-            <label htmlFor="zip">Zip</label>
+            <label className="label">Zip</label>
           </div>
-        </div>
-
-        <div className="modal-footer">
           <button
-            className="btn w3-button w3-block w3-green w3-section w3-padding"
+            className="submit btn"
             type="submit"
             onClick={userAddressSubmitForm}
           >

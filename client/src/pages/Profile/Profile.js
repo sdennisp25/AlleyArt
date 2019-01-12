@@ -69,6 +69,17 @@ class Profile extends Component {
 
 									<Gps />
 
+<<<<<<< HEAD
+                  <button
+                    id="addAddress"
+                    type="button"
+                    className="waves-effect waves-light btn"
+                    onClick={this.showAddress}
+                  >
+                    Address 
+                    <i className="large material-icons">location_city</i>
+                  </button>
+=======
 									<button
 										id="addAddress"
 										type="button"
@@ -78,6 +89,7 @@ class Profile extends Component {
 										Address
                     <i className="large material-icons">location_on</i>
 									</button>
+>>>>>>> master
 
 									<button id="submit" className="waves-effect waves-light btn">
 										Save Image
