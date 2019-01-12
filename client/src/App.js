@@ -7,10 +7,6 @@ import Profile from "./pages/Profile/Profile";
 import NoMatch from "./pages/NoMatch/NoMatch";
 import RegisterUser from "./pages/Profile/RegisterUser";
 import RegisterArtist from "./pages/Profile/RegisterArtist";
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 
 class App extends Component {
 	render() {

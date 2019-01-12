@@ -5,6 +5,7 @@ import API from "../../../utils/api";
 import {LoginModal} from "../../../components/Modal";
 import { Redirect } from "react-router-dom";
 
+
 class RegisterArtist extends Component {
 	state = {
 		artistName: "",
@@ -76,7 +77,13 @@ class RegisterArtist extends Component {
 		})
 	}
 
-	render() {
+	switchStatus = ()=>{
+			this.setState({
+				okToContact: true
+			});
+					}
+
+		render() {
 		if (this.state.toHome === true) {
 			return <Redirect to='/home' />
 		}
@@ -84,41 +91,44 @@ class RegisterArtist extends Component {
 		return (
 			<React.Fragment>
 				<Container>
-				<h1 className="title">Register to set up Profile</h1>
-					<div className="userform">
+				<h1 className="title">Register ARTIST Profile</h1>
+					<div className="userform cyan darken-2">
 						<div className="row">
 							<form className="col s12">
 								<div className="row">
-									<div className="input-field col s6">
-										<input id="name" type="text" className="validate" name="artistName" onChange={this.handleInputChange}></input>
-										<label htmlFor="name">Artist Name</label>
+									<div className="input-field col s12">
+										<input id="input-text" type="text" className="validate" name="artistName" onChange={this.handleInputChange}></input>
+										<label htmlFor="input-text" className="black-text">Artist Name</label>
 									</div>
-									<div className="input-field col s6">
-										<input id="email" type="text" className="validate" name="artistEmail" onChange={this.handleInputChange}></input>
-										<label htmlFor="email">Email</label>
+									<div className="input-field col s12">
+										<input id="email" type="email" className="validate" name="artistEmail" onChange={this.handleInputChange}></input>
+										<label htmlFor="email" className="black-text">Email</label>
+										<span className="helper-text" data-error="Please Enter an Email Address" data-success=""></span>
 									</div>
-									<div className="input-field col s6">
+									<div className="input-field col s12">
 										<input id="input_text" type="text" data-length="10" name="artistPassword" onChange={this.handleInputChange}></input>
-										<label htmlFor="input_text">Password</label>
+										<label htmlFor="input_text" className="black-text">Password</label>
 									</div>
 									<div className="input-field col s12">
 										<textarea id="textarea2" className="materialize-textarea" data-length="120"></textarea>
-										<label htmlFor="textarea2" name="aboutArtist" onChange={this.handleInputChange}>About You As An Artist...</label>
+										<label htmlFor="textarea2" className="black-text"name="aboutArtist" onChange={this.handleInputChange}>About You As An Artist...</label>
           							</div>
-									<div className="col s6">
-										<h3>Do you want to be contacted?</h3>
+									<div className="col s12">
+										<h3 className="white-text">Do you want to be contacted?</h3>
 										<div className="switch">
-											<label>
+											<label className="white-text">
 											No
-											<input type="checkbox"></input>
-											<span className="lever"></span>
+											<input type="checkbox" defaultValue={this.state.okToContact} onChange={this.switchStatus}></input>
+											<span className="lever green darken-2"></span>
 											Yes
 											</label>
 										</div>
 									</div>	
-									<div className="col s6">
-										<button className="btn waves-effect waves-light right" type="submit" name="action" onClick={this.handleRegUser}>Submit
+									<div className="col s12">
+									<div className="center-align">
+										<button className="btn waves-effect waves-light green darken-2" type="submit" name="action" onClick={this.handleRegUser}>Submit
 										</button>
+										</div>
 									</div>
 								</div>
 							</form>	

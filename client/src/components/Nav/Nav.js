@@ -1,8 +1,21 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import API from "../../utils/api";
+import { logOutUser } from "../../redux/reducers/myReducer";
 import "./Nav.css";
 
 class Nav extends Component {
+
+	handleLogout = () => {
+		API.logoutUser().then(response => {
+			console.log("Logged Out");
+			this.props.logOutUser();
+		}).catch(error => {
+			console.log("Logout Error: ");
+			console.log(error);
+		})
+	}
 	
 	render() {
 
@@ -12,7 +25,7 @@ class Nav extends Component {
 				ALLEY ART</a>
 				<div className="navWide">
 					<div className="wideDiv">
-					<Link to={"/"}>Logout</Link>
+					<Link to={"/"} onClick={this.handleLogout}>Logout</Link>
 					<Link to={"/home"}>Home</Link>
 					<Link to={"/profile"}>Profile</Link>
 					</div>
@@ -38,5 +51,16 @@ class Nav extends Component {
 			  }
 	  }
 }
+function mapStateToProps(state) {
+	return {
+		user: state,
+	}
+}
+function mapDispatchToProps(dispatch) {
+	return {
+		logOutUser: () => { dispatch(logOutUser()) },
+	}
+}
 
-export default Nav;
+
+export default connect(mapStateToProps, mapDispatchToProps)(Nav);
