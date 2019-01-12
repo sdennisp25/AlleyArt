@@ -26,6 +26,14 @@ module.exports = {
 			.catch(err => res.status(422).json(err));
 	},
 
+	incLikes: function (req, res) {
+		console.log("INCREASING LIKES", req.params);
+		db.Artwork
+			.findOneAndUpdate((req.params), { $inc: { likes: 1 } }, { new: true })
+			.then(art => res.json(art))
+			.catch(err => res.status(422).json(err));
+	},
+
 	/////////////////OTHER FUNCTIONS - MAY STILL NEED/////////////////
 	// findById: function (req, res) {
 	// 	db.Artwork

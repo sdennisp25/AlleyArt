@@ -8,10 +8,10 @@ router
 	.post("/register/", dbController.registerUser)
 	
 
-// router
-// 	.route("/:id")
+router
+	.route("/:_id")
+	.put(dbController.incLikes)
 // 	.get(dbController.findById)
-// 	.put(dbController.update)
 // 	.delete(db.remove);
 
 module.exports = router;
