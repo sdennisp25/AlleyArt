@@ -3,9 +3,9 @@ import React, { Component } from "react";
 class Gps extends Component {
 
   // will ask user to use current location
-  componentDidMount = () => {
-    this.gpsInit();
-  };
+  // componentDidMount = () => {
+  //   this.gpsInit();
+  // };
 
   //will locate your current position
   gpsInit = () => {
@@ -28,10 +28,10 @@ class Gps extends Component {
     return (
       <button
         type="button"
-        className="waves-effect waves-light btn"
+        className="waves-effect waves-light btn blue darken-4"
         onClick={this.gpsInit}
       >
-        Location <i className="large material-icons">location_on</i>
+        GPS Locator<i className="large material-icons">location_on</i>
       </button>
     );
   }

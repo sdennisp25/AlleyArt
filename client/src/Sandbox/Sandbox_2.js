@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { Col, Row, Container } from "../../components/Grid";
-import Card from "../../components/Card";
+import { Col, Row, Container } from "../components/Grid";
+import Card from "../components/Card";
 import "./profile.css";
-import Gps from "../../components/Geo";
-import AddressForm from "../../components/Address";
+import Gps from "../components/Geo";
+import AddressForm from "../components/Address";
 import { connect } from "react-redux";
-import API from "../../utils/api"
+import API from "../utils/api"
 // import { Redirect } from "react-router-dom";
 // import Nav from "../../components/Nav";
 
@@ -13,16 +13,19 @@ class Profile extends Component {
 
 	constructor(props) {
 		super(props);
-		this.state = { file: '', imagePreviewUrl: '' };
+		this.state = { image: '', imagePreviewUrl: '' };
 	}
 
 	handleSubmit(e) {
 		e.preventDefault();
-		console.log('handle uploading-', this.state.file);
-		API.uploadImage()
-		.then(res => {
-			console.log("UPLOAD IMAGE: ", res);
-		})
+		console.log('handle uploading-', this.state.image);
+		console.log('Event', e);
+		let data = new FormData();
+		data.append("image", this.state.image);
+		API.uploadImage(data)
+			.then(res => {
+				console.log("UPLOAD IMAGE: ", res);
+			})
 			.catch(error => {
 				console.log("UPLOAD ERROR: ");
 				console.log(error);
@@ -37,7 +40,7 @@ class Profile extends Component {
 
 		reader.onloadend = () => {
 			this.setState({
-				file: file,
+				image: file,
 				imagePreviewUrl: reader.result
 			});
 		}
