@@ -43,7 +43,7 @@ class ArtCard extends React.Component {
 
 						<div className="card-action">
 							<span className="card-title center"><h5>{this.props.title}</h5></span>
-							<p className="center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum eos ex necessitatibus nemo saepe distinctio, expedita dignissimos suscipit, quasi temporibus harum, architecto sit ad voluptatibus omnis quod aperiam. Consequuntur, vitae.</p>
+							<p className="center">{this.props.description}</p>
 							<button className="icons" onClick={(id) => this.markAsFavorite(this.props.id)}><i className="material-icons">favorite</i></button>
 							<button className="icons" onClick={(id) => this.likeArt(this.props.id)}><i className="material-icons">thumb_up</i>{this.state.likes}</button>
 							<button className="icons" onClick={(id) => this.commentOnArt(this.props.id)}><i className="material-icons">comment</i></button>

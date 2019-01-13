@@ -4,6 +4,7 @@ import "./register.css";
 import API from "../../../utils/api";
 import {LoginModal} from "../../../components/Modal";
 import { Redirect } from "react-router-dom";
+import Nav from "../../../components/Nav";
 
 
 class RegisterArtist extends Component {
@@ -90,6 +91,7 @@ class RegisterArtist extends Component {
 		
 		return (
 			<React.Fragment>
+				<Nav></Nav>
 				<Container>
 				<h1 className="title">Register ARTIST Profile</h1>
 					<div className="userform cyan darken-2">

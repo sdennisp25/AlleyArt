@@ -9,7 +9,8 @@ const artworkSchema = new Schema({
 	address: {type: String, required: true},
 	city: {type: String, required: true },
 	state: {type: String, required: true},
-	zipCode: {type: String, required: true}, 
+	zipCode: {type: String, required: true},
+	description: {type: String}, 
 	likes: {type: Number, default: 0},
 	// comments: [{ body: String, date: Date }],
 });

@@ -1,1 +1,1 @@
-export { default } from "./Upload_Test.js";
+export { default } from "./Upload_Test";

@@ -9,12 +9,11 @@ import API from "../../utils/api"
 import { Redirect } from "react-router-dom";
 import Nav from "../../components/Nav";
 
-class Profile extends Component {
+class Upload extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			testUrl: "https://alleyart.s3.us-east-2.amazonaws.com/1547358624775-test.jpg",
 			address: " ",
 			cityName: " ",
 			state: " ",
@@ -23,7 +22,9 @@ class Profile extends Component {
 			userAddressInfo: false,
 			showUpload: false,
 			awsUrl: this.props.user.image,
-			artTitle: ""
+			artTitle: "",
+			description: " ",
+			backToProfile: false
 		};
 	}
 
@@ -83,6 +84,7 @@ class Profile extends Component {
 			city: this.state.cityName,
 			state: this.state.state,
 			zipCode: this.state.zipCode,
+			description: this.state.description
 		})
 			.then(response => {
 				console.log(response);
@@ -93,6 +95,8 @@ class Profile extends Component {
 					city: " ",
 					state: " ",
 					zipCode: " ",
+					description: " ",
+					backToProfile: true
 				})
 			})
 			.catch(error => {
@@ -103,8 +107,12 @@ class Profile extends Component {
 
 	render() {
 		//////////////WE MAY NEED TO UNCOMMENT UNTIL FINISHED W/ PAGE SETUP BUT- DO NOT REMOVE//////
-		if (this.props.user.loggedIn === false || this.props.user.isArtist === false) {
-			return <Redirect to='/' />
+		// if (this.props.user.loggedIn === false || this.props.user.isArtist === false) {
+		// 	return <Redirect to='/' />
+		// }
+
+		if (this.state.backToProfile===true){
+			return <Redirect to='/profile' />
 		}
 
 		return (
@@ -112,7 +120,7 @@ class Profile extends Component {
 				<Nav></Nav>
 				<Container>
 					<h1 className="title">Upload New Image</h1>
-					<div className="userform">
+					<div className="uploadForm">
 						<Row>
 							<form className="col s12">
 
@@ -205,4 +213,4 @@ function mapStateToProps(state) {
 	}
 }
 
-export default connect(mapStateToProps)(Profile);
+export default connect(mapStateToProps)(Upload);

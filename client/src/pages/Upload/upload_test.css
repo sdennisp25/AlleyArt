@@ -1,3 +1,14 @@
+.uploadForm {
+	background-image: url(./images/old-time-wall.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	font-family: 'Cuprum', sans-serif;
+	padding: 15px;
+	font-size: 25px;
+	opacity: .75;
+	filter: alpha(opacity=50);
+}
+
 .btn {
 	width: 300px;
 }
@@ -5,3 +16,5 @@
 h5 {
 	margin-top: 25px;
 }
+
+
