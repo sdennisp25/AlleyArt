@@ -18,10 +18,19 @@ module.exports = {
 			.catch(err => res.status(422).json(err));
 	},
 
-	searchArtist: function (req, res) {
-		console.log("FIND ALL WHERE: ", req.params);
+	submitArt: function (req, res) {
+		console.log("SUBMITTING NEW ART", req.body);
 		db.Artwork
-			.find(req.params)
+			.create(req.body)
+			.then(art => res.json(art))
+			.catch(err => res.status(422).json(err));
+	},
+
+	searchArtist: function (req, res) {
+		console.log("FIND ALL WHERE: ", req.params.artist);
+		let query = req.params.artist;
+		db.Artwork
+			.find({ artist: { $regex: query, $options: 'i' } })
 			.then(art => res.json(art))
 			.catch(err => res.status(422).json(err));
 	},

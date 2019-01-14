@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Nav from "../../components/Nav";
-import {Row, Container } from "../../components/Grid";
+import { Row, Container } from "../../components/Grid";
 import Search from "../../components/Search";
 import Card from "../../components/Card";
 import ArtCard from "../../components/artCard";
@@ -9,7 +9,7 @@ import "./home.css";
 import API from "../../utils/api";
 // import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import { logInUser, updateUser } from "../../redux/reducers/myReducer";
+import { logInUser } from "../../redux/reducers/myReducer";
 
 class Home extends Component {
 
@@ -44,6 +44,7 @@ class Home extends Component {
 	}
 
 	render() {
+			//////////////WE MAY NEED TO UNCOMMENT UNTIL FINISHED W/ PAGE SETUP BUT- DO NOT REMOVE//////
 		// if (this.props.user.loggedIn === false) {
 		// 	return <Redirect to='/' />
 		// }
@@ -54,7 +55,7 @@ class Home extends Component {
 
 				<Container fluid>
 					<div className="home-background">
-									<Row>
+						<Row>
 							<div className="row-container search-container">
 								<h1>Search</h1>
 								<Search
@@ -73,6 +74,7 @@ class Home extends Component {
 												url={art.url}
 												id={art._id}
 												title={art.title}
+												description={art.description}
 												likes={art.likes}
 											/>
 										))}
@@ -106,8 +108,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
 	return {
 		logInUser: () => { dispatch(logInUser()) },
-		updateUser: () => { dispatch(updateUser()) }
-	}
+		}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

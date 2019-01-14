@@ -6,10 +6,13 @@ const artworkSchema = new Schema({
 	url: { type: String, required: true },
 	artist: { type: String, required: true },
 	artistID: {type: String, required: true},
+	address: {type: String, required: true},
 	city: {type: String, required: true },
 	state: {type: String, required: true},
+	zipCode: {type: String, required: true},
+	description: {type: String}, 
 	likes: {type: Number, default: 0},
-	comments: [{ body: String, date: Date }],
+	// comments: [{ body: String, date: Date }],
 });
 
 const Artwork = mongoose.model("Artwork", artworkSchema);

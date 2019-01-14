@@ -16,9 +16,14 @@ export default {
 	updateLikes: function (_id){
 		return axios.put("/api/database/" + _id);
 	},
-
-	uploadImage: function (){
-		return axios.post("/api/file/image-upload");
+	uploadImage: function (data){
+		console.log(data);
+		return axios.post("/api/file/image-upload", data, {
+			headers: {contentType: "application/x-www-form-urlencoded"}});
+	},
+	submitArt: function(data){
+		console.log(data);
+		return axios.post('/api/database/new-art', data);
 	}
 
 };
