@@ -33,7 +33,8 @@ const userSchema = new Schema({
 	googleId: {
 		type: String
 	},
-	});
+
+});
 
 ////COMPARE and HASH Passwords///
 userSchema.methods = {

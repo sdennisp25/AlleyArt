@@ -13,7 +13,7 @@ export const LoginModal = ({ show, handleClose, handleLogin, handleInputChange }
 						<label htmlFor="input_text">Email</label>
 					</div>
 					<div className="modal-content">
-						<input id="input-text" data-length="120" name="password" onChange={handleInputChange}></input>
+						<input id="input-text" data-length="120" name="password" type="password"onChange={handleInputChange}></input>
 						<label htmlFor="input_text">Password</label>
 					</div>
 					<div className="modal-footer">

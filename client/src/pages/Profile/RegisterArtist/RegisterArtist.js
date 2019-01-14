@@ -108,7 +108,7 @@ class RegisterArtist extends Component {
 										<span className="helper-text" data-error="Please Enter an Email Address" data-success=""></span>
 									</div>
 									<div className="input-field col s12">
-										<input id="input_text" type="text" data-length="10" name="artistPassword" onChange={this.handleInputChange}></input>
+										<input id="input_text" type="password" data-length="10" name="artistPassword" onChange={this.handleInputChange}></input>
 										<label htmlFor="input_text" className="black-text">Password</label>
 									</div>
 									<div className="input-field col s12">
