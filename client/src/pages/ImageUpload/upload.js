@@ -12,9 +12,10 @@ class Upload extends Component {
     cityName: " ",
     state: " ",
     zipCode: " ",
+    addComment: " ",
     showAddress: false,
-		userAddressInfo: false,
-		gotoCamera: false
+    userAddressInfo: false,
+    gotoCamera: false
   };
 
   showAddress = () => {
@@ -30,14 +31,22 @@ class Upload extends Component {
     this.setState({
       [name]: value
     });
-	};
-	
-	gotoCamera = () => {
-		this.setState({ gotoCamera: true });
-	}
+  };
+
+  addComment = event => {
+    let { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
+
+  gotoCamera = () => {
+    this.setState({ gotoCamera: true });
+  };
 
   userAddressSubmitForm = event => {
     event.preventDefault();
+    alert("Addess added!");
     console.log("ADDRESS: ", this.state.address);
     console.log("CITY: ", this.state.cityName);
     console.log("STATE: ", this.state.state);
@@ -49,9 +58,9 @@ class Upload extends Component {
 
   render() {
     // if (this.props.user.loggedIn === false) {
-		// 	return <Redirect to="/" />;
-		
-		if (this.state.gotoCamera === true) {
+    // 	return <Redirect to="/" />;
+
+    if (this.state.gotoCamera === true) {
       return <Redirect to="/camera" />;
     }
 
@@ -78,12 +87,27 @@ class Upload extends Component {
               <div className="card-action">
                 <form id="form">
                   <div className="upload-btn-wrapper">
-                    <button className="btn" type="button">
-                      Upload Image{" "}
-                      <i className="large material-icons right">file_upload</i>
-                    </button>
-
-                    <input id="save" type="file" />
+                    <div className="row">
+                      <div className="col s12 m6">
+                        <button className="btn" type="button">
+                          Upload Image
+                          <i className="large material-icons right">
+                            file_upload
+                          </i>
+                        </button>
+                        <input id="save" type="file" />
+                      </div>
+                      <div className="col s12 m6">
+                        <button
+                          className="btn waves-effect waves-light"
+                          type="button"
+                          onClick={this.gotoCamera}
+                        >
+                          Access Camera
+                          <i className="material-icons right">camera_alt</i>
+                        </button>
+                      </div>
+                    </div>
 
                     <Gps />
 
@@ -98,18 +122,16 @@ class Upload extends Component {
                       <i className="material-icons right">location_city</i>
                     </button>
 
-                    <button
-                      className="btn waves-effect waves-light"
-                      type="button"
-                      onClick={this.gotoCamera}
-                    >
-                      Access Camera
-                      <i className="material-icons right">location_city</i>
-                    </button>
-
-                    <label className="commentLabel">Add a Comment</label>
+                    <label className="commentLabel btn">
+                      Add Comment
+                      <i className="material-icons right">comment</i>
+                    </label>
                     <div className="commentBox waves-effect waves-light">
-                      <input className="text" />
+                      <input
+                        className="text"
+                        name="addComment"
+                        onChange={this.addComment}
+                      />
                     </div>
 
                     <button

@@ -50,11 +50,11 @@ class Profile extends Component {
             </p>
 
             <button
-              class="btn waves-effect waves-light"
+              className="btn waves-effect waves-light"
               onClick={this.goToUpload}
             >
               Upload Image
-              <i class="material-icons right" />
+              <i className="material-icons right" />
             </button>
           </div>
         </Row>
