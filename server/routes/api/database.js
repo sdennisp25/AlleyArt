@@ -15,6 +15,8 @@ router
 	.get("/search/:artist", dbController.searchArtist)
 	.post("/register/", dbController.registerUser)
 	.post("/new-art", dbController.submitArt)
+	.post("/favorites/:artID", dbController.addFavorites)
+	.get("/favorites/", dbController.getFavorites)
 
 router
 	.route("/:_id")

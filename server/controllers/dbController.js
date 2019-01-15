@@ -43,6 +43,35 @@ module.exports = {
 			.catch(err => res.status(422).json(err));
 	},
 
+	addFavorites: function (req, res) {
+		console.log("ADDING TO FAVORITES", req.params);
+		let userId = req.user.id;
+		let artId = req.params.artID
+		console.log("FAVORITE ART ID: ", req.params.artID);
+		console.log("FAVORITE USER ID: ", userId);
+		db.Artwork.findOneAndUpdate({ _id: artId }, {
+			$push: {
+				favoritedBy: [userId]
+			}
+		}, { new: true })
+			.then(dbFav => res.json(dbFav))
+			.catch(err => res.status(422).json(err));
+	},
+
+	getFavorites: function (req, res) {
+		console.log("RETREIVEING USER FAVORITES")
+		let userId = req.user.id;
+		console.log("GET USER FAVS ID: ", userId);
+
+		db.Artwork.find({ favoritedBy: { $in: userId } })
+			.then(function (dbFav) {
+				res.json(dbFav);
+			})
+			.catch(function (err) {
+				res.json(err);
+			});
+	}
+
 	/////////////////OTHER FUNCTIONS - MAY STILL NEED/////////////////
 	// findById: function (req, res) {
 	// 	db.Artwork

@@ -1,21 +1,29 @@
 import React from "react";
 import "./artCard.css";
 import API from "../../utils/api";
+import { connect } from "react-redux";
 
 class ArtCard extends React.Component {
+	constructor(props) {
+		super(props);
 
-	state = {
-		likes: this.props.likes
+		this.state = {
+			likes: this.props.likes
+		}
 	}
-
 	markAsFavorite = (id) => {
 		console.log("FAVORITE ART ID", id);
+		API.addFavorites(id)
+			.then(response => {
+				console.log("ADD FAVORITES RESPONSE: ", response);
+			})
+			.catch(err => console.log("ADD FAVORITES Error: ", err));
 	}
 
 	likeArt = (id) => {
 		console.log("LIKED ART ID", id);
 		API.updateLikes(id)
-			///NEED TO GET THE UPDATED NUMBER WITHOUT REFRESHING THE PAGE
+			///STILL NEED TO PREVENT USER FROM MULTIPLE LIKES
 			.then(response => {
 				console.log("LIKES RESPONSE: ", response);
 				this.setState({
@@ -56,4 +64,10 @@ class ArtCard extends React.Component {
 	}
 }
 
-export default ArtCard;
+function mapStateToProps(state) {
+	return {
+		user: state,
+	}
+}
+
+export default connect(mapStateToProps)(ArtCard);

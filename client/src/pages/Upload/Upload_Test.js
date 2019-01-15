@@ -66,7 +66,7 @@ class Upload extends Component {
 		});
 	};
 
-	submitForm = (e, req) => {
+	submitForm = (e) => {
 		e.preventDefault();
 		let imageUrl = this.props.user.image;
 		let userName = this.props.user.username;
@@ -111,7 +111,7 @@ class Upload extends Component {
 		// 	return <Redirect to='/' />
 		// }
 
-		if (this.state.backToProfile===true){
+		if (this.state.backToProfile === true) {
 			return <Redirect to='/profile' />
 		}
 

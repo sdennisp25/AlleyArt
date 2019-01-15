@@ -94,7 +94,7 @@ class RegisterUser extends Component {
 										<label htmlFor="email" className="black-text">Email</label>
 									</div>
 									<div className="input-field col s12">
-										<input id="input_text" type="text" data-length="10" name="userPassword" onChange={this.handleInputChange}></input>
+										<input id="input_text" type="password" data-length="10" name="userPassword" onChange={this.handleInputChange}></input>
 										<label htmlFor="input_text" className="black-text">Password</label>
 									</div>
 									<div className="col s12">

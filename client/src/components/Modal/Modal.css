@@ -1,11 +1,11 @@
 .modal {
 	background: white;
 	height: auto;
-	left:50%;
+	left: 50%;
 	position: fixed;
-	top:50%;
-	transform: translate(-50%,-50%);
-	width:80%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 80%;
 }
 
 .display-block {
@@ -16,6 +16,11 @@
 	display: none;
 }
 
-.preview{
+.preview {
 	margin: 50px;
+}
+
+input[type="password"] {
+	font: small-caption;
+	font-size: 16px
 }
