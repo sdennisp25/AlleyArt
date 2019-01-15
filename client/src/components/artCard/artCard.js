@@ -33,16 +33,21 @@ class ArtCard extends React.Component {
 			.catch(err => console.log(err));
 	}
 
-	viewComments = (id) => {
-		console.log("VIEW COMMENTS", id);
+	mapArt = (id) => {
+		console.log("Showing Art Location", id);
 	}
+
+	viewArtist = (id) => {
+		console.log("Showing Artist Profile", id);
+	}
+
 
 	render() {
 
 
 		return (
-			<div className="row">
-				<div className="col s12 m4 l3">
+			<div className="col s4 artwork">
+				{/* <div className="col s12 m4 l3"> */}
 
 					<div className="card deep-orange darken-4">
 						<div className="card-image">
@@ -50,14 +55,19 @@ class ArtCard extends React.Component {
 						</div>
 
 						<div className="card-action">
+
 							<span className="card-title center"><h5>{this.props.title}</h5></span>
+
 							<p className="center">{this.props.description}</p>
+
 							<button className="icons" onClick={(id) => this.markAsFavorite(this.props.id)}><i className="material-icons">favorite</i></button>
 							<button className="icons" onClick={(id) => this.likeArt(this.props.id)}><i className="material-icons">thumb_up</i>{this.state.likes}</button>
-							<button className="icons" onClick={(id) => this.commentOnArt(this.props.id)}><i className="material-icons">comment</i></button>
+							<button className="icons" onClick={(id) => this.mapArt(this.props.id)}><i className="material-icons">room</i></button>
+							<button className="icons" onClick={(id) => this.viewArtist(this.props.id)}><i className="material-icons">person</i></button>
+							
 						</div>
 					</div>
-				</div>
+				{/* </div> */}
 			</div>
 
 		);

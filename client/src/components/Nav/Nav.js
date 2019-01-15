@@ -25,17 +25,19 @@ class Nav extends Component {
 				ALLEY ART</a>
 				<div className="navWide">
 					<div className="wideDiv">
+					<Link to={"/home"}>Find Art</Link>
+					<Link to={"/profile"}>Favorites</Link>
+					{this.props.user.isArtist === true && <Link to={"/image"}>Upload New Art</Link>}
 					<Link to={"/"} onClick={this.handleLogout}>Logout</Link>
-					<Link to={"/home"}>Home</Link>
-					<Link to={"/profile"}>Profile</Link>
 					</div>
 				</div>
 				<div className="navNarrow">
 					<i className="fa fa-bars fa-2x" onClick={this.burgerToggle}></i>
 					<div className="narrowLinks">
+						<a href="/home" onClick={this.burgerToggle}>Find Art</a>
+						<a href="/profile" onClick={this.burgerToggle}>Favorites</a>
+						{this.props.user.isArtist === true && <a href="/image">Upload New Art</a>}
 						<a href="/landing" onClick={this.burgerToggle}>Logout</a>
-						<a href="/home" onClick={this.burgerToggle}>Home</a>
-						<a href="/profile" onClick={this.burgerToggle}>Profile</a>
 					</div>
 				</div>
 			</nav>

@@ -17,23 +17,15 @@ h1 {
 	padding: 10px;
 }
 
-.row-results {
-	/* box-sizing: content-box; */
-	/* position: relative; */
+.results, .noResults {
 	background-color: #AFAFAC;
 	color: black;
-	height: 750px;
+	height: auto;
 	width: 90%;
 	opacity: .8;
 	filter: alpha(opacity=50);
 	margin: 25px 50px;
 	padding: 10px;
-
-
-}
-
-.noResults{
-	padding-bottom: 15px;
 }
 
 .search-container {
