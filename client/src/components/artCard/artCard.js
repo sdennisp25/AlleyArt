@@ -49,7 +49,7 @@ class ArtCard extends React.Component {
 			<div className="col s4 artwork">
 				{/* <div className="col s12 m4 l3"> */}
 
-					<div className="card deep-orange darken-4">
+					<div className="card">
 						<div className="card-image">
 							<img src={this.props.url} alt="" />
 						</div>

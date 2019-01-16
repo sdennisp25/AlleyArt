@@ -56,7 +56,7 @@ class Home extends Component {
 					<div className="home-background">
 						<Row>
 							<div className="row-container search-container">
-								<h1>Search</h1>
+								<h1>Discover</h1>
 								<Search
 									handleInputChange={this.handleInputChange}
 									handleSearch={this.handleSearch}></Search>
@@ -84,15 +84,6 @@ class Home extends Component {
 						) : (
 								<h3 className="center noResults">No Results to Display</h3>
 							)}
-
-						<Row>
-							<div className="row-container">
-								<h1>Discover</h1>
-
-								<Card></Card>
-
-							</div>
-						</Row>
 					</div>
 				</Container>
 			</React.Fragment>

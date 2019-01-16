@@ -1,5 +1,6 @@
 .card {
 	display: inline-block;
+	background-color: #1C3D0B
 }
 
 .artwork {
@@ -14,4 +15,5 @@
 
 .icons {
 	margin: 0px 20px;
+	background-color: #FFEA0C;
 }
