@@ -1,7 +1,8 @@
 body {
-		background-image: url(./img/concrete-wall.jpg);
-		background-repeat: no-repeat;
-		background-size: cover;
+		/* background-image: url(./img/concrete-wall.jpg); */
+		background-color: grey;
+		/* background-repeat: no-repeat;
+		background-size: cover; */
  }
 
 h3 {
