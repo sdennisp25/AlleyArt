@@ -96,38 +96,46 @@ class Landing extends Component {
 			return <Redirect to='/register/artist' />
 		}
 
+		let imgURL = "https://slack-imgs.com/?c=1&url=https%3A%2F%2Fcdn.pixabay.com%2Fphoto%2F2018%2F01%2F05%2F03%2F14%2Fgraffiti-3062069_640.jpg"
+
 		return (
-			<Container>
-				<Row>
-					<div className="landing-background">
-						{/* <h2>TESTING!!! THIS IS THE CURRENT STATE:  {this.props.user.image}</h2> */}
-						<div className="landing center-align card-panel">
-							<h1>ALLEY ART</h1>
-							<p>Beyond this is a street art community. Create a profile and contribute to the international art collections. If your looking for a discovery find the location and go see for yourself.</p>
-							<div className="row">
-								<button className="waves-effect grey darken-3 btn" type="button" onClick={this.showLogin}>LOGIN</button>
-								<br /><br />
-								<button className="waves-effect grey darken-3 btn" type="button" onClick={this.showRegister}>REGISTER </button>
+			<div style={{backgroundImage: 'url(' + imgURL + ')',
+								backgroundSize: 'cover',
+								minHeight: '700px',
+								backgroundRepeat: 'no-repeat',}}>
+				<Container>
+					<Row>
+						<div className="landing-background">
+							{/* <h2>TESTING!!! THIS IS THE CURRENT STATE:  {this.props.user.image}</h2> */}
+							<div className="landing center-align card-panel">
+								<h1>ALLEY ART</h1>
+								<p>Beyond this is a street art community. Create a profile and contribute to the international art collections. If your looking for a discovery find the location and go see for yourself.</p>
+								<div className="row">
+									<button className="waves-effect grey darken-3 btn" type="button" onClick={this.showLogin}>LOGIN</button>
+									<br /><br />
+									<button className="waves-effect grey darken-3 btn" type="button" onClick={this.showRegister}>REGISTER </button>
+								</div>
 							</div>
 						</div>
-					</div>
-				</Row>
+					</Row>
 
 
-				<LoginModal
-					show={this.state.showLogin}
-					handleClose={this.hideLogin}
-					handleLogin={this.handleLogin}
-					handleInputChange={this.handleInputChange}
-				></LoginModal>
+					<LoginModal
+						show={this.state.showLogin}
+						handleClose={this.hideLogin}
+						handleLogin={this.handleLogin}
+						handleInputChange={this.handleInputChange}
+					></LoginModal>
 
-				<UserTypeModal
-					show={this.state.showRegister}
-					handleClose={this.hideRegister}
-					handleUser={this.handleUser}
-					handleArtist={this.handleArtist}
-				></UserTypeModal>
-			</Container>
+					<UserTypeModal
+						show={this.state.showRegister}
+						handleClose={this.hideRegister}
+						handleUser={this.handleUser}
+						handleArtist={this.handleArtist}
+					></UserTypeModal>
+				</Container>
+
+			</div>
 		)
 	}
 }
