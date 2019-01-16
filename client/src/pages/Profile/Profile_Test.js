@@ -15,7 +15,6 @@ class Profile extends Component {
 		super(props);
 		this.state = {
 			favorites: [],
-			toUpload: false
 		};
 	}
 
@@ -31,16 +30,7 @@ class Profile extends Component {
 			.catch(err => console.log(err));
 	}
 
-
-	toUpload = () => {
-		this.setState({ toUpload: true });
-	};
-
 	render() {
-
-		if (this.state.toUpload === true) {
-			return <Redirect to='/image' />
-		}
 
 		return (
 			<React.Fragment>
@@ -48,15 +38,6 @@ class Profile extends Component {
 
 				<Container fluid>
 					<h1>Artist Profile Page</h1>
-					<Row>
-						<div className="col s12">
-							<button type="button"
-								className="waves-effect waves-light btn green darken-2"
-								onClick={this.toUpload}>
-								Add New Art
-					</button>
-						</div>
-					</Row>
 
 					<Row>
 						{this.state.favorites.length ? (

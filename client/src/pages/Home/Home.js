@@ -4,7 +4,6 @@ import { Row, Container } from "../../components/Grid";
 import Search from "../../components/Search";
 import Card from "../../components/Card";
 import ArtCard from "../../components/artCard";
-import Wrapper from "../../components/Wrapper";
 import "./home.css";
 import API from "../../utils/api";
 // import { Redirect } from "react-router-dom";
@@ -44,7 +43,7 @@ class Home extends Component {
 	}
 
 	render() {
-			//////////////WE MAY NEED TO UNCOMMENT UNTIL FINISHED W/ PAGE SETUP BUT- DO NOT REMOVE//////
+		//////////////WE MAY NEED TO UNCOMMENT UNTIL FINISHED W/ PAGE SETUP BUT- DO NOT REMOVE//////
 		// if (this.props.user.loggedIn === false) {
 		// 	return <Redirect to='/' />
 		// }
@@ -63,29 +62,29 @@ class Home extends Component {
 									handleSearch={this.handleSearch}></Search>
 							</div>
 						</Row>
-						<Row>
-							<div className="text-center row-results">
-								<h1>Results</h1>
-								{this.state.results.length ? (
-									<Wrapper>
-										{this.state.results.map(art => (
-											<ArtCard
-												key={"card-" + art._id}
-												url={art.url}
-												id={art._id}
-												title={art.title}
-												description={art.description}
-												likes={art.likes}
-											/>
-										))}
-									</Wrapper>
+						{this.state.results.length ? (
+							<React.Fragment>
 
-								) : (
-										<h3 className="center noResults">No Results to Display</h3>
-									)}
+								<div className=" row text-center results">
+									<h1>Results</h1>
 
-							</div>
-						</Row>
+									{this.state.results.map(art => (
+										<ArtCard
+											key={"card-" + art._id}
+											url={art.url}
+											id={art._id}
+											title={art.title}
+											description={art.description}
+											likes={art.likes}
+										/>
+									))}
+								</div>
+
+							</React.Fragment>
+						) : (
+								<h3 className="center noResults">No Results to Display</h3>
+							)}
+
 						<Row>
 							<div className="row-container">
 								<h1>Discover</h1>
@@ -108,7 +107,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
 	return {
 		logInUser: () => { dispatch(logInUser()) },
-		}
+	}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
