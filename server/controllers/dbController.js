@@ -35,6 +35,15 @@ module.exports = {
 			.catch(err => res.status(422).json(err));
 	},
 
+	searchCity: function (req, res) {
+		console.log("FIND ALL WHERE: ", req.params.city);
+		let query = req.params.city;
+		db.Artwork
+			.find({ city: { $regex: query, $options: 'i' } })
+			.then(art => res.json(art))
+			.catch(err => res.status(422).json(err));
+	},
+
 	incLikes: function (req, res) {
 		console.log("INCREASING LIKES", req.params);
 		db.Artwork

@@ -15,9 +15,11 @@ class Upload extends Component {
 
 		this.state = {
 			address: " ",
-			cityName: " ",
+			cityName: "  ",
 			state: " ",
 			zipCode: " ",
+			lat: 0,
+			lng: 0,
 			showAddress: false,
 			userAddressInfo: false,
 			showUpload: false,
@@ -49,13 +51,26 @@ class Upload extends Component {
 	///////////////ADDRESS INPUT FUNCTIONS- MOVE TO COMPONENT?////////////////
 	userAddressSubmitForm = (event) => {
 		event.preventDefault();
-		console.log("ADDRESS: ", this.state.address);
-		console.log("CITY: ", this.state.cityName);
-		console.log("STATE: ", this.state.state);
-		console.log("ZIP CODE: ", this.state.zipCode);
-		this.setState({
-			showAddress: false
-		})
+		let fullAddress = this.state.address + " " + this.state.cityName + " " + this.state.state + " " + this.state.zipCode;
+		console.log("Full Address", fullAddress);
+		let formattedAddress = fullAddress.split(' ').join('+');
+		console.log(formattedAddress);
+		API.getGeocode(formattedAddress)
+			.then(location => {
+				return (
+					console.log("RESULTS", location.data),
+					this.setState({ 
+						showAddress: false,
+						lat: location.data.lat,
+						lng: location.data.lng
+					})
+					),
+					console.log("UPDATED STATE", this.state);
+				}
+				).catch(error => {
+					console.log("GEOCODE ERROR: ");
+					console.log(error);
+				})
 	};
 
 	///////////////////SUBMIT UPLOAD FORM//////////////////
@@ -84,6 +99,8 @@ class Upload extends Component {
 			city: this.state.cityName,
 			state: this.state.state,
 			zipCode: this.state.zipCode,
+			lat: this.state.lat,
+			lng: this.state.lng,
 			description: this.state.description
 		})
 			.then(response => {
