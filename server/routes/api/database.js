@@ -21,6 +21,10 @@ router
 	.post("/favorites/:artID", dbController.addFavorites)
 	.get("/favorites/", dbController.getFavorites)
 
+	.get("/profile/:artistID", dbController.viewArtist)
+
+	.get("/location/:_id", dbController.getLatLng)
+
 router
 	.route("/:_id")
 	.put(dbController.incLikes)

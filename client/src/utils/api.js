@@ -38,8 +38,12 @@ export default {
 	getGeocode: function (address) {
 		console.log("GEOCODE API REQUEST ", address);
 		return axios.get("api/geocode/" + address)
-		// .then(response=> console.log("GEO RESULTS",response.data))
-		// .catch(err=> console.log(err))
-	}
+	},
+	artistProfile: function(artistID){
+		return axios.get("api/database/profile/" + artistID)
+	},
+	getLatLng: function(_id){
+		return axios.get("api/database/location/" + _id)
+	},
 };
 

@@ -33,6 +33,10 @@ const userSchema = new Schema({
 	googleId: {
 		type: String
 	},
+	artwork: [{
+		type: Schema.Types.ObjectId,
+		ref: "Artwork"
+	}]
 
 });
 

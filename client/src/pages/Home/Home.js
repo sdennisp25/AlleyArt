@@ -89,8 +89,10 @@ class Home extends Component {
 									{this.state.results.map(art => (
 										<ArtCard
 											key={"card-" + art._id}
-											url={art.url}
 											id={art._id}
+											fav={false}
+											url={art.url}
+											artistId={art.artistID}
 											title={art.title}
 											description={art.description}
 											likes={art.likes}
