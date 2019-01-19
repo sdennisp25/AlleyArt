@@ -16,13 +16,12 @@ h1 {
 .results, .noResults {
 	background-color: #AFAFAC;
 	color: black;
-	min-height: 750px;
+	height: auto;
 	width: 90%;
 	opacity: .8;
 	filter: alpha(opacity=50);
 	margin: 25px 50px;
 	padding: 10px;
-	overflow-x: scroll;
 }
 
 .search-container {
