@@ -53,13 +53,7 @@ class ArtCard extends React.Component {
 			return <Redirect to='/artist' />
 		}
 		return (
-<<<<<<< HEAD
 			<div className="col s12 m6 l4 artwork">
-=======
-
-
-			<div className="col s4 artwork">
->>>>>>> master
 				{/* <div className="col s12 m4 l3">  ^col s4 */}
 
 				<div className="card">

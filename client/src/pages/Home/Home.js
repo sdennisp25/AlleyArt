@@ -91,7 +91,7 @@ class Home extends Component {
 				<Container fluid>
 					<div className="home-background">
 						<Row>
-							<div className="row-container search-container col s12 m6 l4  z-depth-5">
+							<div className="row-container search-container col s12 m6 l4 z-depth-5">
 								<h1>Discover</h1>
 								<Search
 									handleInputChange={this.handleInputChange}
@@ -101,13 +101,8 @@ class Home extends Component {
 						</Row>
 						{this.state.results.length ? (
 							<React.Fragment>
-<<<<<<< HEAD
 								
 								<div className="row text-center results col s12 m6 l4">
-=======
-
-								<div className="row text-center results">
->>>>>>> master
 									<h1>Results</h1>
 
 									{this.state.results.map(art => (

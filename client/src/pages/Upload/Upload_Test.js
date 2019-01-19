@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-<<<<<<< HEAD
-import { Container, Row } from "../../components/Grid";
-=======
 import { Row, Container } from "../../components/Grid";
->>>>>>> master
 import "./upload_test.css";
 import Gps from "../../components/Geo";
 import AddressForm from "../../components/Address";
