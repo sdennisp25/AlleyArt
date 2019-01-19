@@ -1,14 +1,21 @@
 import React from "react";
 import "./artCard.css";
 import API from "../../utils/api";
+import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
+import { artistProfile } from "../../redux/reducers/myReducer";
 
 class ArtCard extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			likes: this.props.likes
+			likes: this.props.likes,
+			toProfile: false,
+			toMap: false,
+			lat: 0,
+			lng: 0,
+			address: " "
 		}
 	}
 	markAsFavorite = (id) => {
@@ -35,39 +42,51 @@ class ArtCard extends React.Component {
 
 	mapArt = (id) => {
 		console.log("Showing Art Location", id);
+		API.getLatLng(id)
+			.then(response => {
+				console.log("Coordinates Returned: ", response.data);
+				this.setState({
+					lat: response.data.lat,
+					lng: response.data.lng,
+					address: response.data.address
+				})
+			})
+			.catch(err => console.log(err));
 	}
 
 	viewArtist = (id) => {
 		console.log("Showing Artist Profile", id);
+		this.props.artistProfile(id);
+		this.setState(
+			{ toProfile: true }
+		)
 	}
 
-
 	render() {
-
-
+		if (this.state.toProfile === true) {
+			return <Redirect to='/artist' />
+		}
 		return (
 			<div className="col s4 artwork">
-				{/* <div className="col s12 m4 l3"> */}
+				{/* <div className="col s12 m4 l3">  ^col s4 */}
 
-					<div className="card deep-orange darken-4">
-						<div className="card-image">
-							<img src={this.props.url} alt="" />
-						</div>
-
-						<div className="card-action">
-
-							<span className="card-title center"><h5>{this.props.title}</h5></span>
-
-							<p className="center">{this.props.description}</p>
-
-							<button className="icons" onClick={(id) => this.markAsFavorite(this.props.id)}><i className="material-icons">favorite</i></button>
-							<button className="icons" onClick={(id) => this.likeArt(this.props.id)}><i className="material-icons">thumb_up</i>{this.state.likes}</button>
-							<button className="icons" onClick={(id) => this.mapArt(this.props.id)}><i className="material-icons">room</i></button>
-							<button className="icons" onClick={(id) => this.viewArtist(this.props.id)}><i className="material-icons">person</i></button>
-							
-						</div>
+				<div className="card">
+					<div className="card-image">
+						<img src={this.props.url} alt="" />
 					</div>
-				{/* </div> */}
+
+					<span className="card-title center"><h5>{this.props.title}</h5></span>
+
+					<span className="card-title center"><h5>{this.props.title}</h5></span>
+
+					<p className="center">{this.props.description}</p>
+					<div className="center-align">
+						<button className="iconz" onClick={(id) => this.markAsFavorite(this.props.id)}><i className="fas fa-heart"></i></button>
+						<button className="iconz" onClick={(id) => this.likeArt(this.props.id)}><i className="fas fa-thumbs-up"></i>{this.state.likes}</button>
+						<button className="iconz" onClick={(id) => this.mapArt(this.props.id)}><i className="fas fa-map-marked"></i></button>
+						<button className="iconz" onClick={(artistId) => this.viewArtist(this.props.artistId)}><i className="fas fa-user"></i></button>
+					</div>
+				</div>
 			</div>
 
 		);
@@ -80,4 +99,10 @@ function mapStateToProps(state) {
 	}
 }
 
-export default connect(mapStateToProps)(ArtCard);
+function mapDispatchToProps(dispatch) {
+	return {
+		artistProfile: (artist) => { dispatch(artistProfile(artist)) },
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ArtCard);
