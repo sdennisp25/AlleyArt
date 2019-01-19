@@ -39,7 +39,7 @@ class ArtCard extends React.Component {
 
 	viewArtist = (id) => {
 		console.log("Showing Artist Profile", id);
-	}
+	} 
 
 
 	render() {
@@ -47,26 +47,27 @@ class ArtCard extends React.Component {
 
 		return (
 			<div className="col s4 artwork">
-				{/* <div className="col s12 m4 l3"> */}
-
-					<div className="card deep-orange darken-4">
+				{/* <div className="col s12 m4 l3">  ^col s4 */}
+				
+					<div className="card">
 						<div className="card-image">
 							<img src={this.props.url} alt="" />
 						</div>
 
 						<div className="card-action">
 
-							<span className="card-title center"><h5>{this.props.title}</h5></span>
+								<span className="card-title center"><h5>{this.props.title}</h5></span>
 
-							<p className="center">{this.props.description}</p>
-
-							<button className="icons" onClick={(id) => this.markAsFavorite(this.props.id)}><i className="material-icons">favorite</i></button>
-							<button className="icons" onClick={(id) => this.likeArt(this.props.id)}><i className="material-icons">thumb_up</i>{this.state.likes}</button>
-							<button className="icons" onClick={(id) => this.mapArt(this.props.id)}><i className="material-icons">room</i></button>
-							<button className="icons" onClick={(id) => this.viewArtist(this.props.id)}><i className="material-icons">person</i></button>
-							
+								<p className="center">{this.props.description}</p>
+							<div className="center-align">
+								<button className="iconz" onClick={(id) => this.markAsFavorite(this.props.id)}><i className="fas fa-heart"></i></button>
+								<button className="iconz" onClick={(id) => this.likeArt(this.props.id)}><i className="fas fa-thumbs-up"></i>{this.state.likes}</button>
+								<button className="iconz" onClick={(id) => this.mapArt(this.props.id)}><i className="fas fa-map-marked"></i></button>
+								<button className="iconz" onClick={(id) => this.viewArtist(this.props.id)}><i className="fas fa-user"></i></button>
+							</div>	
 						</div>
 					</div>
+				
 				{/* </div> */}
 			</div>
 

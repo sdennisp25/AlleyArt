@@ -33,11 +33,12 @@ class Nav extends Component {
 				</div>
 				<div className="navNarrow">
 					<i className="fa fa-bars fa-2x" onClick={this.burgerToggle}></i>
+
 					<div className="narrowLinks">
-						<a href="/home" onClick={this.burgerToggle}>Find Art</a>
-						<a href="/profile" onClick={this.burgerToggle}>Favorites</a>
+						<a href="/home" onClick={this.burgerToggle}><i className="fas fa-search"></i></a>
+						<a href="/profile" onClick={this.burgerToggle}><i className="fas fa-heart"></i></a>
 						{this.props.user.isArtist === true && <a href="/image">Upload New Art</a>}
-						<a href="/landing" onClick={this.burgerToggle}>Logout</a>
+						<a href="/" onClick={this.burgerToggle}><i className="fas fa-sign-out-alt"></i></a>
 					</div>
 				</div>
 			</nav>
@@ -51,7 +52,7 @@ class Nav extends Component {
 			  } else {
 				  linksEl.style.display = 'block';
 			  }
-	  }
+	}
 }
 function mapStateToProps(state) {
 	return {
