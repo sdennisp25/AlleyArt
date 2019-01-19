@@ -1,9 +1,15 @@
+body {
+		background-color: grey;
+ }
+
 h3 {
 	font-size: 20px;
 }
 
 h3 {
 	font-family: 'Cuprum', sans-serif;
+	background-color: rgb(0,0,0,0.5);
+	width: 30%;
 }
 
 label {
@@ -18,4 +24,5 @@ label {
 	background-image: url(./img//wall.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
+	margin-bottom: 5%;
 }
