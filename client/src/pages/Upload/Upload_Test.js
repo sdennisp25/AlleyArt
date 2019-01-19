@@ -97,9 +97,9 @@ class Upload extends Component {
 			artist: userName,
 			artistID: userId,
 			title: this.state.artTitle,
-			url: "https://cdn.pixabay.com/photo/2017/08/01/22/31/wall-2568346__340.jpg",
+			// url: "https://cdn.pixabay.com/photo/2017/08/01/22/31/wall-2568346__340.jpg",
 			////CHANGE THIS BACK ONCE S3 KEYS WORKING!!!///
-			// url: imageUrl,
+			url: imageUrl,
 			address: this.state.address,
 			city: this.state.cityName,
 			state: this.state.state,
