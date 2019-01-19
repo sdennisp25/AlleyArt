@@ -9,11 +9,11 @@ export const LoginModal = ({ show, handleClose, handleLogin, handleInputChange }
 					<button onClick={handleClose} className='modal-close right green-text'><i className='material-icons small'>X</i></button>
 					<h4 className="center">Please Sign In</h4>
 					<div className="modal-content">
-						<input id="input-text" data-length="120" name="username" onChange={handleInputChange}></input>
+						<input data-length="120" name="username" onChange={handleInputChange}></input>
 						<label htmlFor="input_text">Email</label>
 					</div>
 					<div className="modal-content">
-						<input id="input-text" data-length="120" name="password" type="password"onChange={handleInputChange}></input>
+						<input data-length="120" name="password" type="password"onChange={handleInputChange}></input>
 						<label htmlFor="input_text">Password</label>
 					</div>
 					<div className="modal-footer">

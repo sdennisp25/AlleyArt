@@ -18,7 +18,7 @@ class Profile extends Component {
 		};
 	}
 
-	componentDidMount = () => {
+	componentDidMount () {
 		API.getFavorites()
 			.then(response => {
 				console.log("LOAD FAVORITES: ", response);
@@ -31,13 +31,16 @@ class Profile extends Component {
 	}
 
 	render() {
-
-		return (
+		if (this.props.user.loggedIn === false) {
+			return <Redirect to='/' />
+		}
+		
+			return (
 			<React.Fragment>
 				<Nav></Nav>
 
 				<Container fluid>
-					<h1>Artist Profile Page</h1>
+					<h1>Favorites Page</h1>
 
 					<Row>
 						{this.state.favorites.length ? (
@@ -47,8 +50,10 @@ class Profile extends Component {
 									{this.state.favorites.map(art => (
 										<ArtCard
 											key={"card-" + art._id}
-											url={art.url}
 											id={art._id}
+											fav={true}
+											url={art.url}
+											artistId={art.artistID}
 											title={art.title}
 											description={art.description}
 											likes={art.likes}

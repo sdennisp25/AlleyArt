@@ -20,9 +20,15 @@ module.exports = {
 
 	submitArt: function (req, res) {
 		console.log("SUBMITTING NEW ART", req.body);
-		db.Artwork
-			.create(req.body)
-			.then(art => res.json(art))
+
+		db.Artwork.create(req.body)
+			.then(function (dbArt) {
+				return db.User.findOneAndUpdate({ _id: dbArt.artistID }, { $push: { artwork: dbArt._id } }, { new: true });
+			})
+			.then(dbUser => {
+				console.log("Upload Return User w/ Artwork", dbUser);
+				res.json(dbUser)
+			})
 			.catch(err => res.status(422).json(err));
 	},
 
@@ -79,6 +85,46 @@ module.exports = {
 			.catch(function (err) {
 				res.json(err);
 			});
+	},
+
+	viewArtist: function (req, res) {
+		console.log("Locationg Artist Profile", req.params.artistID);
+		db.User
+			.findOne({ _id: req.params.artistID })
+			.populate("artwork")
+			.then(function (dbProfile) {
+				let artist = {
+					username: dbProfile.username,
+					aboutArtist: dbProfile.aboutArtist,
+					contactArtist: dbProfile.okToContact,
+					artistWorks: dbProfile.artwork,
+					artistEmail: dbProfile.email
+				}
+				console.log(artist);
+				res.json(artist);
+			})
+			.catch(function (err) {
+				res.json(err);
+			});
+	},
+
+	getLatLng: function (req, res) {
+		console.log("Retrieving Location for mapping", req.params);
+		db.Artwork
+			.findOne((req.params))
+			.then(function (dbLocation) {
+				console.log(dbLocation);
+				let coordinates = {
+					lat: dbLocation.lat,
+					lng: dbLocation.lng,
+					address: dbLocation.formattedAddy
+				}
+				console.log(coordinates);
+				res.json(coordinates);
+			})
+			.catch(function (err) {
+				res.json(err);
+			})
 	}
 
 	/////////////////OTHER FUNCTIONS - MAY STILL NEED/////////////////

@@ -5,7 +5,7 @@ import Search from "../../components/Search";
 import ArtCard from "../../components/artCard";
 import "./home.css";
 import API from "../../utils/api";
-// import { Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { logInUser } from "../../redux/reducers/myReducer";
 
@@ -60,9 +60,9 @@ class Home extends Component {
 
 	render() {
 		//////////////WE MAY NEED TO UNCOMMENT UNTIL FINISHED W/ PAGE SETUP BUT- DO NOT REMOVE//////
-		// if (this.props.user.loggedIn === false) {
-		// 	return <Redirect to='/' />
-		// }
+		if (this.props.user.loggedIn === false) {
+			return <Redirect to='/' />
+		}
 
 		return (
 			<React.Fragment>
@@ -89,8 +89,10 @@ class Home extends Component {
 										
 										<ArtCard
 											key={"card-" + art._id}
-											url={art.url}
 											id={art._id}
+											fav={false}
+											url={art.url}
+											artistId={art.artistID}
 											title={art.title}
 											description={art.description}
 											likes={art.likes}

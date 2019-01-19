@@ -18,12 +18,12 @@ class Upload extends Component {
 			cityName: "  ",
 			state: " ",
 			zipCode: " ",
+			formattedAddy: " ",
 			lat: 0,
 			lng: 0,
 			showAddress: false,
 			userAddressInfo: false,
 			showUpload: false,
-			awsUrl: this.props.user.image,
 			artTitle: "",
 			description: " ",
 			backToProfile: false
@@ -54,23 +54,26 @@ class Upload extends Component {
 		let fullAddress = this.state.address + " " + this.state.cityName + " " + this.state.state + " " + this.state.zipCode;
 		console.log("Full Address", fullAddress);
 		let formattedAddress = fullAddress.split(' ').join('+');
+		this.setState({
+			formattedAddy: formattedAddress
+		})
 		console.log(formattedAddress);
 		API.getGeocode(formattedAddress)
 			.then(location => {
 				return (
 					console.log("RESULTS", location.data),
-					this.setState({ 
+					this.setState({
 						showAddress: false,
 						lat: location.data.lat,
 						lng: location.data.lng
 					})
-					),
+				),
 					console.log("UPDATED STATE", this.state);
-				}
-				).catch(error => {
-					console.log("GEOCODE ERROR: ");
-					console.log(error);
-				})
+			}
+			).catch(error => {
+				console.log("GEOCODE ERROR: ");
+				console.log(error);
+			})
 	};
 
 	///////////////////SUBMIT UPLOAD FORM//////////////////
@@ -94,6 +97,8 @@ class Upload extends Component {
 			artist: userName,
 			artistID: userId,
 			title: this.state.artTitle,
+			// url: "https://cdn.pixabay.com/photo/2017/08/01/22/31/wall-2568346__340.jpg",
+			////CHANGE THIS BACK ONCE S3 KEYS WORKING!!!///
 			url: imageUrl,
 			address: this.state.address,
 			city: this.state.cityName,
@@ -101,6 +106,7 @@ class Upload extends Component {
 			zipCode: this.state.zipCode,
 			lat: this.state.lat,
 			lng: this.state.lng,
+			formattedAddy: this.state.formattedAddy,
 			description: this.state.description
 		})
 			.then(response => {
@@ -113,6 +119,7 @@ class Upload extends Component {
 					state: " ",
 					zipCode: " ",
 					description: " ",
+					formattedAddy: " ",
 					backToProfile: true
 				})
 			})
@@ -124,9 +131,9 @@ class Upload extends Component {
 
 	render() {
 		//////////////WE MAY NEED TO UNCOMMENT UNTIL FINISHED W/ PAGE SETUP BUT- DO NOT REMOVE//////
-		// if (this.props.user.loggedIn === false || this.props.user.isArtist === false) {
-		// 	return <Redirect to='/' />
-		// }
+		if (this.props.user.loggedIn === false || this.props.user.isArtist === false) {
+			return <Redirect to='/' />
+		}
 
 		if (this.state.backToProfile === true) {
 			return <Redirect to='/profile' />

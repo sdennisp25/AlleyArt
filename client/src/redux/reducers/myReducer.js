@@ -1,13 +1,15 @@
 const USER_AUTH = "USER_AUTH";
 const USER_LOGOUT = "USER_LOGOUT";
-const NEW_IMAGE = "NEW_IMAGE"
+const NEW_IMAGE = "NEW_IMAGE";
+const ARTIST_PROFILE = "ARTIST_PROFILE";
 
 const initialState = {
 	loggedIn: false,
 	username: " ",
 	userId: " ",
 	isArtist: false,
-	image: ""
+	image: "",
+	artistId: " "
 }
 
 export default function reducer(state = initialState, action) {
@@ -21,6 +23,8 @@ export default function reducer(state = initialState, action) {
 			return Object.assign({}, state, { image: action.image })
 		case USER_LOGOUT:
 			return Object.assign({}, state, { loggedIn: action.isLoggedIn })
+		case ARTIST_PROFILE:
+			return Object.assign({}, state, { artistId: action.artist })
 		default:
 			return state;
 	}
@@ -45,5 +49,12 @@ export function getImageUrl(image) {
 	return {
 		type: NEW_IMAGE,
 		image: image
+	}
+}
+
+export function artistProfile(payload) {
+	return {
+		type: ARTIST_PROFILE,
+		artist: payload
 	}
 }
