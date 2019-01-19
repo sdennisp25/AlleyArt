@@ -20,7 +20,7 @@ class Nav extends Component {
 	render() {
 
 		return (
-			<nav className="navbar navbar-expand-lg">
+			<nav className="navbar">
 				<a className="navbar-brand" href="/home">
 				ALLEY ART</a>
 				<div className="navWide">
@@ -33,13 +33,12 @@ class Nav extends Component {
 				</div>
 				<div className="navNarrow">
 					<i className="fa fa-bars fa-2x" onClick={this.burgerToggle}></i>
-
-					<div className="narrowLinks">
-						<a href="/home" onClick={this.burgerToggle}><i className="fas fa-search"></i></a>
-						<a href="/profile" onClick={this.burgerToggle}><i className="fas fa-heart"></i></a>
-						{this.props.user.isArtist === true && <a href="/image">Upload New Art</a>}
-						<a href="/" onClick={this.burgerToggle}><i className="fas fa-sign-out-alt"></i></a>
-					</div>
+                    <div className="narrowLinks">
+                        <Link to={"/home"} onClick={this.burgerToggle}><i className="fas fa-search"></i></Link>
+                        <Link to={"/profile"} onClick={this.burgerToggle}><i className="fas fa-heart"></i></Link>
+                        {this.props.user.isArtist === true && <a href="/image">Upload New Art</a>}
+                        <a href="/" onClick={this.burgerToggle}><i className="fas fa-sign-out-alt"></i></a>
+                    </div>
 				</div>
 			</nav>
 		);	

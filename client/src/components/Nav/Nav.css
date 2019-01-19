@@ -50,7 +50,7 @@ nav .navNarrow .narrowLinks {
 nav .navNarrow .narrowLinks a {
 	text-decoration: none;
 	display: block;
-	float: left;
+	float: right;
 	/* clear: left; */
 	padding: 0.5em;
 }
@@ -61,7 +61,12 @@ nav .navNarrow .narrowLinks a {
 	}
 	nav .navNarrow {
 		display: none;
-	} 	
+	} 
+}
 
+@media (max-width: 480px) {
+	.navbar-brand {
+		font-size: 30px;
+	}
 }
  

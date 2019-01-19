@@ -3,12 +3,11 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	/* width: 100%;
-	height: 100%; */
 }
 
 .card {
-	background-color: #1C3D0B;
+	background-color: #388e3c;
+	padding-bottom: 15px;
 }
 
 .card-image {
@@ -16,8 +15,26 @@
 	width: 100%;
 }
 
+img {
+	height: 200px;
+}
+
 .iconz {
 	color: #FFEA0C;
-	background-color: #1C3D0B;
-	border: #1C3D0B;
+	background-color: #388e3c;
+	border: #388e3c;
+}
+
+@media (max-width: 480px) {
+	h5 {
+		font-size: 20px;
+	}
+
+	p {
+		font-size: 10px;
+	}
+
+	.artwork {
+		width: 100%;
+	}
 }
