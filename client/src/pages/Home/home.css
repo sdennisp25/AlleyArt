@@ -1,15 +1,11 @@
-/* body {
-	/* background-image: url(img/homepic.jpg); */
-
-
 h1 {
 	font-family: 'Major Mono Display', monospace;
+	color: #B70000;
 }
 
 .row-container {
 	background-color: #AFAFAC;
-	color: black;
-	height: auto;
+	height: 500px;
 	width: 90%;
 	opacity: .8;
 	filter: alpha(opacity=50);
@@ -32,4 +28,5 @@ h1 {
 	background-image: url(./img/homepic.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
+	background-position: 'center center';
 }

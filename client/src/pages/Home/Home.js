@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Nav from "../../components/Nav";
 import { Row, Container } from "../../components/Grid";
 import Search from "../../components/Search";
-import Card from "../../components/Card";
 import ArtCard from "../../components/artCard";
 import "./home.css";
 import API from "../../utils/api";
@@ -73,7 +72,7 @@ class Home extends Component {
 					<div className="home-background">
 						<Row>
 							<div className="row-container search-container">
-								<h1>Search</h1>
+								<h1>Discover</h1>
 								<Search
 									handleInputChange={this.handleInputChange}
 									handleSearchArtist={this.handleSearchArtist}
@@ -82,11 +81,12 @@ class Home extends Component {
 						</Row>
 						{this.state.results.length ? (
 							<React.Fragment>
-
-								<div className=" row text-center results">
+								
+								<div className="row text-center results">
 									<h1>Results</h1>
-
+									
 									{this.state.results.map(art => (
+										
 										<ArtCard
 											key={"card-" + art._id}
 											id={art._id}
@@ -97,22 +97,15 @@ class Home extends Component {
 											description={art.description}
 											likes={art.likes}
 										/>
+									
 									))}
+									
 								</div>
-
+								
 							</React.Fragment>
 						) : (
 								<h3 className="center noResults">No Results to Display</h3>
 							)}
-
-						<Row>
-							<div className="row-container">
-								<h1>Discover</h1>
-
-								<Card></Card>
-
-							</div>
-						</Row>
 					</div>
 				</Container>
 			</React.Fragment>
