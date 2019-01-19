@@ -12,9 +12,12 @@ const dbController = require("../../controllers/dbController");
 // }
 
 router
-	.get("/search/:artist", dbController.searchArtist)
+	.get("/search/artist/:artist", dbController.searchArtist)
+	.get("/search/city/:city", dbController.searchCity)
+
 	.post("/register/", dbController.registerUser)
 	.post("/new-art", dbController.submitArt)
+
 	.post("/favorites/:artID", dbController.addFavorites)
 	.get("/favorites/", dbController.getFavorites)
 

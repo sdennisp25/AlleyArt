@@ -9,5 +9,8 @@ module.exports = {
 	s3Bucket:{
 		secretAccessKey: process.env.secretAccessKey,
 		accessKeyId: process.env.accessKeyId
+	},
+	geocoder: {
+		apiKey: process.env.geocoderApiKey
 	}
 };

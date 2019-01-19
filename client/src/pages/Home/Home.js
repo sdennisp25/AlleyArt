@@ -24,11 +24,28 @@ class Home extends Component {
 		});
 	};
 
-	handleSearch = (event) => {
+	handleSearchArtist = (event) => {
 		event.preventDefault();
 		console.log("You Clicked Me!");
 		console.log(this.state.artistSearch);
-		API.searchArt(this.state.artistSearch
+		API.searchArtist(this.state.artistSearch
+		).then(art => {
+			return (
+				console.log("RESULTS", art.data),
+				this.setState({ results: art.data, artistSearch: "", locationSearch: "" })
+			)
+		}
+		).catch(error => {
+			console.log("SEARCH ERROR: ");
+			console.log(error);
+		})
+	}
+
+	handleSearchCity = (event)=>{
+		event.preventDefault();
+		console.log("You Clicked Me!");
+		console.log(this.state.locationSearch);
+		API.searchCity(this.state.locationSearch
 		).then(art => {
 			return (
 				console.log("RESULTS", art.data),
@@ -58,7 +75,8 @@ class Home extends Component {
 								<h1>Discover</h1>
 								<Search
 									handleInputChange={this.handleInputChange}
-									handleSearch={this.handleSearch}></Search>
+									handleSearchArtist={this.handleSearchArtist}
+									handleSearchCity={this.handleSearchCity}></Search>
 							</div>
 						</Row>
 						{this.state.results.length ? (
