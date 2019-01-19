@@ -105,7 +105,7 @@ class Landing extends Component {
 								backgroundRepeat: 'no-repeat',}}>
 				<Container>
 					<Row>
-						<div className="landing-background">
+						<div className="landing-background z-depth-5">
 							{/* <h2>TESTING!!! THIS IS THE CURRENT STATE:  {this.props.user.image}</h2> */}
 							<div className="landing center-align card-panel">
 								<h1>ALLEY ART</h1>

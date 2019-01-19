@@ -40,26 +40,25 @@ class Profile extends Component {
 				<Nav></Nav>
 
 				<Container fluid>
-					<h1>Favorites Page</h1>
 
 					<Row>
 						{this.state.favorites.length ? (
 							<React.Fragment>
-								<h1 className="white-text">{this.props.user.username}'s Favorites</h1>
-								<Wrapper>
-									{this.state.favorites.map(art => (
-										<ArtCard
-											key={"card-" + art._id}
-											id={art._id}
-											fav={true}
-											url={art.url}
-											artistId={art.artistID}
-											title={art.title}
-											description={art.description}
-											likes={art.likes}
-										/>
-									))}
-								</Wrapper>
+								<div className="row text-center col s12 m6 l4">
+									<h1 className="white-text">{this.props.user.username}'s Favorites</h1>
+										{this.state.favorites.map(art => (
+											<ArtCard
+												key={"card-" + art._id}
+												id={art._id}
+												fav={true}
+												url={art.url}
+												artistId={art.artistID}
+												title={art.title}
+												description={art.description}
+												likes={art.likes}
+											/>
+										))}
+									</div>
 							</React.Fragment>
 						) : (
 								<h3 className="center noResults">No Results to Display</h3>

@@ -67,15 +67,13 @@ class ArtCard extends React.Component {
 			return <Redirect to='/artist' />
 		}
 		return (
-			<div className="col s4 artwork">
+			<div className="col s12 m6 l4 artwork">
 				{/* <div className="col s12 m4 l3">  ^col s4 */}
 
 				<div className="card">
 					<div className="card-image">
 						<img src={this.props.url} alt="" />
 					</div>
-
-					<span className="card-title center"><h5>{this.props.title}</h5></span>
 
 					<span className="card-title center"><h5>{this.props.title}</h5></span>
 
