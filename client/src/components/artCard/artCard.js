@@ -15,7 +15,7 @@ class ArtCard extends React.Component {
 			toMap: false,
 			lat: 0,
 			lng: 0,
-			address: " "
+			address: " ",
 		}
 	}
 	markAsFavorite = (id) => {
@@ -40,20 +40,6 @@ class ArtCard extends React.Component {
 			.catch(err => console.log(err));
 	}
 
-	mapArt = (id) => {
-		console.log("Showing Art Location", id);
-		API.getLatLng(id)
-			.then(response => {
-				console.log("Coordinates Returned: ", response.data);
-				this.setState({
-					lat: response.data.lat,
-					lng: response.data.lng,
-					address: response.data.address
-				})
-			})
-			.catch(err => console.log(err));
-	}
-
 	viewArtist = (id) => {
 		console.log("Showing Artist Profile", id);
 		this.props.artistProfile(id);
@@ -67,7 +53,13 @@ class ArtCard extends React.Component {
 			return <Redirect to='/artist' />
 		}
 		return (
+<<<<<<< HEAD
 			<div className="col s12 m6 l4 artwork">
+=======
+
+
+			<div className="col s4 artwork">
+>>>>>>> master
 				{/* <div className="col s12 m4 l3">  ^col s4 */}
 
 				<div className="card">
@@ -81,11 +73,12 @@ class ArtCard extends React.Component {
 					<div className="center-align">
 						<button className="iconz" onClick={(id) => this.markAsFavorite(this.props.id)}><i className="fas fa-heart"></i></button>
 						<button className="iconz" onClick={(id) => this.likeArt(this.props.id)}><i className="fas fa-thumbs-up"></i>{this.state.likes}</button>
-						<button className="iconz" onClick={(id) => this.mapArt(this.props.id)}><i className="fas fa-map-marked"></i></button>
+						<button className="iconz" onClick={(id) => this.props.mapArt(this.props.id)}><i className="fas fa-map-marked"></i></button>
 						<button className="iconz" onClick={(artistId) => this.viewArtist(this.props.artistId)}><i className="fas fa-user"></i></button>
 					</div>
 				</div>
 			</div>
+
 
 		);
 	}

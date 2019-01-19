@@ -1,5 +1,9 @@
 import React, { Component } from "react";
+<<<<<<< HEAD
 import { Container, Row } from "../../components/Grid";
+=======
+import { Row, Container } from "../../components/Grid";
+>>>>>>> master
 import "./upload_test.css";
 import Gps from "../../components/Geo";
 import AddressForm from "../../components/Address";
@@ -22,6 +26,7 @@ class Upload extends Component {
 			formattedAddy: " ",
 			lat: 0,
 			lng: 0,
+			showMap: false,
 			showAddress: false,
 			userAddressInfo: false,
 			showUpload: false,
@@ -66,7 +71,8 @@ class Upload extends Component {
 					this.setState({
 						showAddress: false,
 						lat: location.data.lat,
-						lng: location.data.lng
+						lng: location.data.lng,
+						showMap: true
 					})
 				),
 					console.log("UPDATED STATE", this.state);
@@ -131,87 +137,83 @@ class Upload extends Component {
 	}
 
 	render() {
-		//////////////WE MAY NEED TO UNCOMMENT UNTIL FINISHED W/ PAGE SETUP BUT- DO NOT REMOVE//////
-		if (this.props.user.loggedIn === false || this.props.user.isArtist === false) {
-			return <Redirect to='/' />
-		}
 
-		if (this.state.backToProfile === true) {
-			return <Redirect to='/profile' />
-		}
+		console.log(this.state);
+		//////////////WE MAY NEED TO UNCOMMENT UNTIL FINISHED W/ PAGE SETUP BUT- DO NOT REMOVE//////
+		// if (this.props.user.loggedIn === false || this.props.user.isArtist === false) {
+		// 	return <Redirect to='/' />
+		// }
+
+		// if (this.state.backToProfile === true) {
+		// 	return <Redirect to='/profile' />
+		// }
 
 		return (
+
 			<React.Fragment>
-				<Nav></Nav>
+				<Nav />
 				<Container>
 					<h1 className="title">Upload New Image</h1>
-					<div className="uploadForm">
-						<Row>
-							<form className="col s12">
+					<div className="row">
+						<div className="col s12 m6">
+							<div className="card card-frame blue-grey darken-1">
+								<div className="card-content white-text">
+									<span className="card-title">Image Upload</span>
+									<form>
+										<button
+											className="waves-effect waves-light btn blue darken-4"
+											type="button"
+											onClick={this.showUpload}
+										>
+											Find Image
+                      <i className="large material-icons right">file_upload</i>
+										</button>
 
-								<Row>
-									<div className="col s12">
-										<h5 className="white-text">
-											Add An Image</h5>
-										<button className="waves-effect waves-light btn blue darken-4" type="button" onClick={this.showUpload}>Find Image</button>
-									</div>
-								</Row>
-
-								<Row>
-									<div className="col s12">
-										<hr />
-										<h5 className="white-text">
-											Add A Street Location</h5>
-										<h6 className="white-text">
-											Submit location by either current GPS location or manual entry</h6>
-										<br />
 										<Gps />
-										<span className="white-text"> or </span>
+
 										<button
 											id="addAddress"
 											type="button"
 											className="waves-effect waves-light btn blue darken-4"
-											onClick={this.showAddress}>
+											onClick={this.showAddress}
+										>
 											Address
-									<i className="large material-icons">location_on</i>
+                      <i className="large material-icons right">home</i>
 										</button>
-									</div>
-								</Row>
-
-								<Row>
-									<hr />
-									<h5 className="white-text">
-										Add A Title</h5>
-									<div className="input-field col s12">
-										<input id="input_text" type="text" name="artTitle" onChange={this.handleInputChange}></input>
-										<label htmlFor="input_text" className="blue-text">Title</label>
-									</div>
-								</Row>
-
-								<Row>
-									<hr />
-									<h5 className="white-text">
-										Tell Us About It!</h5>
-									<div className="input-field col s12">
-										<textarea id="textarea1" className="materialize-textarea" name="description" onChange={this.handleInputChange}></textarea>
-										<label htmlFor="textarea1" className="blue-text">Description of Artwork...</label>
-										<input id="input_text" type="text" name="description" onChange={this.handleInputChange}></input>
-										<label htmlFor="input_text" className="blue-text">Description of Artwork...</label>
-									</div>
-								</Row>
-								<hr />
-								<Row>
-									<div className="col s12">
-										<button id="submit" className="waves-effect waves-light btn green darken-2" onClick={(e) => { this.submitForm(e) }}>
+										<label>Title</label>
+										<input
+											id="input_text"
+											type="text"
+											name="artTitle"
+											onChange={this.handleInputChange}
+										/>
+										<label>Description</label>
+										<textarea
+											id="textarea1"
+											className="materialize-textarea"
+											name="description"
+											onChange={this.handleInputChange}
+										/>
+										<button
+											id="submit"
+											className="waves-effect waves-light btn green darken-2"
+											onClick={e => {
+												this.submitForm(e);
+											}}
+										>
 											SAVE
-										<i className="large material-icons">save</i>
+                      <i className="large material-icons right">send</i>
 										</button>
-									</div>
+									</form>
+								</div>
+							</div>
+						</div>
 
-								</Row>
-
-							</form>
-						</Row>
+						<div className="col s12 m6">
+							{this.state.showMap === true && <MyMapContainer
+								lat={this.state.lat}
+								lng={this.state.lng} />}
+						</div>
 					</div>
 				</Container>
 
@@ -226,16 +228,15 @@ class Upload extends Component {
 					show={this.state.showUpload}
 					handleClose={this.hideUpload}
 				/>
-
 			</React.Fragment>
-		)
+		);
 	}
 }
 
 function mapStateToProps(state) {
-  return {
-    user: state
-  };
+	return {
+		user: state
+	};
 }
 
 export default connect(mapStateToProps)(Upload);
