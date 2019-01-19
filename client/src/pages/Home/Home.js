@@ -8,13 +8,17 @@ import API from "../../utils/api";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { logInUser } from "../../redux/reducers/myReducer";
+import GoogleApiWrapper from "../../components/Map/google";
 
 class Home extends Component {
 
 	state = {
 		artistSearch: "",
 		locationSearch: "",
-		results: []
+		results: [],
+		showMap: false,
+		lat: 0,
+		lng: 0,
 	}
 
 	handleInputChange = event => {
@@ -41,7 +45,7 @@ class Home extends Component {
 		})
 	}
 
-	handleSearchCity = (event)=>{
+	handleSearchCity = (event) => {
 		event.preventDefault();
 		console.log("You Clicked Me!");
 		console.log(this.state.locationSearch);
@@ -56,6 +60,22 @@ class Home extends Component {
 			console.log("SEARCH ERROR: ");
 			console.log(error);
 		})
+	}
+
+	mapArt = (id) => {
+		console.log("Showing Art Location", id);
+		API.getLatLng(id)
+			.then(response => {
+				console.log("Coordinates Returned: ", response.data);
+				this.setState({
+					lat: response.data.lat,
+					lng: response.data.lng,
+					address: response.data.address,
+					showMap: true,
+				});
+				console.log("mapArt() STATE: ", this.state);
+			})
+			.catch(err => console.log(err));
 	}
 
 	render() {
@@ -81,12 +101,12 @@ class Home extends Component {
 						</Row>
 						{this.state.results.length ? (
 							<React.Fragment>
-								
+
 								<div className="row text-center results">
 									<h1>Results</h1>
-									
+
 									{this.state.results.map(art => (
-										
+
 										<ArtCard
 											key={"card-" + art._id}
 											id={art._id}
@@ -96,16 +116,23 @@ class Home extends Component {
 											title={art.title}
 											description={art.description}
 											likes={art.likes}
+											mapArt={this.mapArt}
 										/>
-									
+
 									))}
-									
+
 								</div>
-								
+
 							</React.Fragment>
 						) : (
 								<h3 className="center noResults">No Results to Display</h3>
 							)}
+						<Row>
+							{this.state.showMap === true && <GoogleApiWrapper
+								lat={this.state.lat}
+								lng={this.state.lng}
+							/>}
+						</Row>
 					</div>
 				</Container>
 			</React.Fragment>
