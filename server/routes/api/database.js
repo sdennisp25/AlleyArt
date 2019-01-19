@@ -19,7 +19,7 @@ router
 	.get("/location/:_id", authCheck, dbController.getLatLng)
 
 	.post("/register/", dbController.registerUser)
-	.post("/new-art", authCheck, dbController.submitArt)
+	.post("/new-art", dbController.submitArt)
 	.post("/favorites/:artID", authCheck, dbController.addFavorites)
 
 	.put("/:_id", authCheck, dbController.incLikes)

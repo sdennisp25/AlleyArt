@@ -8,62 +8,62 @@ const mStyle = {
 }
 
 export class MyMapContainer extends Component {
-  state = {
-    showingInfoWindow: false,
-    activeMarker: {},
+	state = {
+		showingInfoWindow: false,
+		activeMarker: {},
 		selectedPlace: {},
 		latitudeState: " ",
 		longitudeState: " "
-  };
+	};
 
-  onMarkerClick = (props, marker, e) =>
-    this.setState({
-      selectedPlace: props,
-      activeMarker: marker,
-      showingInfoWindow: true
-    });
+	onMarkerClick = (props, marker, e) =>
+		this.setState({
+			selectedPlace: props,
+			activeMarker: marker,
+			showingInfoWindow: true
+		});
 
-  onMapClicked = props => {
-    if (this.state.showingInfoWindow) {
-      this.setState({
-        showingInfoWindow: false,
-        activeMarker: null
-      });
-    }
+	onMapClicked = props => {
+		if (this.state.showingInfoWindow) {
+			this.setState({
+				showingInfoWindow: false,
+				activeMarker: null
+			});
+		}
 	};
 
 
-  render() {
-    // console.log(this.props.google);
-    // console.log(this.state);
+	render() {
+		// console.log(this.props.google);
+		// console.log(this.state);
 
-    return (
-      <div className="map">
-        <Map
-          google={this.props.google}
+		return (
+			<div className="map">
+				<Map
+					google={this.props.google}
 					onClick={this.onMapClicked}
 					style={mStyle}
-          initialCenter={{
-						lat: this.state.latitudeState,// 40.7608,
-            lng: this.state.longitudeState//-111.891
-          }}
-        >
-          <Marker onClick={this.onMarkerClick} name={"Current location"} />
+					initialCenter={{
+						lat: this.props.lat,
+						lng: this.props.lng
+					}}
+				>
+					<Marker onClick={this.onMarkerClick} name={"Current location"} />
 
-          <InfoWindow
-            marker={this.state.activeMarker}
-            visible={this.state.showingInfoWindow}
-          >
-            <div>
-              <h1>{this.state.selectedPlace.name}</h1>
-            </div>
-          </InfoWindow>
-        </Map>
-      </div>
-    );
-  }
+					<InfoWindow
+						marker={this.state.activeMarker}
+						visible={this.state.showingInfoWindow}
+					>
+						<div>
+							<h1>{this.state.selectedPlace.name}</h1>
+						</div>
+					</InfoWindow>
+				</Map>
+			</div>
+		);
+	}
 }
 
 export default GoogleApiWrapper({
-  apiKey: ""
+	apiKey: "AIzaSyCH-qhf7-LfJ52gOs_vqe_-_TiNlL30lww"
 })(MyMapContainer);
