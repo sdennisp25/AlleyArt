@@ -16,6 +16,9 @@ class Gps extends Component {
   };
 
   geoSuccess = position => {
+		alert("Obtained Geolocation!\n\n" +
+		"Latitude: " + position.coords.latitude + "\n" +
+		"Longitude: " + position.coords.longitude);
     console.log("Lat: ", position.coords.latitude);
     console.log("Long: ", position.coords.longitude);
   };
@@ -31,7 +34,7 @@ class Gps extends Component {
         className="waves-effect waves-light btn blue darken-4"
         onClick={this.gpsInit}
       >
-        GPS Locator<i className="large material-icons">location_on</i>
+        GPS<i className="large material-icons right">location_on</i>
       </button>
     );
   }
