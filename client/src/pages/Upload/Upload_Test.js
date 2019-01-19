@@ -131,9 +131,9 @@ class Upload extends Component {
 
 	render() {
 		//////////////WE MAY NEED TO UNCOMMENT UNTIL FINISHED W/ PAGE SETUP BUT- DO NOT REMOVE//////
-		// if (this.props.user.loggedIn === false || this.props.user.isArtist === false) {
-		// 	return <Redirect to='/' />
-		// }
+		if (this.props.user.loggedIn === false || this.props.user.isArtist === false) {
+			return <Redirect to='/' />
+		}
 
 		if (this.state.backToProfile === true) {
 			return <Redirect to='/profile' />

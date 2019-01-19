@@ -3,7 +3,7 @@ import Nav from "../../components/Nav";
 import { Row, Container } from "../../components/Grid";
 import ArtCard from "../../components/artCard";
 import API from "../../utils/api";
-// import { Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
 class Artist extends Component {
@@ -27,7 +27,7 @@ class Artist extends Component {
 					artistEmail: artist.data.artistEmail,
 					artistWorks: artist.data.artistWorks
 				});
-				console.log("ARTIST PROFILE RESPONSE", this.state.artist);
+				console.log("ARTIST PROFILE RESPONSE", this.state);
 			})
 			.catch(err => console.log(err));
 	}
@@ -35,9 +35,9 @@ class Artist extends Component {
 	render() {
 
 		//////////////WE MAY NEED TO UNCOMMENT UNTIL FINISHED W/ PAGE SETUP BUT- DO NOT REMOVE//////
-		// if (this.props.user.loggedIn === false) {
-		// 	return <Redirect to='/' />
-		// }
+		if (this.props.user.loggedIn === false) {
+			return <Redirect to='/' />
+		}
 
 		return (
 			<React.Fragment>

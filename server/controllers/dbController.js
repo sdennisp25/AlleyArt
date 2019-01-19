@@ -90,15 +90,15 @@ module.exports = {
 	viewArtist: function (req, res) {
 		console.log("Locationg Artist Profile", req.params.artistID);
 		db.User
-			.find({ _id: req.params.artistID })
+			.findOne({ _id: req.params.artistID })
 			.populate("artwork")
 			.then(function (dbProfile) {
 				let artist = {
-					username: dbProfile[0].username,
-					aboutArtist: dbProfile[0].aboutArtist,
-					contactArtist: dbProfile[0].okToContact,
-					artistWorks: dbProfile[0].artwork,
-					artistEmail: dbProfile[0].email
+					username: dbProfile.username,
+					aboutArtist: dbProfile.aboutArtist,
+					contactArtist: dbProfile.okToContact,
+					artistWorks: dbProfile.artwork,
+					artistEmail: dbProfile.email
 				}
 				console.log(artist);
 				res.json(artist);
@@ -111,13 +111,13 @@ module.exports = {
 	getLatLng: function (req, res) {
 		console.log("Retrieving Location for mapping", req.params);
 		db.Artwork
-			.find((req.params))
+			.findOne((req.params))
 			.then(function (dbLocation) {
 				console.log(dbLocation);
 				let coordinates = {
-					lat: dbLocation[0].lat,
-					lng: dbLocation[0].lng,
-					address: dbLocation[0].formattedAddy
+					lat: dbLocation.lat,
+					lng: dbLocation.lng,
+					address: dbLocation.formattedAddy
 				}
 				console.log(coordinates);
 				res.json(coordinates);

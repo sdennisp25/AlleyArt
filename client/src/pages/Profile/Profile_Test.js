@@ -31,6 +31,10 @@ class Profile extends Component {
 	}
 
 	render() {
+		if (this.props.user.loggedIn === false) {
+			return <Redirect to='/' />
+		}
+		
 			return (
 			<React.Fragment>
 				<Nav></Nav>
