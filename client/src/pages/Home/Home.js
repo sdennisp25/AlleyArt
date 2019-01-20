@@ -12,16 +12,22 @@ import MyMapContainer from "../../components/Map/google";
 
 
 class Home extends Component {
+	constructor(props) {
+		super(props);
 
-	state = {
-		artistSearch: "",
-		locationSearch: "",
-		results: [],
-		showMap: false,
-		lat: 0,
-		lng: 0,
+		this.state = {
+			artistSearch: "",
+			locationSearch: "",
+			results: [],
+			showMap: false,
+			center: {
+				lat: 0,
+				lng: 0
+			}
+		}
 	}
 
+	////SEARCH FORM FUNCTIONS/////////
 	handleInputChange = event => {
 		let { name, value } = event.target;
 		this.setState({
@@ -63,24 +69,32 @@ class Home extends Component {
 		})
 	}
 
+	//////////GOOGLE MAP FUNCTIONS/////////////
+	showMap = () => {
+		this.setState({
+			showMap: true
+		})
+	}
+
 	mapArt = (id) => {
 		console.log("Showing Art Location", id);
 		API.getLatLng(id)
 			.then(response => {
 				console.log("Coordinates Returned: ", response.data);
 				this.setState({
-					lat: response.data.lat,
-					lng: response.data.lng,
-					address: response.data.address,
-					showMap: true,
+					center: {
+						lat: response.data.lat,
+						lng: response.data.lng
+					},
 				});
-				console.log("mapArt() STATE: ", this.state);
 			})
+			.then(this.showMap())
+
+
 			.catch(err => console.log(err));
 	}
 
 	render() {
-		//////////////WE MAY NEED TO UNCOMMENT UNTIL FINISHED W/ PAGE SETUP BUT- DO NOT REMOVE//////
 		if (this.props.user.loggedIn === false) {
 			return <Redirect to='/' />
 		}
@@ -92,7 +106,7 @@ class Home extends Component {
 				<Container fluid>
 					<div className="home-background">
 						<Row>
-							<div className="row-container search-container col s12 m6 l4  z-depth-5">
+							<div className="row-container search-container col s12 m6 l4 z-depth-5">
 								<h1>Discover</h1>
 								<Search
 									handleInputChange={this.handleInputChange}
@@ -102,7 +116,7 @@ class Home extends Component {
 						</Row>
 						{this.state.results.length ? (
 							<React.Fragment>
-								
+
 								<div className="row text-center results col s12 m6 l4">
 									<h1>Results</h1>
 
@@ -130,8 +144,8 @@ class Home extends Component {
 							)}
 						<Row>
 							{this.state.showMap === true && <MyMapContainer
-								lat={this.state.lat}
-								lng={this.state.lng}
+								center={this.state.center}
+								zoon={9}
 							/>}
 						</Row>
 					</div>

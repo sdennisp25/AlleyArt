@@ -3,8 +3,8 @@ import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 
 const mStyle = {
 	border: "1px solid black",
-	width: "35%",
-	height: "65%"
+	width: "75%",
+	height: "75%"
 }
 
 export class MyMapContainer extends Component {
@@ -12,8 +12,8 @@ export class MyMapContainer extends Component {
 		showingInfoWindow: false,
 		activeMarker: {},
 		selectedPlace: {},
-		latitudeState: " ",
-		longitudeState: " "
+		// latitudeState: " ",
+		// longitudeState: " "
 	};
 
 	onMarkerClick = (props, marker, e) =>
@@ -34,19 +34,20 @@ export class MyMapContainer extends Component {
 
 
 	render() {
-		// console.log(this.props.google);
-		// console.log(this.state);
+		const { center, zoom } = this.props;
 
 		return (
 			<div className="map">
 				<Map
 					google={this.props.google}
-					onClick={this.onMapClicked}
 					style={mStyle}
+					center={center}
 					initialCenter={{
-						lat: this.props.lat,
-						lng: this.props.lng
+						lat: 40.7608,
+						lng: -111.8910
 					}}
+					zoom={zoom}
+					onClick={this.onMapClicked}
 				>
 					<Marker onClick={this.onMarkerClick} name={"Current location"} />
 
@@ -63,7 +64,11 @@ export class MyMapContainer extends Component {
 		);
 	}
 }
+const LoadingContainer = (props) => (
+  <div>Fancy loading container!</div>
+)
 
 export default GoogleApiWrapper({
-	apiKey: "AIzaSyCH-qhf7-LfJ52gOs_vqe_-_TiNlL30lww"
+	apiKey: "AIzaSyCH-qhf7-LfJ52gOs_vqe_-_TiNlL30lww",
+	LoadingContainer: LoadingContainer
 })(MyMapContainer);

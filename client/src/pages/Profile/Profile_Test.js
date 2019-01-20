@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { Row, Container } from "../../components/Grid";
-import Wrapper from "../../components/Wrapper";
+// import Wrapper from "../../components/Wrapper";
 import ArtCard from "../../components/artCard";
 import "./Profile_Test.css";
 import { connect } from "react-redux";
 import API from "../../utils/api"
 import { Redirect } from "react-router-dom";
 import Nav from "../../components/Nav";
-// import { APIGateway } from "aws-sdk";
+
 
 class Profile extends Component {
 
