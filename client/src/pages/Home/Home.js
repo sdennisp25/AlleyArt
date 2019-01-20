@@ -8,7 +8,8 @@ import API from "../../utils/api";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { logInUser } from "../../redux/reducers/myReducer";
-import GoogleApiWrapper from "../../components/Map/google";
+import MyMapContainer from "../../components/Map/google";
+
 
 class Home extends Component {
 
@@ -101,13 +102,8 @@ class Home extends Component {
 						</Row>
 						{this.state.results.length ? (
 							<React.Fragment>
-<<<<<<< HEAD
 								
 								<div className="row text-center results col s12 m6 l4">
-=======
-
-								<div className="row text-center results">
->>>>>>> master
 									<h1>Results</h1>
 
 									{this.state.results.map(art => (
@@ -133,7 +129,7 @@ class Home extends Component {
 								<h3 className="center noResults col s12 m6 l4">No Results to Display</h3>
 							)}
 						<Row>
-							{this.state.showMap === true && <GoogleApiWrapper
+							{this.state.showMap === true && <MyMapContainer
 								lat={this.state.lat}
 								lng={this.state.lng}
 							/>}
