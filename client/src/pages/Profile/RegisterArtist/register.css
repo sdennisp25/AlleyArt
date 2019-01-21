@@ -2,18 +2,16 @@ body {
 		background-color: grey;
  }
 
-h3 {
-	font-size: 20px;
-}
 
 h3 {
 	font-family: 'Cuprum', sans-serif;
 	background-color: rgb(0,0,0,0.5);
-	width: 30%;
+	width: 40%;
+	font-size: 20px;
 }
 
 label {
-	color: #211E1E;
+	color: white;
 }
 
  .input-field  {

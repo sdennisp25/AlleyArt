@@ -1,19 +1,20 @@
 import React, { Component } from "react";
+import "./google.css";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 
 const mStyle = {
-	border: "1px solid black",
-	width: "35%",
-	height: "65%"
-}
+  border: "1px solid black",
+  width: "window.innerWidth",
+  // height: "window.innerHeight"
+};
 
 export class MyMapContainer extends Component {
   state = {
     showingInfoWindow: false,
     activeMarker: {},
-		selectedPlace: {},
-		latitudeState: " ",
-		longitudeState: " "
+    selectedPlace: {},
+    latitudeState: " ",
+    longitudeState: " "
   };
 
   onMarkerClick = (props, marker, e) =>
@@ -30,22 +31,21 @@ export class MyMapContainer extends Component {
         activeMarker: null
       });
     }
-	};
-
+  };
 
   render() {
     // console.log(this.props.google);
     // console.log(this.state);
 
     return (
-      <div className="map">
+      <div class="map">
         <Map
           google={this.props.google}
-					onClick={this.onMapClicked}
-					style={mStyle}
+          onClick={this.onMapClicked}
+          style={mStyle}
           initialCenter={{
-						lat: this.state.latitudeState,// 40.7608,
-            lng: this.state.longitudeState//-111.891
+            lat: 41.7608,
+            lng: -111.891
           }}
         >
           <Marker onClick={this.onMarkerClick} name={"Current location"} />
@@ -65,5 +65,5 @@ export class MyMapContainer extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: ""
+  apiKey: "AIzaSyCH-qhf7-LfJ52gOs_vqe_-_TiNlL30lww"
 })(MyMapContainer);

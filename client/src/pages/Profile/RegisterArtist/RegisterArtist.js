@@ -10,7 +10,9 @@ class RegisterArtist extends Component {
   state = {
     artistName: "",
     artistEmail: "",
+    artistEmailError: "",
     artistPassword: "",
+    artistPasswordError: "",
     aboutArtist: "",
     okToContact: false,
     showLogin: false,
@@ -26,16 +28,97 @@ class RegisterArtist extends Component {
   };
 
   handleInputChange = event => {
+    // this.setState({
+    // 	[event.target.name]: event.target.value
+    // });
+    // this.props.onChange({
+    // 	[event.target.name]: event.targe.value
+    // });
     let { name, value } = event.target;
     this.setState({
       [name]: value
     });
   };
+  // ---------------------------------------------
+
+  validate = () => {
+    let isError = false;
+    let emailVal = this.state.artistEmail;
+    let passwordVal = this.state.artistPassword;
+    // let special = "!@#$%^&*()+=-[]';,./{}|\":<>?";
+    let special2 = "/^[A-Za-z]+$/";
+    console.log(special2);
+    const errors = {};
+
+		// ============== EMAIL VALIDATE ========================
+		
+		//checks for @ sign
+    if (emailVal.indexOf("@") === -1) {
+			isError = true;
+      errors.artistPasswordError = "Must contain required info";
+      console.log("Needs to be valid email!");
+		}
+		// checks for period 
+    if (emailVal.indexOf(".") === -1) {
+			isError = true;
+      errors.artistPasswordError = "Must be a valid email";
+      console.log("Needs a period");
+    }
+		// ============== PASSWORD VALIDATE ========================
+		
+
+    for (let i = 0; i < passwordVal.length; i++) {
+      if ("A" <= passwordVal[i] && passwordVal[i] <= "Z")
+        // check if you have an uppercase
+        console.log("CAP LETTER");
+      if ("a" <= passwordVal[i] && passwordVal[i] <= "z")
+        // check if you have a lowercase
+        console.log("LOWER LETTER");
+      if ("0" <= passwordVal[i] && passwordVal[i] <= "9") {
+				//checks if you have a number
+        console.log("NUMBER");
+      }
+      // check if you have a numeric
+      if (passwordVal[i] === "!") console.log("GOT IT!!!!!");
+    }
+
+    // if (this.state.artistPassword.length < 8) {
+    //   isError = true;
+    //   this.setState({
+    //     artistPasswordError: "Needs to be at least 8 characters long!"
+    //   });
+    //   console.log("INVALID PASSWORD");
+    // }
+
+    // if (this.state.artistPassword.indexOf("A") === -1) {
+    //   isError = true;
+    //   this.setState({
+    //     artistPasswordError: "Needs UPPER CASE!"
+    //   });
+    //   console.log("Needs UPPER CASE");
+    // }
+    // if (
+    //   this.state.artistPasswordError.indexOf(
+    //     "~`!#$%^&*+=-[]\\';,/{}|\":<>?"
+    //   ) === -1
+    // ) {
+    //   isError = true;
+    //   this.setState({
+    //     artistPasswordError: "Needs Special Character!"
+    //   });
+    //   console.log("Needs Special Character");
+    // }
+
+    return isError;
+  };
+
+  // ---------------------------------------------
 
   handleLogin = event => {
     event.preventDefault();
     console.log("You Clicked Me!");
     console.log(this.state);
+
     API.loginUser({
       email: this.state.username,
       password: this.state.password
@@ -55,6 +138,15 @@ class RegisterArtist extends Component {
     event.preventDefault();
     console.log("You Clicked Me!");
     console.log(this.state);
+
+    const err = this.validate();
+    if (!err) {
+      this.setState({
+        artistEmail: "",
+        artistPassword: ""
+      });
+    }
+
     API.registerUser({
       isArtist: true,
       username: this.state.artistName,
@@ -106,45 +198,57 @@ class RegisterArtist extends Component {
                       type="text"
                       className="validate"
                       name="artistName"
+                      value={this.state.artistName}
                       onChange={this.handleInputChange}
                     />
-                    <label htmlFor="input-text" className="black-text">
-                      Artist Name
-                    </label>
+                    <label htmlFor="input-text">Artist Name</label>
                   </div>
+
+                  {/* =============================== */}
+                  {/* ========= EMAIL =============== */}
                   <div className="input-field col s12">
                     <input
                       id="email"
                       type="email"
                       className="validate"
                       name="artistEmail"
+                      value={this.state.artistEmail}
                       onChange={this.handleInputChange}
+                      errortext={this.state.artistEmailError}
+                      floatinglabeltext="Name"
                     />
-                    <label htmlFor="email" className="black-text">
-                      Email
-                    </label>
+                    <label htmlFor="email">Email</label>
                     <span
                       className="helper-text"
-                      data-error="Please Enter an Email Address"
+                      data-error="Please Enter a valid Email Address"
                       data-success=""
                     />
                   </div>
+
+                  {/* ============================== */}
+                  {/* ========= PASSWORD =========== */}
+
                   <div className="input-field col s12">
                     <input
                       id="input_text"
-                      type="password"
+                      type="email"
+                      className="validate"
                       data-length="10"
                       name="artistPassword"
+                      value={this.state.artistPassword}
                       onChange={this.handleInputChange}
+                      errortext={this.state.artistPasswordError}
                     />
-                    <label
-                      htmlFor="input_text"
-                      className="black-text"
-                      data-error="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-                    >
-                      Password
-                    </label>
+
+                    <label htmlFor="input_text">Password</label>
+                    <span
+                      className="helper-text"
+                      // data-error="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                      data-error={this.state.artistPasswordError}
+                      data-success=""
+                    />
                   </div>
+                  {/* ============================== */}
                   <div className="input-field col s12">
                     <textarea
                       id="textarea2"
@@ -153,7 +257,6 @@ class RegisterArtist extends Component {
                     />
                     <label
                       htmlFor="textarea2"
-                      className="black-text"
                       name="aboutArtist"
                       onChange={this.handleInputChange}
                     >
