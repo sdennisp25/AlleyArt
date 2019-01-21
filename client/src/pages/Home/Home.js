@@ -8,15 +8,36 @@ import API from "../../utils/api";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { logInUser } from "../../redux/reducers/myReducer";
+import MyMapContainer from "../../components/Map/google";
+
+const cardStyle = {
+	border: "3px solid black",
+	width: "75%",
+	height: "75%",
+	margin: "auto",
+}
+
 
 class Home extends Component {
+	constructor(props) {
+		super(props);
 
-	state = {
-		artistSearch: "",
-		locationSearch: "",
-		results: []
+		this.state = {
+			artistSearch: "",
+			locationSearch: "",
+			results: [],
+			showMap: false,
+			center: {
+				lat: 0,
+				lng: 0
+			},
+			title: " ",
+			address: " ",
+			city: " ",
+		}
 	}
 
+	////SEARCH FORM FUNCTIONS/////////
 	handleInputChange = event => {
 		let { name, value } = event.target;
 		this.setState({
@@ -41,7 +62,7 @@ class Home extends Component {
 		})
 	}
 
-	handleSearchCity = (event)=>{
+	handleSearchCity = (event) => {
 		event.preventDefault();
 		console.log("You Clicked Me!");
 		console.log(this.state.locationSearch);
@@ -58,8 +79,35 @@ class Home extends Component {
 		})
 	}
 
+	//////////GOOGLE MAP FUNCTIONS/////////////
+	showMap = () => {
+		this.setState({
+			showMap: true
+		})
+	}
+
+	mapArt = (id) => {
+		console.log("Showing Art Location", id);
+		API.getLatLng(id)
+			.then(response => {
+				console.log("Coordinates Returned: ", response.data);
+				this.setState({
+					center: {
+						lat: response.data.lat,
+						lng: response.data.lng
+					},
+					title: response.data.title,
+					address: response.data.address,
+					city: response.data.city
+				});
+			})
+			.then(this.showMap())
+
+
+			.catch(err => console.log(err));
+	}
+
 	render() {
-		//////////////WE MAY NEED TO UNCOMMENT UNTIL FINISHED W/ PAGE SETUP BUT- DO NOT REMOVE//////
 		if (this.props.user.loggedIn === false) {
 			return <Redirect to='/' />
 		}
@@ -71,22 +119,24 @@ class Home extends Component {
 				<Container fluid>
 					<div className="home-background">
 						<Row>
-							<div className="row-container search-container">
-								<h1>Discover</h1>
+							<div className="row-container search-container col s12 m6 l4 z-depth-5">
+								<h1 id="title">Discover</h1>
 								<Search
 									handleInputChange={this.handleInputChange}
 									handleSearchArtist={this.handleSearchArtist}
 									handleSearchCity={this.handleSearchCity}></Search>
 							</div>
 						</Row>
+
+
 						{this.state.results.length ? (
 							<React.Fragment>
-								
-								<div className="row text-center results">
-									<h1>Results</h1>
-									
+
+								<div className="row text-center results col s12 m6 l4">
+									<h1 id="title">Results</h1>
+
 									{this.state.results.map(art => (
-										
+
 										<ArtCard
 											key={"card-" + art._id}
 											id={art._id}
@@ -96,16 +146,27 @@ class Home extends Component {
 											title={art.title}
 											description={art.description}
 											likes={art.likes}
+											mapArt={this.mapArt}
 										/>
-									
+
 									))}
-									
+
 								</div>
-								
 							</React.Fragment>
 						) : (
-								<h3 className="center noResults">No Results to Display</h3>
+								<h3 className="center noResults col s12 m6 l4">No Results to Display</h3>
 							)}
+
+						<Row>
+							{this.state.showMap === true && <MyMapContainer
+								center={this.state.center}
+								zoom={9}
+								title={this.state.title}
+								address={this.state.address}
+								city= {this.state.city}
+								style={cardStyle}
+							/>}
+						</Row>
 					</div>
 				</Container>
 			</React.Fragment>

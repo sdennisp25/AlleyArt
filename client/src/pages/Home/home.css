@@ -1,10 +1,10 @@
-h1 {
+#title {
 	font-family: 'Major Mono Display', monospace;
-	color: #B70000;
+	/* color: #B70000; */
 }
 
 .row-container {
-	background-color: #AFAFAC;
+	/* background-color: #AFAFAC; */
 	height: 500px;
 	width: 90%;
 	opacity: .8;
@@ -14,10 +14,10 @@ h1 {
 }
 
 .results, .noResults {
-	background-color: #AFAFAC;
+	/* background-color: #AFAFAC; */
 	color: black;
 	height: auto;
-	width: 90%;
+	/* width: 90%; */
 	opacity: .8;
 	filter: alpha(opacity=50);
 	margin: 25px 50px;
