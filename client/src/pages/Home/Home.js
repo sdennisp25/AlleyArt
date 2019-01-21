@@ -10,6 +10,13 @@ import { connect } from "react-redux";
 import { logInUser } from "../../redux/reducers/myReducer";
 import MyMapContainer from "../../components/Map/google";
 
+const cardStyle = {
+	border: "3px solid black",
+	width: "75%",
+	height: "75%",
+	margin: "auto",
+}
+
 
 class Home extends Component {
 	constructor(props) {
@@ -23,7 +30,10 @@ class Home extends Component {
 			center: {
 				lat: 0,
 				lng: 0
-			}
+			},
+			title: " ",
+			address: " ",
+			city: " ",
 		}
 	}
 
@@ -86,6 +96,9 @@ class Home extends Component {
 						lat: response.data.lat,
 						lng: response.data.lng
 					},
+					title: response.data.title,
+					address: response.data.address,
+					city: response.data.city
 				});
 			})
 			.then(this.showMap())
@@ -107,18 +120,20 @@ class Home extends Component {
 					<div className="home-background">
 						<Row>
 							<div className="row-container search-container col s12 m6 l4 z-depth-5">
-								<h1>Discover</h1>
+								<h1 id="title">Discover</h1>
 								<Search
 									handleInputChange={this.handleInputChange}
 									handleSearchArtist={this.handleSearchArtist}
 									handleSearchCity={this.handleSearchCity}></Search>
 							</div>
 						</Row>
+
+
 						{this.state.results.length ? (
 							<React.Fragment>
 
 								<div className="row text-center results col s12 m6 l4">
-									<h1>Results</h1>
+									<h1 id="title">Results</h1>
 
 									{this.state.results.map(art => (
 
@@ -137,15 +152,19 @@ class Home extends Component {
 									))}
 
 								</div>
-
 							</React.Fragment>
 						) : (
 								<h3 className="center noResults col s12 m6 l4">No Results to Display</h3>
 							)}
+
 						<Row>
 							{this.state.showMap === true && <MyMapContainer
 								center={this.state.center}
-								zoon={9}
+								zoom={9}
+								title={this.state.title}
+								address={this.state.address}
+								city= {this.state.city}
+								style={cardStyle}
 							/>}
 						</Row>
 					</div>

@@ -10,6 +10,12 @@ import { Redirect } from "react-router-dom";
 import Nav from "../../components/Nav";
 import MyMapContainer from "../../components/Map/google";
 
+const uploadStyle = {
+	border: "3px solid black",
+	width: "400px",
+	height: "400px",
+}
+
 class Upload extends Component {
 	constructor(props) {
 		super(props);
@@ -214,12 +220,14 @@ class Upload extends Component {
 							</div>
 						</div>
 
-					</div>
-						<div col s12 m6>
-							{this.state.showMap === false && <MyMapContainer
+						<div className="col s12 m6 l6">
+							{this.state.showMap === true && <MyMapContainer
 								center={this.state.center}
-								zoom={9} />}
+								zoom={9}
+								style={uploadStyle}
+							/>}
 						</div>
+					</div>
 				</Container>
 
 				<AddressForm
