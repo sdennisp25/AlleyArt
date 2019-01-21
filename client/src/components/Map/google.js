@@ -1,19 +1,19 @@
 import React, { Component } from "react";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
+import "./google.css";
 
-const mStyle = {
-	border: "1px solid black",
-	width: "35%",
-	height: "65%"
-}
+// const mStyle = {
+// 	border: "3px solid black",
+// 	width: "75%",
+// 	height: "75%",
+// 	margin: "auto",
+// }
 
 export class MyMapContainer extends Component {
 	state = {
 		showingInfoWindow: false,
 		activeMarker: {},
 		selectedPlace: {},
-		latitudeState: " ",
-		longitudeState: " "
 	};
 
 	onMarkerClick = (props, marker, e) =>
@@ -32,23 +32,20 @@ export class MyMapContainer extends Component {
 		}
 	};
 
-
 	render() {
-		// console.log(this.props.google);
-		// console.log(this.state);
+		const { center, zoom, title, address, city, style } = this.props;
 
 		return (
 			<div className="map">
 				<Map
 					google={this.props.google}
+					style={style}
+					center={center}
+					initialCenter={center}
+					zoom={zoom}
 					onClick={this.onMapClicked}
-					style={mStyle}
-					initialCenter={{
-						lat: this.props.lat,
-						lng: this.props.lng
-					}}
 				>
-					<Marker onClick={this.onMarkerClick} name={"Current location"} />
+					<Marker className="marker" position={center} onClick={this.onMarkerClick} name={title + "\n\n" + address + "\n" + city} />
 
 					<InfoWindow
 						marker={this.state.activeMarker}
@@ -65,5 +62,5 @@ export class MyMapContainer extends Component {
 }
 
 export default GoogleApiWrapper({
-	apiKey: "AIzaSyCH-qhf7-LfJ52gOs_vqe_-_TiNlL30lww"
+	apiKey: "AIzaSyCH-qhf7-LfJ52gOs_vqe_-_TiNlL30lww",
 })(MyMapContainer);

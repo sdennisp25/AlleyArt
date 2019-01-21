@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-<<<<<<< HEAD
-import { Container, Row } from "../../components/Grid";
-=======
-import { Row, Container } from "../../components/Grid";
->>>>>>> master
+import { Container } from "../../components/Grid";
 import "./upload_test.css";
 import Gps from "../../components/Geo";
 import AddressForm from "../../components/Address";
@@ -13,6 +9,12 @@ import API from "../../utils/api";
 import { Redirect } from "react-router-dom";
 import Nav from "../../components/Nav";
 import MyMapContainer from "../../components/Map/google";
+
+const uploadStyle = {
+	border: "3px solid black",
+	width: "400px",
+	height: "400px",
+}
 
 class Upload extends Component {
 	constructor(props) {
@@ -24,15 +26,17 @@ class Upload extends Component {
 			state: " ",
 			zipCode: " ",
 			formattedAddy: " ",
-			lat: 0,
-			lng: 0,
+			center: {
+				lat: 0,
+				lng: 0
+			},
 			showMap: false,
 			showAddress: false,
 			userAddressInfo: false,
 			showUpload: false,
 			artTitle: "",
 			description: " ",
-			backToProfile: false
+			backToHome: false
 		};
 	}
 
@@ -55,6 +59,13 @@ class Upload extends Component {
 	};
 
 	///////////////ADDRESS INPUT FUNCTIONS- MOVE TO COMPONENT?////////////////
+
+	showMap = () => {
+		this.setState({
+			showMap: true
+		})
+	}
+
 	userAddressSubmitForm = (event) => {
 		event.preventDefault();
 		let fullAddress = this.state.address + " " + this.state.cityName + " " + this.state.state + " " + this.state.zipCode;
@@ -70,14 +81,17 @@ class Upload extends Component {
 					console.log("RESULTS", location.data),
 					this.setState({
 						showAddress: false,
-						lat: location.data.lat,
-						lng: location.data.lng,
-						showMap: true
+						// lat: location.data.lat,
+						// lng: location.data.lng,
+						center: {
+							lat: location.data.lat,
+							lng: location.data.lng
+						},
 					})
-				),
-					console.log("UPDATED STATE", this.state);
-			}
-			).catch(error => {
+				)
+			})
+			.then(this.showMap())
+			.catch(error => {
 				console.log("GEOCODE ERROR: ");
 				console.log(error);
 			})
@@ -104,15 +118,13 @@ class Upload extends Component {
 			artist: userName,
 			artistID: userId,
 			title: this.state.artTitle,
-			// url: "https://cdn.pixabay.com/photo/2017/08/01/22/31/wall-2568346__340.jpg",
-			////CHANGE THIS BACK ONCE S3 KEYS WORKING!!!///
 			url: imageUrl,
 			address: this.state.address,
 			city: this.state.cityName,
 			state: this.state.state,
 			zipCode: this.state.zipCode,
-			lat: this.state.lat,
-			lng: this.state.lng,
+			lat: this.state.center.lat,
+			lng: this.state.center.lng,
 			formattedAddy: this.state.formattedAddy,
 			description: this.state.description
 		})
@@ -127,7 +139,7 @@ class Upload extends Component {
 					zipCode: " ",
 					description: " ",
 					formattedAddy: " ",
-					backToProfile: true
+					backToHome: true
 				})
 			})
 			.catch(error => {
@@ -138,14 +150,13 @@ class Upload extends Component {
 
 	render() {
 
-		console.log(this.state);
 		//////////////WE MAY NEED TO UNCOMMENT UNTIL FINISHED W/ PAGE SETUP BUT- DO NOT REMOVE//////
 		// if (this.props.user.loggedIn === false || this.props.user.isArtist === false) {
 		// 	return <Redirect to='/' />
 		// }
 
-		// if (this.state.backToProfile === true) {
-		// 	return <Redirect to='/profile' />
+		// if (this.state.backToHome === true) {
+		// 	return <Redirect to='/home' />
 		// }
 
 		return (
@@ -209,10 +220,12 @@ class Upload extends Component {
 							</div>
 						</div>
 
-						<div className="col s12 m6">
+						<div className="col s12 m6 l6">
 							{this.state.showMap === true && <MyMapContainer
-								lat={this.state.lat}
-								lng={this.state.lng} />}
+								center={this.state.center}
+								zoom={9}
+								style={uploadStyle}
+							/>}
 						</div>
 					</div>
 				</Container>
