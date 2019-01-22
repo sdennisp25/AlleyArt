@@ -44,7 +44,7 @@ class Profile extends Component {
 					<Row>
 						{this.state.favorites.length ? (
 							<React.Fragment>
-								<div className="row text-center col s12 m6 l4">
+								<div className="row text-center">
 									<h1 className="white-text">{this.props.user.username}'s Favorites</h1>
 										{this.state.favorites.map(art => (
 											<ArtCard
@@ -58,7 +58,7 @@ class Profile extends Component {
 												likes={art.likes}
 											/>
 										))}
-									</div>
+								</div>
 							</React.Fragment>
 						) : (
 								<h3 className="center noResults">No Results to Display</h3>

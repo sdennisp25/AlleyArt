@@ -9,7 +9,7 @@
 	filter: alpha(opacity=50);
 }
 
-.btn {
+.butn {
 	width: 300px;
 }
 
@@ -23,7 +23,7 @@
 	padding: 20px;
 }
 
-.btn {
+.butn{
 	width: 100%;
 }
 
@@ -37,11 +37,6 @@
 
 .card-title {
 	text-align: center;
-}
-
-
-p {
-	font-size: 15px;
 }
 
 h1 {

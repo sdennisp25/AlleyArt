@@ -1,26 +1,22 @@
 h1 {
 	font-family: 'Major Mono Display', monospace;
-	/* color: #B70000; */
 }
 
 .row-container {
-	/* background-color: #AFAFAC; */
 	height: 500px;
-	width: 90%;
 	opacity: .8;
 	filter: alpha(opacity=50);
 	margin: 25px 50px;
 	padding: 10px;
 }
 
-.results, .noResults {
-	/* background-color: #AFAFAC; */
+.noResults {
+	font-size: 80px;
 	color: black;
 	height: auto;
-	/* width: 90%; */
+	width: auto;
 	opacity: .8;
 	filter: alpha(opacity=50);
-	margin: 25px 50px;
 	padding: 10px;
 }
 

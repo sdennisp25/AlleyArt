@@ -61,9 +61,9 @@ class ArtCard extends React.Component {
 						<img src={this.props.url} alt="" />
 					</div>
 
-					<span className="card-title center"><h5>{this.props.title}</h5></span>
+					<h5 className="center">{this.props.title}</h5>
 
-					<p className="center">{this.props.description}</p>
+					<p className="center p-center">{this.props.description}</p>
 					<div className="center-align">
 						<button className="iconz" onClick={(id) => this.markAsFavorite(this.props.id)}><i className="fas fa-heart"></i></button>
 						<button className="iconz" onClick={(id) => this.likeArt(this.props.id)}><i className="fas fa-thumbs-up"></i>{this.state.likes}</button>

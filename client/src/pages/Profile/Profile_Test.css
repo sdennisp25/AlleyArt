@@ -29,10 +29,6 @@
 	opacity: 0;
 }
 
-.btn {
-	width: 300px;
-}
-
 .commentBox {
 	float: left;
 	overflow: auto;

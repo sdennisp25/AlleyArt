@@ -19,10 +19,19 @@ img {
 	height: 200px;
 }
 
+.center {
+	font-family: 'Ubuntu', sans-serif;
+	text-align: center;
+	margin: 0;
+	padding: 15px;
+}
+
 .iconz {
 	color: #FFEA0C;
 	background-color: #388e3c;
 	border: #388e3c;
+	padding: 10px;
+	font-size: 20px;
 }
 
 @media (max-width: 480px) {
@@ -30,7 +39,7 @@ img {
 		font-size: 20px;
 	}
 
-	p {
+	.p-center {
 		font-size: 10px;
 	}
 

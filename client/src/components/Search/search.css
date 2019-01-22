@@ -7,6 +7,10 @@
 	color: #2196f3;
 }
 
+.button-search {
+	float: left;
+}
+
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color:#388e3c;
   opacity: 1; /* Firefox */
