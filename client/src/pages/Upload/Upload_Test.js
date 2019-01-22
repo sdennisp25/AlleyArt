@@ -11,9 +11,9 @@ import Nav from "../../components/Nav";
 import MyMapContainer from "../../components/Map/google";
 
 const uploadStyle = {
-  border: "3px solid black",
-  width: "400px",
-  height: "400px"
+	border: "3px solid black",
+	width: "400px",
+	height: "450px",
 };
 
 class Upload extends Component {
@@ -219,7 +219,7 @@ class Upload extends Component {
                           this.submitForm(e);
                         }}
                       >
-                        SAVE
+                        UPLOAD
                         <i className="large material-icons right">send</i>
                       </button>
                     </form>

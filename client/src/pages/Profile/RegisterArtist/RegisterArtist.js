@@ -180,6 +180,7 @@ class RegisterArtist extends Component {
 
                 <div className="row">
                   <div className="input-field col s12">
+                    <i class="material-icons prefix">wc</i>
                     <input
                       id="input-text"
                       type="text"
@@ -194,6 +195,7 @@ class RegisterArtist extends Component {
                   {/* =============================== */}
                   {/* ========= EMAIL =============== */}
                   <div className="input-field col s12">
+                    <i class="material-icons prefix">email</i>
                     <input
                       id="email"
                       type="email"
@@ -217,6 +219,7 @@ class RegisterArtist extends Component {
                   {/* ========= PASSWORD =========== */}
 
                   <div className="input-field col s12">
+                    <i class="material-icons prefix">lock</i>
                     <input
                       id="input_text"
                       type="password"
@@ -237,9 +240,11 @@ class RegisterArtist extends Component {
                     />
                   </div>
                   {/* ============================== */}
-                  <div className="input-field col s12">
+                  <div className="input-field commentBox col s12">
+                    <i className="tiny material-icons prefix">comment</i>
                     <textarea
-                      id="textarea2"
+											id="textarea2"
+											type="text"
                       className="materialize-textarea"
                       data-length="120"
                     />
