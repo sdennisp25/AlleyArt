@@ -10,8 +10,8 @@ class RegisterArtist extends Component {
   state = {
     artistName: "",
     artistEmail: "",
-    artistEmailError: "",
     artistPassword: "",
+    artistEmailError: "",
     artistPasswordError: "",
     aboutArtist: "",
     okToContact: false,
@@ -28,16 +28,17 @@ class RegisterArtist extends Component {
   };
 
   handleInputChange = event => {
-    // this.setState({
-    // 	[event.target.name]: event.target.value
-    // });
-    // this.props.onChange({
-    // 	[event.target.name]: event.targe.value
-    // });
     let { name, value } = event.target;
     this.setState({
       [name]: value
     });
+    var pass = event.target.value;
+    var reg = /^[A-Z]*$/;
+    var test = reg.test(pass);
+    if (test) {
+      alert("pass");
+      this.setState({ value: pass });
+    }
   };
   // ---------------------------------------------
 
@@ -45,71 +46,56 @@ class RegisterArtist extends Component {
     let isError = false;
     let emailVal = this.state.artistEmail;
     let passwordVal = this.state.artistPassword;
-    // let special = "!@#$%^&*()+=-[]';,./{}|\":<>?";
-    let special2 = "/^[A-Za-z]+$/";
-    console.log(special2);
-    const errors = {};
+    // const errors = {};
 
-		// ============== EMAIL VALIDATE ========================
-		
-		//checks for @ sign
-    if (emailVal.indexOf("@") === -1) {
-			isError = true;
-      errors.artistPasswordError = "Must contain required info";
-      console.log("Needs to be valid email!");
-		}
-		// checks for period 
-    if (emailVal.indexOf(".") === -1) {
-			isError = true;
-      errors.artistPasswordError = "Must be a valid email";
-      console.log("Needs a period");
-    }
-		// ============== PASSWORD VALIDATE ========================
-		
-
-    for (let i = 0; i < passwordVal.length; i++) {
-      if ("A" <= passwordVal[i] && passwordVal[i] <= "Z")
-        // check if you have an uppercase
-        console.log("CAP LETTER");
-      if ("a" <= passwordVal[i] && passwordVal[i] <= "z")
-        // check if you have a lowercase
-        console.log("LOWER LETTER");
-      if ("0" <= passwordVal[i] && passwordVal[i] <= "9") {
-				//checks if you have a number
-        console.log("NUMBER");
+    for (let i = 0; i < emailVal.length; i++) {
+      // ============== VALIDATE EMAIL FORMAT ========================
+      if (emailVal[i].indexOf("@") && emailVal[i].indexOf(".") === -1) {
+        isError = true;
+        this.setState({
+          artistEmailError: "Must contain an @ and . symbol"
+        });
+        console.log("Needs to be valid email!");
       }
-      // check if you have a numeric
-      if (passwordVal[i] === "!") console.log("GOT IT!!!!!");
+      // ================== VALIDATE PASSWORD =========================
     }
-
-    // if (this.state.artistPassword.length < 8) {
-    //   isError = true;
-    //   this.setState({
-    //     artistPasswordError: "Needs to be at least 8 characters long!"
-    //   });
-    //   console.log("INVALID PASSWORD");
-    // }
-
-    // if (this.state.artistPassword.indexOf("A") === -1) {
-    //   isError = true;
-    //   this.setState({
-    //     artistPasswordError: "Needs UPPER CASE!"
-    //   });
-    //   console.log("Needs UPPER CASE");
-    // }
-    // if (
-    //   this.state.artistPasswordError.indexOf(
-    //     "~`!#$%^&*+=-[]\\';,/{}|\":<>?"
-    //   ) === -1
-    // ) {
-    //   isError = true;
-    //   this.setState({
-    //     artistPasswordError: "Needs Special Character!"
-    //   });
-    //   console.log("Needs Special Character");
-    // }
-
+    for (let i = 0; i < passwordVal.length; i++) {
+      if (passwordVal.length < 8) {
+        isError = true;
+        this.setState({
+          artistPasswordError: "Needs to be at least 8 characters long!"
+        });
+        console.log("Not long enough!");
+      }
+    }
     return isError;
+    // for (let i = 0; i < passwordVal.length; i++) {
+    //   isError = true;
+    //   if ("A" <= passwordVal[i] && passwordVal[i] <= "Z") {
+    //     // check if you have an uppercase
+    //     console.log("CAP LETTER FOUND");
+    //   } else {
+    //     this.setState({
+    //       artistPasswordError: "Needs a uppercase letter!"
+    //     });
+    //   }
+    //   if ("a" <= passwordVal[i] && passwordVal[i] <= "z") {
+    //     // check if you have a lowercase
+    //     console.log("LOWER LETTER FOUND");
+    //   } else {
+    //     this.setState({
+    //       artistPasswordError: "Needs a lowercase letter!"
+    //     });
+    //   }
+    //   if ("0" <= passwordVal[i] && passwordVal[i] <= "9") {
+    //     //checks if you have a number
+    //     console.log("NUMBER FOUND");
+    //   } else {
+    //     this.setState({
+    //       artistPasswordError: "Needs a number!"
+    //     });
+    //   }
+    // }
   };
 
   // ---------------------------------------------
@@ -186,11 +172,12 @@ class RegisterArtist extends Component {
     return (
       <React.Fragment>
         <Nav />
-        <Container>
-          <h1 className="title">Register ARTIST Profile</h1>
-          <div className="userform cyan darken-2">
+        <div className="userform cyan darken-2">
+          <Container>
             <div className="row">
-              <form className="col s12">
+              <form className="register">
+                <h1 className="title-register">ARTIST REGISTRATION</h1>
+
                 <div className="row">
                   <div className="input-field col s12">
                     <input
@@ -220,7 +207,8 @@ class RegisterArtist extends Component {
                     <label htmlFor="email">Email</label>
                     <span
                       className="helper-text"
-                      data-error="Please Enter a valid Email Address"
+                      data-error={this.state.artistEmailError}
+                      // data-error="Please Enter a valid Email Address"
                       data-success=""
                     />
                   </div>
@@ -231,7 +219,7 @@ class RegisterArtist extends Component {
                   <div className="input-field col s12">
                     <input
                       id="input_text"
-                      type="email"
+                      type="password"
                       className="validate"
                       data-length="10"
                       name="artistPassword"
@@ -263,6 +251,7 @@ class RegisterArtist extends Component {
                       About You As An Artist...
                     </label>
                   </div>
+
                   <div className="col s12">
                     <h3 className="white-text">Do you want to be contacted?</h3>
                     <div className="switch">
@@ -278,23 +267,25 @@ class RegisterArtist extends Component {
                       </label>
                     </div>
                   </div>
+
                   <div className="col s12">
                     <div className="center-align">
                       <button
                         className="btn waves-effect waves-light green darken-2"
+                        // type="submit"
                         type="submit"
                         name="action"
                         onClick={this.handleRegUser}
                       >
-                        Submit
+                        Register
                       </button>
                     </div>
                   </div>
                 </div>
               </form>
             </div>
-          </div>
-        </Container>
+          </Container>
+        </div>
 
         <LoginModal
           show={this.state.showLogin}
