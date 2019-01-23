@@ -18,6 +18,7 @@ nav {
 .wideDiv {
 	font-size: 20px;
 	float: right;
+	font-family: 'Ubuntu', sans-serif;
 }
 
 nav a {
@@ -60,6 +61,11 @@ nav .navNarrow .narrowLinks a {
 	float: right;
 	/* clear: left; */
 	padding: 0.5em;
+}
+
+.sign-out {
+	font-size: 15px;
+	font-family: 'Ubuntu', sans-serif;
 }
 
 @media (min-width: 480px) {
