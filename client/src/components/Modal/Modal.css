@@ -24,3 +24,8 @@ input[type="password"] {
 	font: small-caption;
 	font-size: 16px
 }
+
+.modal-label{
+	color: green;
+	font-size: 18px;
+}
