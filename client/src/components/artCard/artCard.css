@@ -56,5 +56,6 @@ img {
 
 .hover-button:hover .hover-button--on {
   display: inline;
+  color: #AF2B16;
 }
   
