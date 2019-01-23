@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Nav from "../../components/Nav";
 import { Container } from "../../components/Grid";
-// import ArtCard from "../../components/artCard";
+import ArtCard from "../../components/artCard";
 import API from "../../utils/api";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
@@ -14,7 +14,8 @@ class Artist extends Component {
 		aboutArtist: " ",
 		okToContact: false,
 		artistEmail: " ",
-		artistWorks: []
+		artistWorks: [],
+		onProfile: true,
 	}
 
 	componentDidMount = () => {
@@ -64,7 +65,35 @@ class Artist extends Component {
 						<p id="PP">{this.state.artistEmail}</p>
 					</div>
 					<h6>ARTWORK: </h6>
-					
+
+					{this.state.artistWorks.length ? (
+						<React.Fragment>
+
+							<div className="row text-center results col s12 m6 l4">
+								<h1 id="title">Results</h1>
+
+								{this.state.artistWorks.map(art => (
+
+									<ArtCard
+										key={"card-" + art._id}
+										id={art._id}
+										fav={false}
+										url={art.url}
+										artistId={art.artistID}
+										title={art.title}
+										description={art.description}
+										likes={art.likes}
+										onProfile={this.state.onProfile}
+									/>
+
+								))}
+
+							</div>
+						</React.Fragment>
+					) : (
+							<h3 className="center noResults col s12 m6 l4">No Results to Display</h3>
+						)}
+
 
 
 
