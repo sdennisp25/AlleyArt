@@ -49,21 +49,12 @@ img {
 	}
 }
 
-.hover {
-	position: relative;
-  }
-  .hover:hover .hover__no-hover {
-	opacity: 0;
-  }
-  .hover:hover .hover__hover {
-	opacity: 1;
-  }
-  .hover__hover {
-	position: absolute;
-	top: 0;
-	opacity: 0;
-  }
-  .hover__no-hover {
-	opacity: 1;
-  }
+.hover-button .hover-button--on,
+.hover-button:hover .hover-button--off {
+  display: none;
+}
+
+.hover-button:hover .hover-button--on {
+  display: inline;
+}
   
