@@ -58,7 +58,7 @@ class Upload extends Component {
 		this.setState({ showUpload: false });
 	};
 
-	///////////////ADDRESS INPUT FUNCTIONS- MOVE TO COMPONENT?////////////////
+	///////////////ADDRESS INPUT FUNCTIONS- ////////////////
 
 	showMap = () => {
 		this.setState({
@@ -95,6 +95,35 @@ class Upload extends Component {
 				console.log("GEOCODE ERROR: ");
 				console.log(error);
 			})
+	};
+
+	//////////////////////////GEO LOCATION FUNCTIONS///////////////
+	//will locate your current position
+	gpsInit = () => {
+		this.userGps = navigator.geolocation.getCurrentPosition(
+			this.geoSuccess,
+			this.geoError
+		);
+	};
+
+	geoSuccess = position => {
+		alert("Obtained Geolocation!\n\n" +
+			"Latitude: " + position.coords.latitude + "\n" +
+			"Longitude: " + position.coords.longitude);
+		console.log("Lat: ", position.coords.latitude);
+		console.log("Long: ", position.coords.longitude);
+		this.setState({
+			center: {
+				lat: position.coords.latitude,
+				lng: position.coords.longitude
+			},
+		})
+		console.log("GEO SUCCESS, ", this.state);
+		this.showMap();
+	};
+
+	geoError = () => {
+		alert("No GPS available");
 	};
 
 	///////////////////SUBMIT UPLOAD FORM//////////////////
@@ -150,14 +179,14 @@ class Upload extends Component {
 
 	render() {
 
-		//////////////WE MAY NEED TO UNCOMMENT UNTIL FINISHED W/ PAGE SETUP BUT- DO NOT REMOVE//////
-		// if (this.props.user.loggedIn === false || this.props.user.isArtist === false) {
-		// 	return <Redirect to='/' />
-		// }
+		////////////WE MAY NEED TO UNCOMMENT UNTIL FINISHED W/ PAGE SETUP BUT- DO NOT REMOVE//////
+		if (this.props.user.loggedIn === false || this.props.user.isArtist === false) {
+			return <Redirect to='/' />
+		}
 
-		// if (this.state.backToHome === true) {
-		// 	return <Redirect to='/home' />
-		// }
+		if (this.state.backToHome === true) {
+			return <Redirect to='/home' />
+		}
 
 		return (
 
@@ -180,7 +209,9 @@ class Upload extends Component {
                       <i className="large material-icons right">file_upload</i>
 										</button>
 
-										<Gps />
+										<Gps
+											gpsInit={this.gpsInit}
+										/>
 
 										<button
 											id="addAddress"
