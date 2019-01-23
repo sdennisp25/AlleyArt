@@ -64,10 +64,16 @@ class ArtCard extends React.Component {
 					<h5 className="center">{this.props.title}</h5>
 
 					<p className="center p-center">{this.props.description}</p>
+
+					{this.props.onProfile!==true &&
+					
 					<div className="center-align">
 
 						{/* //ADD TO FAVORITES// */}
-						<button className="iconz" onClick={(id) => this.markAsFavorite(this.props.id)}><i className="fas fa-heart"></i></button>
+
+						{this.props.onFavorites !== true &&
+							<button className="iconz" onClick={(id) => this.markAsFavorite(this.props.id)}><i className="fas fa-heart"></i></button>
+						}
 
 						{/* //THUMBS UP// */}
 						<button className="iconz" onClick={(id) => this.likeArt(this.props.id)}><i className="fas fa-thumbs-up"></i>{this.state.likes}</button>
@@ -76,8 +82,12 @@ class ArtCard extends React.Component {
 						<button className="iconz" onClick={(id) => this.props.mapArt(this.props.id)}><i className="fas fa-map-marked"></i></button>
 
 						{/* //VIEW ARTIST// */}
+
+
 						<button className="iconz" onClick={(artistId) => this.viewArtist(this.props.artistId)}><i className="fas fa-user"></i></button>
+
 					</div>
+					}
 				</div>
 			</div>
 
