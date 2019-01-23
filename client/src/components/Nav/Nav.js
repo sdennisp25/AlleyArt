@@ -34,10 +34,10 @@ class Nav extends Component {
 				<div className="navNarrow">
 					<i className="fa fa-bars fa-2x" onClick={this.burgerToggle}></i>
                     <div className="narrowLinks">
-                        <Link to={"/home"} onClick={this.burgerToggle}><i className="fas fa-search"></i></Link>
-                        <Link to={"/profile"} onClick={this.burgerToggle}><i className="fas fa-heart"></i></Link>
+                        <Link to={"/home"} onClick={this.burgerToggle}><span class="hover-button--off"></span><i className="fas fa-search"></i><span class='hover-button--on'>Search</span></Link>
+                        <Link to={"/profile"} onClick={this.burgerToggle}><span class="hover-button--off"></span><i className="fas fa-heart"><span class='hover-button--on'>Favorites</span></i></Link>
                         {this.props.user.isArtist === true && <a href="/image">Upload New Art</a>}
-                        <a href="/" onClick={this.burgerToggle}><i className="fas fa-sign-out-alt"></i></a>
+                        <a href="/" onClick={this.burgerToggle}><span class="hover-button--off"></span><i className="fas fa-sign-out-alt"></i><span class='hover-button--on'>Sign out</span></a>
                     </div>
 				</div>
 			</nav>

@@ -76,15 +76,15 @@ class ArtCard extends React.Component {
 						}
 
 						{/* //THUMBS UP// */}
-						<button className="iconz" onClick={(id) => this.likeArt(this.props.id)}><i className="fas fa-thumbs-up"></i>{this.state.likes}</button>
+						<button className="iconz" onClick={(id) => this.likeArt(this.props.id)}><span class="hover-button--off"></span><i className="fas fa-thumbs-up"></i><span class='hover-button--on'>Likes</span>{this.state.likes}</button>
 
 						{/* //MAP IT// */}
-						<button className="iconz" onClick={(id) => this.props.mapArt(this.props.id)}><i className="fas fa-map-marked"></i></button>
+						<button className="iconz" onClick={(id) => this.props.mapArt(this.props.id)}><span class="hover-button--off"></span><i className="fas fa-map-marked"></i><span class='hover-button--on'>Map it</span></button>
 
 						{/* //VIEW ARTIST// */}
 
 
-						<button className="iconz" onClick={(artistId) => this.viewArtist(this.props.artistId)}><i className="fas fa-user"></i></button>
+						<button className="iconz" onClick={(artistId) => this.viewArtist(this.props.artistId)}><span class="hover-button--off"></span><i className="fas fa-user"></i><span class='hover-button--on'>Artist</span></button>
 
 					</div>
 					}
