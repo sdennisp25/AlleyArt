@@ -257,19 +257,11 @@ class RegisterArtist extends Component {
                     </label>
 									</div>
 
-<<<<<<< HEAD
                   <div className="col s12">
                     <h3 className="white-text contact-q">Do you want to be contacted?</h3>
                     <div className="switch">
                       <label className="white-text">
                         No
-=======
-									<div className="col s12">
-										<h3 className="white-text">Do you want to be contacted?</h3>
-										<div className="switch">
-											<label className="white-text">
-												No
->>>>>>> gps
                         <input
 													type="checkbox"
 													defaultValue={this.state.okToContact}

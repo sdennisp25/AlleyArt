@@ -63,13 +63,10 @@ class ArtCard extends React.Component {
 
 					<h5 className="center">{this.props.title}</h5>
 
-<<<<<<< HEAD
 					<p className="center p-center">{this.props.description}</p>
-=======
-					<p className="center">{this.props.description}</p>
 
-					{this.props.onProfile !== true &&
->>>>>>> gps
+					{this.props.onProfile!==true &&
+					
 					<div className="center-align">
 
 						{/* //ADD TO FAVORITES// */}
