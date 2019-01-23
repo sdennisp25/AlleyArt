@@ -39,7 +39,7 @@ class Nav extends Component {
                         {this.props.user.isArtist === true && <a href="/image">Upload New Art</a>}
                         
 						
-						<a href="/" onClick={this.burgerToggle}><i className="sign-out">Sign out</i></a>
+						<a href="/" onClick={this.burgerToggle}><i className="sign-out">Logout</i></a>
 					
 
                     </div>

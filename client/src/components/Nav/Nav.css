@@ -74,6 +74,7 @@ nav .navNarrow .narrowLinks a {
 	}
 	nav .navNarrow {
 		display: none;
+		padding: 5px;
 	} 
 }
 
