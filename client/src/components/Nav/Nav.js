@@ -38,9 +38,10 @@ class Nav extends Component {
                         	<Link to={"/profile"} onClick={this.burgerToggle}><i className="fas fa-heart"></i></Link>
                         {this.props.user.isArtist === true && <a href="/image">Upload New Art</a>}
                         
-						<span class="hover-button--off"></span>
-						<a href="/" onClick={this.burgerToggle}><i className="fas fa-sign-out-alt"></i></a>
-						<span class='hover-button--on'>Sign out</span>
+						
+						<a href="/" onClick={this.burgerToggle}><i className="fas fa-sign-out-alt">Sign out</i></a>
+					
+
                     </div>
 				</div>
 			</nav>
