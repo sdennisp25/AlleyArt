@@ -20,19 +20,24 @@ const artworkSchema = new Schema({
 		required: true
 	},
 	address: {
-		type: String
+		type: String,
+		default: "Not Available"
 	},
 	city: {
-		type: String
+		type: String,
+		default: "Not Available"
 	},
 	state: {
-		type: String
+		type: String,
+		default: "Not Available"
 	},
 	zipCode: {
-		type: String
+		type: String,
+		default: "Not Available"
 	},
 	formattedAddy: {
-		type: String
+		type: String,
+		default: "Not Available"
 	},
 	lat: {
 		type: Number,
