@@ -117,9 +117,9 @@ class Home extends Component {
 				<Nav></Nav>
 
 				<Container fluid>
-					<div className="home-background">
+					
 						<Row>
-							<div className="row-container search-container col s12 m6 l4 z-depth-5">
+							<div className="row-container search-container z-depth-5">
 								<h1 id="title">Discover</h1>
 								<Search
 									handleInputChange={this.handleInputChange}
@@ -131,9 +131,9 @@ class Home extends Component {
 
 						{this.state.results.length ? (
 							<React.Fragment>
-
-								<div className="row text-center results col s12 m6 l4">
-									<h1 id="title">Results</h1>
+								
+								<div className="row text-center col s12 m6 l4">
+									<h1 id="title-r">Results</h1>
 
 									{this.state.results.map(art => (
 
@@ -154,7 +154,7 @@ class Home extends Component {
 								</div>
 							</React.Fragment>
 						) : (
-								<h3 className="center noResults col s12 m6 l4">No Results to Display</h3>
+								<h3 className="center-align noResults col s12 m6 l4">Search Again</h3>
 							)}
 
 						<Row>
@@ -167,7 +167,7 @@ class Home extends Component {
 								style={cardStyle}
 							/>}
 						</Row>
-					</div>
+				
 				</Container>
 			</React.Fragment>
 		)

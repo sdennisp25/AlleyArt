@@ -82,7 +82,7 @@ class Profile extends Component {
 					<Row>
 						{this.state.favorites.length ? (
 							<React.Fragment>
-								<div className="row text-center col s12 m6 l4">
+								<div className="row text-center">
 									<h1 id="title" className="white-text">{this.props.user.username}'s Favorites</h1>
 									{this.state.favorites.map(art => (
 										<ArtCard

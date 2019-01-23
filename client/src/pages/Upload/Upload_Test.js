@@ -201,7 +201,7 @@ class Upload extends Component {
 									<span className="card-title">Image Upload</span>
 									<form>
 										<button
-											className="waves-effect waves-light btn blue darken-4"
+											className="waves-effect waves-light butn blue darken-4"
 											type="button"
 											onClick={this.showUpload}
 										>
@@ -216,7 +216,7 @@ class Upload extends Component {
 										<button
 											id="addAddress"
 											type="button"
-											className="waves-effect waves-light btn blue darken-4"
+											className="waves-effect waves-light butn blue darken-4"
 											onClick={this.showAddress}
 										>
 											Address
@@ -238,7 +238,7 @@ class Upload extends Component {
 										/>
 										<button
 											id="submit"
-											className="waves-effect waves-light btn green darken-2"
+											className="waves-effect waves-light butn green darken-2"
 											onClick={e => {
 												this.submitForm(e);
 											}}
