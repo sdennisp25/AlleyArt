@@ -13,7 +13,7 @@ import MyMapContainer from "../../components/Map/google";
 const uploadStyle = {
 	border: "3px solid black",
 	width: "400px",
-	height: "450px",
+	height: "420px",
 };
 
 class Upload extends Component {
@@ -201,7 +201,7 @@ class Upload extends Component {
 									<span className="card-title">Image Upload</span>
 									<form>
 										<button
-											className="waves-effect waves-light butn blue darken-4"
+											className="waves-effect waves-light btn blue darken-4 uploadBtn"
 											type="button"
 											onClick={this.showUpload}
 										>
@@ -216,7 +216,7 @@ class Upload extends Component {
 										<button
 											id="addAddress"
 											type="button"
-											className="waves-effect waves-light butn blue darken-4"
+											className="waves-effect waves-light btn blue darken-4 uploadBtn"
 											onClick={this.showAddress}
 										>
 											Address
@@ -238,7 +238,7 @@ class Upload extends Component {
 										/>
 										<button
 											id="submit"
-											className="waves-effect waves-light butn green darken-2"
+											className="waves-effect waves-light btn green darken-2 uploadBtn"
 											onClick={e => {
 												this.submitForm(e);
 											}}
@@ -278,9 +278,9 @@ class Upload extends Component {
 }
 
 function mapStateToProps(state) {
-  return {
-    user: state
-  };
+	return {
+		user: state
+	};
 }
 
 export default connect(mapStateToProps)(Upload);
