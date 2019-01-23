@@ -125,7 +125,7 @@ class Home extends Component {
 
 							</React.Fragment>
 						) : (
-								<h3 className="center-align noResults col s12 m6 l4">No Results to Display</h3>
+								<h3 className="center-align noResults col s12 m6 l4">Search Again</h3>
 							)}
 						<Row>
 							{this.state.showMap === true && <GoogleApiWrapper

@@ -36,11 +36,11 @@ img {
 
 @media (max-width: 480px) {
 	h5 {
-		font-size: 20px;
+		font-size: 30px;
 	}
 
 	.p-center {
-		font-size: 10px;
+		font-size: 20px;
 	}
 
 	.artwork {
