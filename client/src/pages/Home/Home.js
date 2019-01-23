@@ -117,7 +117,7 @@ class Home extends Component {
 				<Nav></Nav>
 
 				<Container fluid>
-					<div className="home-background">
+					
 						<Row>
 							<div className="row-container search-container z-depth-5">
 								<h1 id="title">Discover</h1>
@@ -133,7 +133,7 @@ class Home extends Component {
 							<React.Fragment>
 								
 								<div className="row text-center col s12 m6 l4">
-									<h1 id="title">Results</h1>
+									<h1 id="title-r">Results</h1>
 
 									{this.state.results.map(art => (
 
@@ -167,7 +167,7 @@ class Home extends Component {
 								style={cardStyle}
 							/>}
 						</Row>
-					</div>
+				
 				</Container>
 			</React.Fragment>
 		)

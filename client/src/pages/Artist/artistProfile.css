@@ -1,5 +1,6 @@
-h1 {
+#title-a {
     text-align: center;
+    font-family: 'Major Mono Display', monospace;
 }
 
 h6 {
@@ -10,11 +11,12 @@ h6 {
     padding: 5px;
 }
 
-p {
+#PP {
     font-family: 'Ubuntu', sans-serif;
     text-align: center;
     padding-left: 10%;
     padding-right: 10%;
+    font-size: 20px;
 }
 
 .info-name {
@@ -35,7 +37,7 @@ p {
     border: 2px;
     border-radius: 5px;
     margin: auto;
-    font-size: 20px;
+    font-size: 30px;
 }
 
 .info-contact {
@@ -46,7 +48,7 @@ p {
     border: 2px;
     border-radius: 5px;
     margin: auto;
-    font-size: 20px;
+    font-size: 30px;
 }
 
 
@@ -58,5 +60,5 @@ p {
     border: 2px;
     border-radius: 5px;
     margin: auto;
-    font-size: 20px;
+    font-size: 30px;
 }

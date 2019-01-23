@@ -82,23 +82,7 @@ class Profile extends Component {
 					<Row>
 						{this.state.favorites.length ? (
 							<React.Fragment>
-<<<<<<< HEAD
 								<div className="row text-center">
-									<h1 className="white-text">{this.props.user.username}'s Favorites</h1>
-										{this.state.favorites.map(art => (
-											<ArtCard
-												key={"card-" + art._id}
-												id={art._id}
-												fav={true}
-												url={art.url}
-												artistId={art.artistID}
-												title={art.title}
-												description={art.description}
-												likes={art.likes}
-											/>
-										))}
-=======
-								<div className="row text-center col s12 m6 l4">
 									<h1 id="title" className="white-text">{this.props.user.username}'s Favorites</h1>
 									{this.state.favorites.map(art => (
 										<ArtCard
@@ -113,7 +97,6 @@ class Profile extends Component {
 											mapArt={this.mapArt}
 										/>
 									))}
->>>>>>> master
 								</div>
 							</React.Fragment>
 						) : (

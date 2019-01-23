@@ -4,25 +4,7 @@
 	background-size: cover;
 	font-size: 25px;
 	opacity: .75;
-<<<<<<< HEAD
-	filter: alpha(opacity=50);
-}
-
-.butn {
-	width: 300px;
-}
-
-
-.uploadForm {
-	background-image: url(./images/old-time-wall.jpg);
-	background-repeat: no-repeat;
-	background-size: cover;
-	font-size: 25px;
-	opacity: .75;
-	padding: 20px;
-=======
 	padding: 3%;
->>>>>>> master
 }
 
 .butn{
@@ -48,13 +30,10 @@
 	text-shadow: 2px 2px 5px black;
 }
 
-<<<<<<< HEAD
-=======
 p {
 	font-size: 15px;
 }
 
->>>>>>> master
 h1 {
 	color: white;
 }

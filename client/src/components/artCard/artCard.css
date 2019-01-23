@@ -8,6 +8,7 @@
 .card {
 	background-color: #388e3c;
 	padding-bottom: 15px;
+	width: 350px;
 }
 
 .card-image {

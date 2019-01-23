@@ -45,23 +45,23 @@ class Artist extends Component {
 				<Nav></Nav>
 
 				<Container fluid>
-					<h1>Artist</h1>
+					<h1 id="title-a">Artist</h1>
 
 					<div className="info-name center-align">
 						<h6>{this.state.artistName}</h6>
 					</div>
 					<h6>ABOUT: </h6>
 					<div className="info-about valign-wrapper">
-						<p>{this.state.aboutArtist}</p>
+						<p id="PP">{this.state.aboutArtist}</p>
 					</div>
 					<h6>CONTACT: </h6>
 					<div className="info-contact">
-						{this.state.okToContact === true && <p>OK to contact</p>}
-						{this.state.okToContact === false && <p>Unable to contact </p>}
+						{this.state.okToContact === true && <p id="PP">OK to contact</p>}
+						{this.state.okToContact === false && <p id="PP">Unable to contact </p>}
 					</div>
 					<h6>EMAIL: </h6>
 					<div className="info-email">
-						<p>{this.state.artistEmail}</p>
+						<p id="PP">{this.state.artistEmail}</p>
 					</div>
 					<h6>ARTWORK: </h6>
 					
