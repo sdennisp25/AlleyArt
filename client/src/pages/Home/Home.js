@@ -133,7 +133,7 @@ class Home extends Component {
 							<React.Fragment>
 								
 								<div className="row text-center col s12 m6 l4">
-									<h1 id="title-r">Results</h1>
+									<h1 id="title-r">Street Art</h1>
 
 									{this.state.results.map(art => (
 

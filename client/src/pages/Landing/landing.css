@@ -6,6 +6,7 @@
 #alley-art {
     font-family: 'Major Mono Display', monospace;
     color:green;
+    text-shadow: 3px 3px #B4B5A1;
 }
 
 .landing {
