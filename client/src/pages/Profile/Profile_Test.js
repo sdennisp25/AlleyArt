@@ -42,7 +42,7 @@ class Profile extends Component {
 		})
 	}
 
-	hideMap = ()=>{
+	hideMap = () => {
 		this.setState({
 			showMap: false
 		})
@@ -105,17 +105,6 @@ class Profile extends Component {
 								<h3 className="center noResults">No Results to Display</h3>
 							)}
 					</Row>
-
-					{/* <Row>
-						{this.state.showMap === true && <MyMapContainer
-							center={this.state.center}
-							zoom={9}
-							title={this.state.title}
-							address={this.state.address}
-							city={this.state.city}
-							style={cardStyle}
-						/>}
-					</Row> */}
 
 					<MapModal
 						show={this.state.showMap}

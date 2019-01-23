@@ -133,16 +133,6 @@ class Home extends Component {
 							<div className="row text-center col s12 m6 l4">
 								<h1 id="title-r">Results</h1>
 
-								{/* <Row>
-									{this.state.showMap === true && <MyMapContainer
-										center={this.state.center}
-										zoom={9}
-										title={this.state.title}
-										address={this.state.address}
-										city={this.state.city}
-										style={cardStyle}
-									/>}
-								</Row> */}
 								{this.state.results.map(art => (
 
 									<ArtCard
