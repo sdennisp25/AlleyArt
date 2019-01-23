@@ -15,6 +15,10 @@ nav {
 	text-shadow: 2px 2px green;
 }
 
+.wideDiv {
+	font-size: 20px;
+}
+
 nav a {
 	color: #FFFAF4;
 }
