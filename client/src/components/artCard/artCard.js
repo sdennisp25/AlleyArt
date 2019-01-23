@@ -48,6 +48,13 @@ class ArtCard extends React.Component {
 		)
 	}
 
+	Hover = ({ onHover, children }) => (
+		<div className="hover">
+			<div className="hover__no-hover">{children}</div>
+			<div className="hover__hover">{onHover}</div>
+		</div>
+	)
+
 	render() {
 		if (this.state.toProfile === true) {
 			return <Redirect to='/artist' />
@@ -74,6 +81,11 @@ class ArtCard extends React.Component {
 						{this.props.onFavorites !== true &&
 							<button className="iconz" onClick={(id) => this.markAsFavorite(this.props.id)}><i className="fas fa-heart"></i></button>
 						}
+
+						<Hover onHover={<div> Show this on hover </div>}>
+        				<div> Show on no hover </div>
+    					</Hover>
+
 
 						{/* //THUMBS UP// */}
 						<button className="iconz" onClick={(id) => this.likeArt(this.props.id)}><i className="fas fa-thumbs-up"></i>{this.state.likes}</button>

@@ -48,3 +48,22 @@ img {
 		width: 100%;
 	}
 }
+
+.hover {
+	position: relative;
+  }
+  .hover:hover .hover__no-hover {
+	opacity: 0;
+  }
+  .hover:hover .hover__hover {
+	opacity: 1;
+  }
+  .hover__hover {
+	position: absolute;
+	top: 0;
+	opacity: 0;
+  }
+  .hover__no-hover {
+	opacity: 1;
+  }
+  
