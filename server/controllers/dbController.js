@@ -117,7 +117,9 @@ module.exports = {
 				let coordinates = {
 					lat: dbLocation.lat,
 					lng: dbLocation.lng,
-					address: dbLocation.formattedAddy
+					address: dbLocation.address,
+					city: dbLocation.city,
+					title: dbLocation.title
 				}
 				console.log(coordinates);
 				res.json(coordinates);

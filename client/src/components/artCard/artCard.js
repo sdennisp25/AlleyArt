@@ -65,9 +65,17 @@ class ArtCard extends React.Component {
 
 					<p className="center p-center">{this.props.description}</p>
 					<div className="center-align">
+
+						{/* //ADD TO FAVORITES// */}
 						<button className="iconz" onClick={(id) => this.markAsFavorite(this.props.id)}><i className="fas fa-heart"></i></button>
+
+						{/* //THUMBS UP// */}
 						<button className="iconz" onClick={(id) => this.likeArt(this.props.id)}><i className="fas fa-thumbs-up"></i>{this.state.likes}</button>
+
+						{/* //MAP IT// */}
 						<button className="iconz" onClick={(id) => this.props.mapArt(this.props.id)}><i className="fas fa-map-marked"></i></button>
+
+						{/* //VIEW ARTIST// */}
 						<button className="iconz" onClick={(artistId) => this.viewArtist(this.props.artistId)}><i className="fas fa-user"></i></button>
 					</div>
 				</div>

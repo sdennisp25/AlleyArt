@@ -1,19 +1,13 @@
 import React, { Component } from "react";
+import "./google.css";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
-
-const mStyle = {
-	border: "1px solid black",
-	width: "35%",
-	height: "65%"
-}
+import "./google.css";
 
 export class MyMapContainer extends Component {
 	state = {
 		showingInfoWindow: false,
 		activeMarker: {},
-		selectedPlace: {},
-		latitudeState: " ",
-		longitudeState: " "
+		selectedPlace: {}
 	};
 
 	onMarkerClick = (props, marker, e) =>
@@ -32,23 +26,25 @@ export class MyMapContainer extends Component {
 		}
 	};
 
-
 	render() {
-		// console.log(this.props.google);
-		// console.log(this.state);
+		const { center, zoom, title, address, city, style } = this.props;
 
 		return (
 			<div className="map">
 				<Map
 					google={this.props.google}
+					style={style}
+					center={center}
+					initialCenter={center}
+					zoom={zoom}
 					onClick={this.onMapClicked}
-					style={mStyle}
-					initialCenter={{
-						lat: this.props.lat,
-						lng: this.props.lng
-					}}
 				>
-					<Marker onClick={this.onMarkerClick} name={"Current location"} />
+					<Marker
+						className="marker"
+						position={center}
+						onClick={this.onMarkerClick}
+						name={title + "\n\n" + address + "\n" + city}
+					/>
 
 					<InfoWindow
 						marker={this.state.activeMarker}

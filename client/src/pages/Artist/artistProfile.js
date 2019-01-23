@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Nav from "../../components/Nav";
-import { Row, Container } from "../../components/Grid";
-import ArtCard from "../../components/artCard";
+import { Container } from "../../components/Grid";
+// import ArtCard from "../../components/artCard";
 import API from "../../utils/api";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";

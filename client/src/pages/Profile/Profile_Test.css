@@ -39,3 +39,7 @@
 	overflow: auto;
 	margin: 0 auto;
 }
+
+#title {
+	font-family: 'Major Mono Display', monospace;
+}
