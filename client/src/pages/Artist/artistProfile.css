@@ -1,6 +1,7 @@
 #title-a {
-    text-align: center;
-    font-family: 'Major Mono Display', monospace;
+	font-family: 'Major Mono Display', monospace;
+	text-align: center;
+	text-shadow: 2px 2px green;
 }
 
 h6 {

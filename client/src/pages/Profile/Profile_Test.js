@@ -84,7 +84,7 @@ class Profile extends Component {
 						{this.state.favorites.length ? (
 							<React.Fragment>
 								<div className="row text-center">
-									<h1 id="title" className="white-text">{this.props.user.username}'s Favorites</h1>
+									<h1 id="title-artp" className="white-text">{this.props.user.username}'s Favorites</h1>
 									{this.state.favorites.map(art => (
 										<ArtCard
 											key={"card-" + art._id}
