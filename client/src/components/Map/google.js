@@ -1,66 +1,65 @@
 import React, { Component } from "react";
+import "./google.css";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import "./google.css";
 
-// const mStyle = {
-// 	border: "3px solid black",
-// 	width: "75%",
-// 	height: "75%",
-// 	margin: "auto",
-// }
-
 export class MyMapContainer extends Component {
-	state = {
-		showingInfoWindow: false,
-		activeMarker: {},
-		selectedPlace: {},
-	};
+  state = {
+    showingInfoWindow: false,
+    activeMarker: {},
+    selectedPlace: {}
+  };
 
-	onMarkerClick = (props, marker, e) =>
-		this.setState({
-			selectedPlace: props,
-			activeMarker: marker,
-			showingInfoWindow: true
-		});
+  onMarkerClick = (props, marker, e) =>
+    this.setState({
+      selectedPlace: props,
+      activeMarker: marker,
+      showingInfoWindow: true
+    });
 
-	onMapClicked = props => {
-		if (this.state.showingInfoWindow) {
-			this.setState({
-				showingInfoWindow: false,
-				activeMarker: null
-			});
-		}
-	};
+  onMapClicked = props => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      });
+    }
+  };
 
-	render() {
-		const { center, zoom, title, address, city, style } = this.props;
+  render() {
+    const { center, zoom, title, address, city, style } = this.props;
 
-		return (
-			<div className="map">
-				<Map
-					google={this.props.google}
-					style={style}
-					center={center}
-					initialCenter={center}
-					zoom={zoom}
-					onClick={this.onMapClicked}
-				>
-					<Marker className="marker" position={center} onClick={this.onMarkerClick} name={title + "\n\n" + address + "\n" + city} />
+    return (
+      <div className="map">
+        <Map
+          google={this.props.google}
+          style={style}
+          center={center}
+          initialCenter={center}
+          zoom={zoom}
+          onClick={this.onMapClicked}
+        >
+          <Marker
+            className="marker"
+            position={center}
+            onClick={this.onMarkerClick}
+            name={title + "\n\n" + address + "\n" + city}
+          />
 
-					<InfoWindow
-						marker={this.state.activeMarker}
-						visible={this.state.showingInfoWindow}
-					>
-						<div>
-							<h1>{this.state.selectedPlace.name}</h1>
-						</div>
-					</InfoWindow>
-				</Map>
-			</div>
-		);
-	}
+          <InfoWindow
+            marker={this.state.activeMarker}
+            visible={this.state.showingInfoWindow}
+          >
+            <div>
+              <h1>{this.state.selectedPlace.name}</h1>
+            </div>
+          </InfoWindow>
+        </Map>
+      </div>
+    );
+  }
 }
 
 export default GoogleApiWrapper({
-	apiKey: "AIzaSyCH-qhf7-LfJ52gOs_vqe_-_TiNlL30lww",
+  apiKey: ""
 })(MyMapContainer);

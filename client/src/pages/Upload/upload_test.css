@@ -1,26 +1,10 @@
 .uploadForm {
-	background-image: url(./images/old-time-wall.jpg);
-	background-repeat: no-repeat;
-	background-size: cover;
-	font-family: 'Cuprum', sans-serif;
-	padding: 15px;
-	font-size: 25px;
-	opacity: .75;
-	filter: alpha(opacity=50);
-}
-
-.btn {
-	width: 300px;
-}
-
-
-.uploadForm {
-	background-image: url(./images/old-time-wall.jpg);
+	background-image: url(./images/paint.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 	font-size: 25px;
 	opacity: .75;
-	padding: 20px;
+	padding: 3%;
 }
 
 .btn {
@@ -28,24 +12,29 @@
 }
 
 .card-frame {
-	margin-top: 0;
+	margin: 0 0 0 20%;
 	height: 100%;
-	width: 100%;
-	border: 1px solid black;
+	width: 80%;
+	border: 3px solid black;
+	box-shadow: 2px 7px 7px black;
 	background-color: rgb(0,0,0,0.2);
+	z-index: 0;
 }
 
-.card-title {
+.title-upload {
 	text-align: center;
+	font-size: 25px;
+	margin-top: 2%;
+	color: green;
+	font-weight: bold;
+	text-shadow: 2px 2px 5px black;
 }
-
 
 p {
 	font-size: 15px;
 }
 
 h1 {
-	text-shadow: 2px 2px 5px black;
 	color: white;
 }
 h5 {
