@@ -72,7 +72,7 @@ class ArtCard extends React.Component {
 						{/* //ADD TO FAVORITES// */}
 
 						{this.props.onFavorites !== true &&
-							<button className="iconz hover-button" onClick={(id) => this.markAsFavorite(this.props.id)}><span class="hover-button--off"></span><i className="fas fa-heart"></i><span class='hover-button--on'>Hover!</span></button>
+							<button className="iconz hover-button" onClick={(id) => this.markAsFavorite(this.props.id)}><span class="hover-button--off"></span><i className="fas fa-heart"></i><span class='hover-button--on'>Favorites</span></button>
 						}
 
 						{/* //THUMBS UP// */}
