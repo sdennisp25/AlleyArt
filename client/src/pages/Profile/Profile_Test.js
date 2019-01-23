@@ -24,7 +24,8 @@ class Profile extends Component {
 			favorites: [],
 			title: " ",
 			address: " ",
-			city: " "
+			city: " ",
+			onFavorites: true
 		};
 	}
 
@@ -95,6 +96,7 @@ class Profile extends Component {
 											description={art.description}
 											likes={art.likes}
 											mapArt={this.mapArt}
+											onFavorites={this.state.onFavorites}
 										/>
 									))}
 								</div>
