@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Container } from "../../../components/Grid";
 import "./register.css";
 import API from "../../../utils/api";
-import { LoginModal } from "../../../components/Modal";
 import { Redirect } from "react-router-dom";
 import Nav from "../../../components/Nav";
 
@@ -15,16 +14,7 @@ class RegisterArtist extends Component {
 		artistPasswordError: "",
 		aboutArtist: "",
 		okToContact: false,
-		showLogin: false,
-		toHome: false
-	};
-
-	showLogin = () => {
-		this.setState({ showLogin: true });
-	};
-
-	hideLogin = () => {
-		this.setState({ showLogin: false });
+		toSignIn: false
 	};
 
 	handleInputChange = event => {
@@ -99,27 +89,6 @@ class RegisterArtist extends Component {
 	};
 
 	// ---------------------------------------------
-
-	handleLogin = event => {
-		event.preventDefault();
-		console.log("You Clicked Me!");
-		console.log(this.state);
-
-		API.loginUser({
-			email: this.state.username,
-			password: this.state.password
-		})
-			.then(response => {
-				if (response.status === 200) {
-					this.setState({ toHome: true });
-				}
-			})
-			.catch(error => {
-				console.log("LOGIN ERROR: ");
-				console.log(error);
-			});
-	};
-
 	handleRegUser = event => {
 		event.preventDefault();
 		console.log("You Clicked Me!");
@@ -149,7 +118,6 @@ class RegisterArtist extends Component {
 					artistPassword: "",
 					aboutArtist: "",
 					okToContact: false,
-					showLogin: true
 				});
 			})
 			.catch(error => {
@@ -165,8 +133,8 @@ class RegisterArtist extends Component {
 	};
 
 	render() {
-		if (this.state.toHome === true) {
-			return <Redirect to="/home" />;
+		if (this.state.toSignIn === true) {
+			return <Redirect to="/" />;
 		}
 
 		return (
@@ -257,11 +225,11 @@ class RegisterArtist extends Component {
                     </label>
 									</div>
 
-                  <div className="col s12">
-                    <h3 className="white-text contact-q">Do you want to be contacted?</h3>
-                    <div className="switch">
-                      <label className="white-text">
-                        No
+									<div className="col s12">
+										<h3 className="white-text contact-q">Do you want to be contacted?</h3>
+										<div className="switch">
+											<label className="white-text">
+												No
                         <input
 													type="checkbox"
 													defaultValue={this.state.okToContact}
@@ -291,12 +259,6 @@ class RegisterArtist extends Component {
 					</Container>
 				</div>
 
-				<LoginModal
-					show={this.state.showLogin}
-					handleClose={this.hideLogin}
-					handleLogin={this.handleLogin}
-					handleInputChange={this.handleInputChange}
-				/>
 			</React.Fragment>
 		);
 	}

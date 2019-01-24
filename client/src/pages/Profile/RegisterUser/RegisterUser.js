@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Container } from "../../../components/Grid";
 import "./register.css";
 import API from "../../../utils/api";
-import {LoginModal} from "../../../components/Modal";
 import { Redirect } from "react-router-dom";
 import Nav from "../../../components/Nav";
 
@@ -12,41 +11,15 @@ class RegisterUser extends Component {
 		userName: "",
 		userEmail: "",
 		userPassword: "",
-		showLogin: false,
-		toHome: false,
+		toSignIn: false,
 	}
 
-	showLogin = () => {
-		this.setState({ showLogin: true });
-	};
-	
-	hideLogin = () => {
-		this.setState({ showLogin: false });
-	};
-	
 	handleInputChange = event => {
 		let { name, value } = event.target;
 		this.setState({
 			[name]: value
 		});
 	};
-	
-	handleLogin = (event) => {
-		event.preventDefault();
-		console.log("You Clicked Me!");
-		console.log(this.state);
-		API.loginUser({
-			email: this.state.username,
-			password: this.state.password
-		}).then(response => {
-			if (response.status === 200) {
-				this.setState({ toHome: true });
-			}
-		}).catch(error => {
-			console.log("LOGIN ERROR: ");
-			console.log(error);
-		})
-	}
 
 	handleRegUser = (event) => {
 		event.preventDefault();
@@ -62,7 +35,7 @@ class RegisterUser extends Component {
 				userName: "",
 				userEmail: "",
 				userPassword: "",
-				showLogin: true
+				toSignIn: true
 			})
 
 		}).catch(error => {
@@ -72,13 +45,13 @@ class RegisterUser extends Component {
 	}
 
 	render() {
-	if (this.state.toHome === true) {
-			return <Redirect to='/home' />
+		if (this.state.toSignIn === true) {
+			return <Redirect to='/' />
 		}
 
 		return (
 			<React.Fragment>
-			<Nav></Nav>
+				<Nav></Nav>
 				<Container>
 					<h1 className="title">Register USER Profile</h1>
 					<div className="userform cyan darken-2">
@@ -99,7 +72,7 @@ class RegisterUser extends Component {
 									</div>
 									<div className="col s12">
 										<div className="center-align">
-										<button className="btn waves-effect waves-light green darken-2" type="submit" name="action" onClick={this.handleRegUser}>Submit
+											<button className="btn waves-effect waves-light green darken-2" type="submit" name="action" onClick={this.handleRegUser}>Submit
   									</button>
 										</div>
 									</div>
@@ -108,17 +81,9 @@ class RegisterUser extends Component {
 						</div>
 					</div>
 				</Container>
-
-				<LoginModal
-					show={this.state.showLogin}
-					handleClose={this.hideLogin}
-					handleLogin={this.handleLogin}
-					handleInputChange={this.handleInputChange}
-				></LoginModal>
-
 			</React.Fragment>
 		)
 
-			}
+	}
 }
 export default RegisterUser;
