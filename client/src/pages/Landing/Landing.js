@@ -38,26 +38,25 @@ class Landing extends Component {
 	handleLogin = (event) => {
 		event.preventDefault();
 		console.log("You Clicked Me!");
-		console.log(this.state);
 		API.loginUser({
 			email: this.state.username,
 			password: this.state.password
 		}).then(response => {
 			if (response.status === 200) {
-				console.log("LOGIN RESPONSE", response.data);
 				let name = response.data.username;
 				let userId = response.data.userId;
 				let isArtist = response.data.isArtist;
+				let mapAPI = response.data.mapAPI;
 				console.log("LOGIN Username", name);
 				console.log("LOGIN User ID", userId);
 				console.log("LOGIN is Artist", isArtist);
 				let user = {
+					mapAPI: mapAPI,
 					username: name,
 					userId: userId,
 					isArtist: isArtist,
 					loggedIn: true
 				}
-				console.log(user);
 				this.props.logInUser(user);
 				this.setState({ toHome: true });
 			}
@@ -99,10 +98,12 @@ class Landing extends Component {
 		let imgURL = "https://slack-imgs.com/?c=1&url=https%3A%2F%2Fcdn.pixabay.com%2Fphoto%2F2018%2F01%2F05%2F03%2F14%2Fgraffiti-3062069_640.jpg"
 
 		return (
-			<div style={{backgroundImage: 'url(' + imgURL + ')',
-								backgroundSize: 'cover',
-								minHeight: '700px',
-								backgroundRepeat: 'no-repeat',}}>
+			<div style={{
+				backgroundImage: 'url(' + imgURL + ')',
+				backgroundSize: 'cover',
+				minHeight: '700px',
+				backgroundRepeat: 'no-repeat',
+			}}>
 				<Container>
 					<Row>
 						<div className="landing-background z-depth-5">
