@@ -8,6 +8,10 @@
 	width: 80%;
 }
 
+.select {
+	text-align: center;
+} 
+
 .display-block {
 	display: block;
 }
