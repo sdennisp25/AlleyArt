@@ -3,12 +3,13 @@
     width: 400px;
 }
 
-h1 {
+#alley-art {
     font-family: 'Major Mono Display', monospace;
+    color:green;
+    text-shadow: 2px 2px #B4B5A1;
 }
 
 .landing {
-    
     color: black;
     height: 450px;
     width: 400px;

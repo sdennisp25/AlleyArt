@@ -35,9 +35,13 @@ class Nav extends Component {
 					<i className="fa fa-bars fa-2x" onClick={this.burgerToggle}></i>
                     <div className="narrowLinks">
                         <Link to={"/home"} onClick={this.burgerToggle}><i className="fas fa-search"></i></Link>
-                        <Link to={"/profile"} onClick={this.burgerToggle}><i className="fas fa-heart"></i></Link>
+                        	<Link to={"/profile"} onClick={this.burgerToggle}><i className="fas fa-heart"></i></Link>
                         {this.props.user.isArtist === true && <a href="/image">Upload New Art</a>}
-                        <a href="/" onClick={this.burgerToggle}><i className="fas fa-sign-out-alt"></i></a>
+                        
+						
+						<a href="/" onClick={this.burgerToggle}><i className="sign-out">Logout</i></a>
+					
+
                     </div>
 				</div>
 			</nav>

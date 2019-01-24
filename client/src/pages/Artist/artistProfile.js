@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import Nav from "../../components/Nav";
 import { Container } from "../../components/Grid";
-// import ArtCard from "../../components/artCard";
+import ArtCard from "../../components/artCard";
 import API from "../../utils/api";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
+import "./artistProfile.css";
 
 class Artist extends Component {
 
@@ -13,7 +14,8 @@ class Artist extends Component {
 		aboutArtist: " ",
 		okToContact: false,
 		artistEmail: " ",
-		artistWorks: []
+		artistWorks: [],
+		onProfile: true,
 	}
 
 	componentDidMount = () => {
@@ -44,23 +46,53 @@ class Artist extends Component {
 				<Nav></Nav>
 
 				<Container fluid>
-					<h1>Artist Profile</h1>
+					<h1 id="title-a">Artist</h1>
 
-					<h6>ARTIST NAME: </h6>
-					<p>{this.state.artistName}</p>
-
+					<div className="info-name center-align">
+						<h6>{this.state.artistName}</h6>
+					</div>
 					<h6>ABOUT: </h6>
-					<p>{this.state.aboutArtist}</p>
-
-					<h6>OK TO CONTACT: </h6>
-					{this.state.okToContact === true && <p>OK to contact</p>}
-					{this.state.okToContact === false && <p>Unable to contact </p>}
-
+					<div className="info-about valign-wrapper">
+						<p id="PP">{this.state.aboutArtist}</p>
+					</div>
+					<h6>CONTACT: </h6>
+					<div className="info-contact">
+						{this.state.okToContact === true && <p id="PP">OK to contact</p>}
+						{this.state.okToContact === false && <p id="PP">Unable to contact </p>}
+					</div>
 					<h6>EMAIL: </h6>
-					<p>{this.state.artistEmail}</p>
-
+					<div className="info-email">
+						<p id="PP">{this.state.artistEmail}</p>
+					</div>
 					<h6>ARTWORK: </h6>
-					
+
+					{this.state.artistWorks.length ? (
+						<React.Fragment>
+
+							<div className="row text-center results col s12 m6 l4">
+
+								{this.state.artistWorks.map(art => (
+
+									<ArtCard
+										key={"card-" + art._id}
+										id={art._id}
+										fav={false}
+										url={art.url}
+										artistId={art.artistID}
+										title={art.title}
+										description={art.description}
+										likes={art.likes}
+										onProfile={this.state.onProfile}
+									/>
+
+								))}
+
+							</div>
+						</React.Fragment>
+					) : (
+							<h3 className="center noResults col s12 m6 l4">No Results to Display</h3>
+						)}
+
 
 
 

@@ -1,0 +1,66 @@
+#title-a {
+	font-family: 'Major Mono Display', monospace;
+	text-align: center;
+	text-shadow: 2px 2px green;
+}
+
+h6 {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: Bold;
+    text-align: center;
+    font-size: 40px;
+    padding: 5px;
+    text-shadow: 2px 2px #AF2B16;
+}
+
+#PP {
+    font-family: 'Ubuntu', sans-serif;
+    text-align: center;
+    padding-left: 10%;
+    padding-right: 10%;
+    font-size: 20px;
+}
+
+.info-name {
+    height: 50px;
+    width: 300px;
+    background-color:  #388e3c;
+    color: #FFFAF4;
+    border: 2px;
+    border-radius: 5px;
+    margin: auto;
+}
+
+.info-about {
+    height: auto;
+    width: auto;
+    background-color:  #388e3c;
+    color: #FFFAF4;
+    border: 2px;
+    border-radius: 5px;
+    margin: auto;
+    font-size: 30px;
+}
+
+.info-contact {
+    height: 30px;
+    width: 200px;
+    background-color:  #388e3c;
+    color: #FFFAF4;
+    border: 2px;
+    border-radius: 5px;
+    margin: auto;
+    font-size: 30px;
+}
+
+
+.info-email {
+    height: 30px;
+    width: 300px;
+    background-color:  #388e3c;
+    color: #FFFAF4;
+    border: 2px;
+    border-radius: 5px;
+    margin: auto;
+    font-size: 30px;
+}

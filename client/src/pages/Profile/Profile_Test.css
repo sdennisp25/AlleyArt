@@ -29,10 +29,6 @@
 	opacity: 0;
 }
 
-.btn {
-	width: 300px;
-}
-
 .commentBox {
 	float: left;
 	overflow: auto;
@@ -44,6 +40,8 @@
 	margin: 0 auto;
 }
 
-#title {
+#title-artp {
 	font-family: 'Major Mono Display', monospace;
+	text-align: center;
+	text-shadow: 2px 2px green;
 }

@@ -7,14 +7,7 @@ import { connect } from "react-redux";
 import API from "../../utils/api"
 import { Redirect } from "react-router-dom";
 import Nav from "../../components/Nav";
-import MyMapContainer from "../../components/Map";
-
-const cardStyle = {
-	border: "3px solid black",
-	width: "75%",
-	height: "75%",
-	margin: "auto",
-}
+import MapModal from "../../components/Map/Modal/mapModal";
 
 class Profile extends Component {
 
@@ -24,7 +17,9 @@ class Profile extends Component {
 			favorites: [],
 			title: " ",
 			address: " ",
-			city: " "
+			city: " ",
+			onFavorites: true,
+			showMap: false
 		};
 	}
 
@@ -44,6 +39,12 @@ class Profile extends Component {
 	showMap = () => {
 		this.setState({
 			showMap: true
+		})
+	}
+
+	hideMap = () => {
+		this.setState({
+			showMap: false
 		})
 	}
 
@@ -82,8 +83,8 @@ class Profile extends Component {
 					<Row>
 						{this.state.favorites.length ? (
 							<React.Fragment>
-								<div className="row text-center col s12 m6 l4">
-									<h1 id="title" className="white-text">{this.props.user.username}'s Favorites</h1>
+								<div className="row text-center">
+									<h1 id="title-artp" className="white-text">{this.props.user.username}'s Favorites</h1>
 									{this.state.favorites.map(art => (
 										<ArtCard
 											key={"card-" + art._id}
@@ -95,6 +96,7 @@ class Profile extends Component {
 											description={art.description}
 											likes={art.likes}
 											mapArt={this.mapArt}
+											onFavorites={this.state.onFavorites}
 										/>
 									))}
 								</div>
@@ -104,16 +106,14 @@ class Profile extends Component {
 							)}
 					</Row>
 
-					<Row>
-						{this.state.showMap === true && <MyMapContainer
-							center={this.state.center}
-							zoom={9}
-							title={this.state.title}
-							address={this.state.address}
-							city={this.state.city}
-							style={cardStyle}
-						/>}
-					</Row>
+					<MapModal
+						show={this.state.showMap}
+						handleClose={this.hideMap}
+						center={this.state.center}
+						title={this.state.title}
+						address={this.state.address}
+						city={this.state.city}
+					/>
 
 				</Container>
 			</React.Fragment>

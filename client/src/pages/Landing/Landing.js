@@ -108,7 +108,7 @@ class Landing extends Component {
 						<div className="landing-background z-depth-5">
 							{/* <h2>TESTING!!! THIS IS THE CURRENT STATE:  {this.props.user.image}</h2> */}
 							<div className="landing center-align card-panel">
-								<h1>ALLEY ART</h1>
+								<h1 id="alley-art">ALLEY ART</h1>
 								<p>Beyond this is a street art community. Create a profile and contribute to the international art collections. If your looking for a discovery find the location and go see for yourself.</p>
 								<div className="row">
 									<button className="waves-effect grey darken-3 btn" type="button" onClick={this.showLogin}>LOGIN</button>
