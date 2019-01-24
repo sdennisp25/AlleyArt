@@ -150,7 +150,6 @@ class Home extends Component {
 								))}
 
 							</div>
-<<<<<<< HEAD
 						</Row>
 
 
@@ -193,22 +192,6 @@ class Home extends Component {
 							/>}
 						</Row>
 				
-=======
-						</React.Fragment>
-					) : (
-							<h3 className="center-align noResults col s12 m6 l4">Search Again</h3>
-						)}
-
-					<MapModal
-						show={this.state.showMap}
-						handleClose={this.hideMap}
-						center={this.state.center}
-						title={this.state.title}
-						address={this.state.address}
-						city={this.state.city}
-					/>
-
->>>>>>> master
 				</Container>
 			</React.Fragment>
 		)
