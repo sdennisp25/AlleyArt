@@ -124,34 +124,7 @@ class Home extends Component {
 								handleSearchArtist={this.handleSearchArtist}
 								handleSearchCity={this.handleSearchCity}></Search>
 						</div>
-					</Row>
-
-
-					{this.state.results.length ? (
-						<React.Fragment>
-
-							<div className="row text-center col s12 m6 l4">
-								<h1 id="title-r">Results</h1>
-
-								{this.state.results.map(art => (
-
-									<ArtCard
-										key={"card-" + art._id}
-										id={art._id}
-										fav={false}
-										url={art.url}
-										artistId={art.artistID}
-										title={art.title}
-										description={art.description}
-										likes={art.likes}
-										mapArt={this.mapArt}
-									/>
-
-								))}
-
-							</div>
-						</Row>
-
+					</Row>		
 
 						{this.state.results.length ? (
 							<React.Fragment>
@@ -181,16 +154,18 @@ class Home extends Component {
 								<h3 className="center-align noResults col s12 m6 l4">Search Again</h3>
 							)}
 
-						<Row>
-							{this.state.showMap === true && <MyMapContainer
-								center={this.state.center}
-								zoom={9}
-								title={this.state.title}
-								address={this.state.address}
-								city= {this.state.city}
-								style={cardStyle}
-							/>}
-						</Row>
+                    {this.state.showMap?
+                        <MapModal
+                            show={this.state.showMap}
+                            handleClose={this.hideMap}
+                            center={this.state.center}
+                            title={this.state.title}
+                            address={this.state.address}
+                            city={this.state.city}
+                            mapAPI = {this.mapAPI}
+                        />: null
+							}
+						
 				
 				</Container>
 			</React.Fragment>
