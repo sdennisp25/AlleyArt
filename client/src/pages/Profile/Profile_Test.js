@@ -7,14 +7,7 @@ import { connect } from "react-redux";
 import API from "../../utils/api"
 import { Redirect } from "react-router-dom";
 import Nav from "../../components/Nav";
-import MyMapContainer from "../../components/Map";
-
-const cardStyle = {
-	border: "3px solid black",
-	width: "75%",
-	height: "75%",
-	margin: "auto",
-}
+import MapModal from "../../components/Map/Modal/mapModal";
 
 class Profile extends Component {
 
@@ -25,7 +18,8 @@ class Profile extends Component {
 			title: " ",
 			address: " ",
 			city: " ",
-			onFavorites: true
+			onFavorites: true,
+			showMap: false
 		};
 	}
 
@@ -45,6 +39,12 @@ class Profile extends Component {
 	showMap = () => {
 		this.setState({
 			showMap: true
+		})
+	}
+
+	hideMap = () => {
+		this.setState({
+			showMap: false
 		})
 	}
 
@@ -106,16 +106,14 @@ class Profile extends Component {
 							)}
 					</Row>
 
-					<Row>
-						{this.state.showMap === true && <MyMapContainer
-							center={this.state.center}
-							zoom={9}
-							title={this.state.title}
-							address={this.state.address}
-							city={this.state.city}
-							style={cardStyle}
-						/>}
-					</Row>
+					<MapModal
+						show={this.state.showMap}
+						handleClose={this.hideMap}
+						center={this.state.center}
+						title={this.state.title}
+						address={this.state.address}
+						city={this.state.city}
+					/>
 
 				</Container>
 			</React.Fragment>

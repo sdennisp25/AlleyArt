@@ -8,15 +8,7 @@ import API from "../../utils/api";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { logInUser } from "../../redux/reducers/myReducer";
-import MyMapContainer from "../../components/Map/google";
-
-const cardStyle = {
-	border: "3px solid black",
-	width: "75%",
-	height: "75%",
-	margin: "auto",
-}
-
+import MapModal from "../../components/Map/Modal/mapModal";
 
 class Home extends Component {
 	constructor(props) {
@@ -86,6 +78,12 @@ class Home extends Component {
 		})
 	}
 
+	hideMap = () => {
+		this.setState({
+			showMap: false
+		})
+	}
+
 	mapArt = (id) => {
 		console.log("Showing Art Location", id);
 		API.getLatLng(id)
@@ -117,15 +115,42 @@ class Home extends Component {
 				<Nav></Nav>
 
 				<Container fluid>
-					
-						<Row>
-							<div className="row-container search-container z-depth-5">
-								<h1 id="title">Discover</h1>
-								<Search
-									handleInputChange={this.handleInputChange}
-									handleSearchArtist={this.handleSearchArtist}
-									handleSearchCity={this.handleSearchCity}></Search>
+
+					<Row>
+						<div className="row-container search-container z-depth-5">
+							<h1 id="title">Discover</h1>
+							<Search
+								handleInputChange={this.handleInputChange}
+								handleSearchArtist={this.handleSearchArtist}
+								handleSearchCity={this.handleSearchCity}></Search>
+						</div>
+					</Row>
+
+
+					{this.state.results.length ? (
+						<React.Fragment>
+
+							<div className="row text-center col s12 m6 l4">
+								<h1 id="title-r">Results</h1>
+
+								{this.state.results.map(art => (
+
+									<ArtCard
+										key={"card-" + art._id}
+										id={art._id}
+										fav={false}
+										url={art.url}
+										artistId={art.artistID}
+										title={art.title}
+										description={art.description}
+										likes={art.likes}
+										mapArt={this.mapArt}
+									/>
+
+								))}
+
 							</div>
+<<<<<<< HEAD
 						</Row>
 
 
@@ -168,6 +193,22 @@ class Home extends Component {
 							/>}
 						</Row>
 				
+=======
+						</React.Fragment>
+					) : (
+							<h3 className="center-align noResults col s12 m6 l4">Search Again</h3>
+						)}
+
+					<MapModal
+						show={this.state.showMap}
+						handleClose={this.hideMap}
+						center={this.state.center}
+						title={this.state.title}
+						address={this.state.address}
+						city={this.state.city}
+					/>
+
+>>>>>>> master
 				</Container>
 			</React.Fragment>
 		)
