@@ -7,7 +7,8 @@ export class MyMapContainer extends Component {
   state = {
     showingInfoWindow: false,
     activeMarker: {},
-    selectedPlace: {}
+		selectedPlace: {},
+		googleApi:""
   };
 
   onMarkerClick = (props, marker, e) =>
