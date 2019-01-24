@@ -256,6 +256,7 @@ class Upload extends Component {
 								center={this.state.center}
 								zoom={9}
 								style={uploadStyle}
+								mapAPI={this.props.user.mapAPI}
 							/>}
 						</div>
 					</div>

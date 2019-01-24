@@ -1,7 +1,8 @@
 module.exports = {
 	google: {
 		clientID: process.env.clientID,
-		clientSecret: process.env.clientSecret
+		clientSecret: process.env.clientSecret,
+		mapAPI: process.env.mapAPI
 	},
 	cookies: {
 		secret: process.env.secret
