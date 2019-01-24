@@ -48,3 +48,14 @@ img {
 		width: 100%;
 	}
 }
+
+.hover-button .hover-button--on,
+.hover-button:hover .hover-button--off {
+  display: none;
+}
+
+.hover-button:hover .hover-button--on {
+  display: inline;
+  color: #AF2B16;
+}
+  

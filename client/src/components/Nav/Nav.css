@@ -11,6 +11,14 @@ nav {
 	font-size: 40px;
 	color: #FFFAF4;
 	font-family: 'Major Mono Display', monospace;
+	text-align: center;
+	text-shadow: 2px 2px green;
+}
+
+.wideDiv {
+	font-size: 20px;
+	float: right;
+	font-family: 'Ubuntu', sans-serif;
 }
 
 nav a {
@@ -55,12 +63,18 @@ nav .navNarrow .narrowLinks a {
 	padding: 0.5em;
 }
 
+.sign-out {
+	font-size: 15px;
+	font-family: 'Ubuntu', sans-serif;
+}
+
 @media (min-width: 480px) {
 	nav .navWide {
 		display: block;
 	}
 	nav .navNarrow {
 		display: none;
+		padding: 5px;
 	} 
 }
 

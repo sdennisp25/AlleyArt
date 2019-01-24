@@ -70,7 +70,6 @@ class Artist extends Component {
 						<React.Fragment>
 
 							<div className="row text-center results col s12 m6 l4">
-								<h1 id="title">Results</h1>
 
 								{this.state.artistWorks.map(art => (
 

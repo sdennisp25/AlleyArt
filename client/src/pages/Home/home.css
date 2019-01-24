@@ -1,6 +1,13 @@
+#title {
+	font-family: 'Major Mono Display', monospace;
+	text-align: center;
+	text-shadow: 2px 2px green;
+}
+
 #title-r {
 	font-family: 'Major Mono Display', monospace;
 	text-align: center;
+	text-shadow: 2px 2px green;
 }
 
 /* .row-container {
@@ -17,9 +24,8 @@
 	color: black;
 	height: auto;
 	width: auto;
-	opacity: .8;
-	filter: alpha(opacity=50);
 	padding: 10px;
+	text-shadow: 2px 2px #AF2B16;
 }
 
 .search-container {
