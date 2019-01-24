@@ -113,6 +113,7 @@ class Profile extends Component {
 						title={this.state.title}
 						address={this.state.address}
 						city={this.state.city}
+						mapAPI={this.props.user.mapAPI}
 					/>
 
 				</Container>
