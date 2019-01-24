@@ -48,10 +48,12 @@ class Landing extends Component {
 				let name = response.data.username;
 				let userId = response.data.userId;
 				let isArtist = response.data.isArtist;
+				let mapAPI = response.data.mapAPI;
 				console.log("LOGIN Username", name);
 				console.log("LOGIN User ID", userId);
 				console.log("LOGIN is Artist", isArtist);
 				let user = {
+					mapAPI: mapAPI,
 					username: name,
 					userId: userId,
 					isArtist: isArtist,

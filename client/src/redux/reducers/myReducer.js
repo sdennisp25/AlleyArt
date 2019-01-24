@@ -9,7 +9,8 @@ const initialState = {
 	userId: " ",
 	isArtist: false,
 	image: "",
-	artistId: " "
+	artistId: " ",
+	mapAPI: "",
 }
 
 export default function reducer(state = initialState, action) {
@@ -18,7 +19,7 @@ export default function reducer(state = initialState, action) {
 	//an action type will call the related funtion, then state is updated based on the 2nd parameter
 	switch (action.type) {
 		case USER_AUTH:
-			return Object.assign({}, state, { loggedIn: action.user.loggedIn, username: action.user.username, userId: action.user.userId, isArtist: action.user.isArtist })
+			return Object.assign({}, state, { loggedIn: action.user.loggedIn, username: action.user.username, userId: action.user.userId, isArtist: action.user.isArtist, mapAPI: action.user.mapAPI })
 		case NEW_IMAGE:
 			return Object.assign({}, state, { image: action.image })
 		case USER_LOGOUT:

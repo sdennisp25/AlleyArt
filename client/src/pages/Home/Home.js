@@ -109,6 +109,7 @@ class Home extends Component {
 		if (this.props.user.loggedIn === false) {
 			return <Redirect to='/' />
 		}
+		console.log("HOME PROPS", this.props.user);
 
 		return (
 			<React.Fragment>
