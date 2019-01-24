@@ -180,7 +180,7 @@ class RegisterArtist extends Component {
 
 								<div className="row">
 									<div className="input-field col s12">
-										<i class="material-icons prefix">wc</i>
+										<i className="material-icons prefix">wc</i>
 										<input
 											id="input-text"
 											type="text"
@@ -195,7 +195,7 @@ class RegisterArtist extends Component {
 									{/* =============================== */}
 									{/* ========= EMAIL =============== */}
 									<div className="input-field col s12">
-										<i class="material-icons prefix">email</i>
+										<i className="material-icons prefix">email</i>
 										<input
 											id="email"
 											type="email"
@@ -219,7 +219,7 @@ class RegisterArtist extends Component {
 									{/* ========= PASSWORD =========== */}
 
 									<div className="input-field col s12">
-										<i class="material-icons prefix">lock</i>
+										<i className="material-icons prefix">lock</i>
 										<input
 											id="input_text"
 											type="password"

@@ -100,7 +100,7 @@ module.exports = {
 					artistWorks: dbProfile.artwork,
 					artistEmail: dbProfile.email
 				}
-				console.log(artist);
+				// console.log(artist);
 				res.json(artist);
 			})
 			.catch(function (err) {
