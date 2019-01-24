@@ -9,8 +9,16 @@
 }
 
 .select {
-	text-align: center;
+	font-family: 'Ubuntu', sans-serif;
+	margin: 20px;
 } 
+
+.select-title {
+	margin: 30px;
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 35px;
+	text-shadow: 2px 2px #AF2B16;
+}
 
 .display-block {
 	display: block;
