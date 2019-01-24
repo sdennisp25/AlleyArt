@@ -3,7 +3,7 @@ import "./mapModal.css";
 import MyMapContainer from "../google";
 
 
-export const MapModal = ({ show, handleClose, center, title, address, city, }) => {
+export const MapModal = ({ show, handleClose, center, title, address, city, mapAPI }) => {
 	return (
 		<div className={`${show ? "modal display-block" : "modal display-none"} modal mapModal`}>
 
@@ -14,6 +14,7 @@ export const MapModal = ({ show, handleClose, center, title, address, city, }) =
 				title={title}
 				address={address}
 				city={city}
+				mapAPI={mapAPI}
 			/>
 
 
