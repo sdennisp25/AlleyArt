@@ -11,7 +11,7 @@
     "server:dev": "nodemon server/server.js",
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "node server/server.js",
-    "start:dev": "concurrently \"npm run server:dev\" \"npm run client\"",
+    "start:dev": "concurrently \"npm run server:dev\" \"npm run client\""
   },
   "repository": {
     "type": "git",
