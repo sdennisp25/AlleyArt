@@ -32,6 +32,15 @@ module.exports = {
 			.catch(err => res.status(422).json(err));
 	},
 
+	removeArt: function (req, res) {
+		console.log("REMOVING ARTWORK", req.params);
+		db.Artwork
+			.findById({ _id: req.params._id })
+			.then(dbArt => dbArt.remove())
+			.then(dbArt => res.json(dbArt))
+			.catch(err => res.status(422).json(err));
+	},
+
 	searchArtist: function (req, res) {
 		console.log("FIND ALL WHERE: ", req.params.artist);
 		let query = req.params.artist;
@@ -53,7 +62,9 @@ module.exports = {
 	incLikes: function (req, res) {
 		console.log("INCREASING LIKES", req.params);
 		db.Artwork
-			.findOneAndUpdate((req.params), { $inc: { likes: 1 } }, { new: true })
+			.findOneAndUpdate((req.params),
+				{ $inc: { likes: 1 } },
+				{ new: true })
 			.then(art => res.json(art))
 			.catch(err => res.status(422).json(err));
 	},
@@ -73,6 +84,26 @@ module.exports = {
 			.catch(err => res.status(422).json(err));
 	},
 
+	removeFavorite: function (req, res) {
+		console.log("REMOVE FAVORITE", req.params)
+		let userId = req.user.id;
+		let favId = req.params._id
+		db.Artwork.findOneAndUpdate({ _id: favId }, {
+			$pull: {
+				favoritedBy: { $in: [userId] }
+			}
+		}, { new: true }
+		)
+			.then(function (dbFav) {
+				console.log(dbFav);
+				res.json(dbFav);
+			})
+			.catch(function (err) {
+				console.log(err)
+				res.json(err);
+			});
+	},
+
 	getFavorites: function (req, res) {
 		console.log("RETREIVEING USER FAVORITES")
 		let userId = req.user.id;
@@ -80,6 +111,7 @@ module.exports = {
 
 		db.Artwork.find({ favoritedBy: { $in: userId } })
 			.then(function (dbFav) {
+				console.log(dbFav);
 				res.json(dbFav);
 			})
 			.catch(function (err) {
@@ -100,7 +132,6 @@ module.exports = {
 					artistWorks: dbProfile.artwork,
 					artistEmail: dbProfile.email
 				}
-				// console.log(artist);
 				res.json(artist);
 			})
 			.catch(function (err) {

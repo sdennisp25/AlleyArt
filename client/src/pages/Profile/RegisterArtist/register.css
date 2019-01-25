@@ -21,7 +21,8 @@ label {
 }
 
 .commentBox {
-	overflow: hidden;
+	height: 150px;
+	overflow:scroll;
 }
 
 .input-field {
