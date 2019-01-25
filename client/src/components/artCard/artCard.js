@@ -65,7 +65,8 @@ class ArtCard extends React.Component {
 					<p className="center p-center">{this.props.description}</p>
 
 					{/* //REMOVE ART// */}
-					{this.props.onProfile === true && this.props.user.isArtist === true &&
+					{this.props.onProfile === true &&
+						this.props.user.userId === this.props.artistId &&
 						<div className="center-align">
 							<button className="btn-small waves-effect waves-light white green-text" onClick={(id) => this.props.removeArt(this.props.id)}>Remove</button>
 						</div>
