@@ -1,5 +1,5 @@
 .uploadForm {
-	background-image: url(./images/paint.jpg);
+	background-image: url(./images/mikky.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 	font-size: 25px;
@@ -24,7 +24,7 @@
 .title-upload {
 	text-align: center;
 	font-size: 25px;
-	margin-top: 2%;
+	margin-top: -2%;
 	color: green;
 	font-weight: bold;
 	text-shadow: 2px 2px 5px black;
