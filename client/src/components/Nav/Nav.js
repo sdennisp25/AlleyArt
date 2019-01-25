@@ -21,7 +21,7 @@ class Nav extends Component {
 
 		return (
 			<nav className="navbar">
-				<a className="navbar-brand" href="/home">
+				<a className="navbar-brand" href="/">
 				ALLEY ART</a>
 				<div className="navWide">
 					<div className="wideDiv">

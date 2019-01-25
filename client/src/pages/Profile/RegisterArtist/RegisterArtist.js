@@ -115,7 +115,7 @@ class RegisterArtist extends Component {
 											name="artistPassword"
 											onChange={this.handleInputChange}
 										/>
-											{/* pattern=".{6,}" required title=" characters minimum" */}
+										{/* pattern=".{6,}" required title=" characters minimum" */}
 										<label htmlFor="input_text">Password</label>
 										<span
 											className="helper-text"
@@ -129,7 +129,6 @@ class RegisterArtist extends Component {
 											id="textarea2"
 											type="text"
 											className="materialize-textarea"
-											data-length="120"
 											name="aboutArtist"
 											onChange={this.handleInputChange}
 										/>

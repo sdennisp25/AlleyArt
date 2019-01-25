@@ -191,16 +191,16 @@ class Upload extends Component {
 
   render() {
     ////////////WE MAY NEED TO UNCOMMENT UNTIL FINISHED W/ PAGE SETUP BUT- DO NOT REMOVE//////
-    // if (
-    //   this.props.user.loggedIn === false ||
-    //   this.props.user.isArtist === false
-    // ) {
-    //   return <Redirect to="/" />;
-    // }
+    if (
+      this.props.user.loggedIn === false ||
+      this.props.user.isArtist === false
+    ) {
+      return <Redirect to="/" />;
+    }
 
-    // if (this.state.backToHome === true) {
-    //   return <Redirect to="/home" />;
-    // }
+    if (this.state.backToHome === true) {
+      return <Redirect to="/home" />;
+    }
 
     return (
       <React.Fragment>
