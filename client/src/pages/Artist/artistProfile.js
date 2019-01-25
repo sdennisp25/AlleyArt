@@ -18,8 +18,11 @@ class Artist extends Component {
 		onProfile: true,
 	}
 
-	componentDidMount = () => {
-		console.log('Current Props: ', this.props.user);
+	componentDidMount() {
+		this.getProfile();
+	}
+
+	getProfile = () => {
 		API.artistProfile(this.props.user.artistId)
 			.then(artist => {
 				this.setState({
@@ -32,6 +35,15 @@ class Artist extends Component {
 				console.log("ARTIST PROFILE RESPONSE", this.state);
 			})
 			.catch(err => console.log(err));
+	}
+
+	removeArt = (id) => {
+		API.removeArt(id)
+			.then(response => {
+				console.log("Remove Artwork RESPONSE: ", response);
+			})
+			.then(this.getProfile())
+			.catch(err => console.log("Remove Artwork Error: ", err));
 	}
 
 	render() {
@@ -83,6 +95,7 @@ class Artist extends Component {
 										description={art.description}
 										likes={art.likes}
 										onProfile={this.state.onProfile}
+										removeArt={this.removeArt}
 									/>
 
 								))}
@@ -92,10 +105,6 @@ class Artist extends Component {
 					) : (
 							<h3 className="center noResults col s12 m6 l4">No Results to Display</h3>
 						)}
-
-
-
-
 
 				</Container>
 			</React.Fragment>
