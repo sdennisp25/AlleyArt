@@ -20,6 +20,9 @@ export default {
 		console.log(data);
 		return axios.post('/api/database/new-art', data);
 	},
+	removeArt: function (_id) {
+		return axios.delete('/api/database/remove/' + _id)
+	},
 	searchArtist: function (search) {
 		return axios.get("/api/database/search/artist/" + search);
 	},
@@ -35,14 +38,17 @@ export default {
 	getFavorites: function () {
 		return axios.get("/api/database/favorites");
 	},
+	removeFavorite: function (_id) {
+		return axios.put("/api/database/favorites/" + _id)
+	},
 	getGeocode: function (address) {
 		console.log("GEOCODE API REQUEST ", address);
 		return axios.get("api/geocode/" + address)
 	},
-	artistProfile: function(artistID){
+	artistProfile: function (artistID) {
 		return axios.get("api/database/profile/" + artistID)
 	},
-	getLatLng: function(_id){
+	getLatLng: function (_id) {
 		return axios.get("api/database/location/" + _id)
 	},
 };

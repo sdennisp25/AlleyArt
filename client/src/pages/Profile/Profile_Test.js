@@ -24,6 +24,10 @@ class Profile extends Component {
 	}
 
 	componentDidMount() {
+		this.getFavorites();
+	}
+
+	getFavorites = () => {
 		API.getFavorites()
 			.then(response => {
 				console.log("LOAD FAVORITES: ", response);
@@ -35,6 +39,15 @@ class Profile extends Component {
 			.catch(err => console.log(err));
 	}
 
+	removeFavorite = (id) => {
+		console.log("REMOVE FAV ART ID", id);
+		API.removeFavorite(id)
+			.then(response => {
+				console.log("ADD FAVORITES RESPONSE: ", response);
+			})
+			.then(this.getFavorites())
+			.catch(err => console.log("ADD FAVORITES Error: ", err));
+	}
 
 	showMap = () => {
 		this.setState({
@@ -64,8 +77,6 @@ class Profile extends Component {
 				});
 			})
 			.then(this.showMap())
-
-
 			.catch(err => console.log(err));
 	}
 
@@ -97,6 +108,7 @@ class Profile extends Component {
 											likes={art.likes}
 											mapArt={this.mapArt}
 											onFavorites={this.state.onFavorites}
+											removeFavorite={this.removeFavorite}
 										/>
 									))}
 								</div>
