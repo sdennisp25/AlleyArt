@@ -83,7 +83,6 @@ class ArtCard extends React.Component {
 
 						{/* //VIEW ARTIST// */}
 
-
 						<button className="iconz hover-button" onClick={(artistId) => this.viewArtist(this.props.artistId)}><span className="hover-button--off"></span><i className="fas fa-user"></i><span className='hover-button--on'>Artist</span></button>
 
 					</div>
