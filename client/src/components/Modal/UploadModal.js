@@ -58,7 +58,7 @@ class UploadModal extends React.Component {
 		let { imagePreviewUrl } = this.state;
 		let $imagePreview = null;
 		if (imagePreviewUrl) {
-			$imagePreview = (<img src={imagePreviewUrl} alt="Preview Upload"/>);
+			$imagePreview = (<img id="imgPreview" src={imagePreviewUrl} alt="Preview Upload"/>);
 		} else {
 			$imagePreview = (<h6>Image Preview...</h6>);
 		}
@@ -85,12 +85,6 @@ class UploadModal extends React.Component {
 
 						<div className="modal-content preview grey lighten-3">
 							{$imagePreview}
-
-							{/* ///////////////////////////REDUX: TEST IT///////////////////// */}
-							{/* <button className="btn waves-effect waves-light blue darken-4" type="button" onClick={() => this.reduxImage("WTF!!")}>REDUX</button>
-
-							<h5>{this.props.user.image}</h5> */}
-
 
 						</div>
 

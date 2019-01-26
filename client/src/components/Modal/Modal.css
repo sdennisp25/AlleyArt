@@ -11,7 +11,7 @@
 .select {
 	font-family: 'Ubuntu', sans-serif;
 	margin: 20px;
-} 
+}
 
 .select-title {
 	margin: 30px;
@@ -32,12 +32,16 @@
 	margin: 50px;
 }
 
+#imgPreview {
+	height: 300px;
+}
+
 input[type="password"] {
 	font: small-caption;
 	font-size: 16px
 }
 
-.modal-label{
+.modal-label {
 	color: green;
 	font-size: 18px;
 }

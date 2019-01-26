@@ -8,7 +8,7 @@ import { artistProfile } from "../../redux/reducers/myReducer";
 class ArtCard extends React.Component {
 	constructor(props) {
 		super(props);
-
+		
 		this.state = {
 			likes: this.props.likes,
 			toProfile: false,
@@ -57,7 +57,7 @@ class ArtCard extends React.Component {
 
 				<div className="card">
 					<div className="card-image">
-						<img src={this.props.url} alt="" />
+						<img id="artImage" src={this.props.url} alt="" />
 					</div>
 
 					<h5 className="center">{this.props.title}</h5>
