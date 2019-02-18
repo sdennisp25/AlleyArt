@@ -62,9 +62,9 @@ class RegisterArtist extends Component {
 
 
 	render() {
-		if (this.state.toSignIn === true) {
-			return <Redirect to="/" />;
-		}
+		// if (this.state.toSignIn === true) {
+		// 	return <Redirect to="/" />;
+		// }
 
 		return (
 			<React.Fragment>
@@ -156,7 +156,7 @@ class RegisterArtist extends Component {
 									<div className="col s12">
 										<div className="center-align">
 											<button
-												className="btn waves-effect waves-light green darken-2"
+												className="register-submit btn waves-effect waves-light green darken-2"
 												type="submit"
 												name="action"
 												onClick={this.handleRegUser}

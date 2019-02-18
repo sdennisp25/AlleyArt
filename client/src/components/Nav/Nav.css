@@ -3,23 +3,26 @@ nav {
 	text-align: center;
 	width: 100%;
 	overflow: hidden;
-	padding: 10px;
 }
 
 .navbar-brand {
-	float: left;
 	font-size: 40px;
-	color: #FFFAF4;
 	font-family: 'Major Mono Display', monospace;
-	text-align: center;
-	text-shadow: 2px 2px green;
 }
 
-.wideDiv {
-	font-size: 20px;
-	float: right;
-	font-family: 'Ubuntu', sans-serif;
+.brand-logo {
+	float: left;
+	font-family: 'Major Mono Display', monospace;
+	text-shadow: 2px 2px green;
+	text-align: center;
+	margin-right: 5%;
 }
+
+.left {
+	margin-left: 3%;
+}
+
+
 
 nav a {
 	color: #FFFAF4;

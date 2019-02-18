@@ -5,64 +5,97 @@ import API from "../../utils/api";
 import { logOutUser } from "../../redux/reducers/myReducer";
 import "./Nav.css";
 
-class Nav extends Component {
-
-	handleLogout = () => {
-		API.logoutUser().then(response => {
-			console.log("Logged Out");
-			this.props.logOutUser();
-		}).catch(error => {
-			console.log("Logout Error: ");
-			console.log(error);
-		})
-	}
-	
-	render() {
-
-		return (
-			<nav className="navbar">
-				<a className="navbar-brand" href="/">
-				ALLEY ART</a>
-				<div className="navWide">
-					<div className="wideDiv">
-					<Link to={"/home"}>Find Art</Link>
-					<Link to={"/profile"}>Favorites</Link>
-					{this.props.user.isArtist === true && <Link to={"/image"}>Upload New Art</Link>}
-					<Link to={"/"} onClick={this.handleLogout}>Logout</Link>
-					</div>
-				</div>
-				<div className="navNarrow">
-					<i className="fa fa-bars fa-2x" onClick={this.burgerToggle}></i>
-                    <div className="narrowLinks">
-                        <Link to={"/home"} onClick={this.burgerToggle}><i className="fas fa-search"></i></Link>
-                        <Link to={"/profile"} onClick={this.burgerToggle}><i className="fas fa-heart"></i></Link>
-												{this.props.user.isArtist === true && <Link to={"/image"} onClick={this.burgerToggle}><i className="fas fa-upload"></i></Link>}
-                        <Link to={"/"} onClick={this.burgerToggle} onClick={this.handleLogout}><i className="fa fa-sign-out-alt"></i></Link>
-                    </div>
-				</div>
-			</nav>
-		);	
-	}
-	
-	burgerToggle = () => {
-		let linksEl = document.querySelector('.narrowLinks');
-		if (linksEl.style.display === 'block') {
-				  linksEl.style.display = 'none';
-			  } else {
-				  linksEl.style.display = 'block';
-			  }
-	}
-}
 function mapStateToProps(state) {
-	return {
-		user: state,
-	}
+  return {
+    user: state
+  };
 }
 function mapDispatchToProps(dispatch) {
-	return {
-		logOutUser: () => { dispatch(logOutUser()) },
-	}
+  return {
+    logOutUser: () => {
+      dispatch(logOutUser());
+    }
+  };
 }
 
+class Nav extends Component {
+  handleLogout = () => {
+    API.logoutUser()
+      .then(response => {
+        console.log("Logged Out");
+        this.props.logOutUser();
+      })
+      .catch(error => {
+        console.log("Logout Error: ");
+        console.log(error);
+      });
+  };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Nav);
+  burgerToggle = () => {
+    let linksEl = document.querySelector(".narrowLinks");
+    if (linksEl.style.display === "block") {
+      linksEl.style.display = "none";
+    } else {
+      linksEl.style.display = "block";
+    }
+  };
+
+  render() {
+    return (
+      <nav>
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo right">
+            ALLEY ART
+          </a>
+          <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <li>
+              <Link to={"/home"}>Find Art</Link>
+            </li>
+            <li>
+              <Link to={"/profile"}>Favorites</Link>
+            </li>
+            <li>
+              {this.props.user.isArtist === true && (
+                <Link to={"/image"}>Upload New Art</Link>
+              )}{" "}
+            </li>
+            <li>
+              <Link to={"/"} onClick={this.handleLogout}>
+                Logout
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+        {/* <div className="navNarrow">
+          <i className="fa fa-bars fa-2x" onClick={this.burgerToggle} />
+          <div className="narrowLinks">
+            <Link to={"/home"} onClick={this.burgerToggle}>
+              <i className="fas fa-search" />
+            </Link>
+            <Link to={"/profile"} onClick={this.burgerToggle}>
+              <i className="fas fa-heart" />
+            </Link>
+            {this.props.user.isArtist === true && (
+              <Link to={"/image"} onClick={this.burgerToggle}>
+                <i className="fas fa-upload" />
+              </Link>
+            )}
+            <Link
+              to={"/"}
+              onClick={this.burgerToggle}
+              onClick={this.handleLogout}
+            >
+              <i className="fa fa-sign-out-alt" />
+            </Link>
+          </div>
+        </div> */}
+      </nav>
+    );
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Nav);
